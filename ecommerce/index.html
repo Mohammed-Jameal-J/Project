@@ -1,152 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NEXT – Fashion’s Favourite Season (Demo Clone)</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foremade Home Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="utilbar">
-    <div class="container row">
-      <div class="brand">
-        <img src="https://foremade.com/assets/foremade-Bxu0VQA7.png" alt="Foremade Logo">
-      </div>
-      <div class="search">
-        <input aria-label="Search" placeholder="Search for anything here…" />
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.53 20.47l-4.6-4.6a8 8 0 10-1.06 1.06l4.6 4.6a.75.75 0 101.06-1.06zM10.5 18a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"/></svg>
-      </div>
-      <div class="iconbar">
-        <a class="icon" aria-label="Account" title="Account" href="signup.html">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21a8 8 0 10-16 0"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
-        <a class="icon" aria-label="Favourites" title="Favourites" href="#">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"/></svg>
-        </a>
-        <a class="icon" aria-label="Bag" title="Bag" href="#">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
-        </a>
-      </div>
-    </div>
-  </header>
 
-<div class="nav-bar-wrapper">
-    <nav class="container-nav primary-nav" role="navigation" aria-label="Secondary Navigation">
-        <button class="hamburger" id="openDrawer" aria-label="Open Menu" title="Open Menu">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        </button>
-        
-        <div class="nav-links-visible">
-            <a href="#">All Party Essential</a>
-            <a href="#">Beauty</a>
-            <a href="#">Christmas</a>
-            <a href="#">Electronics</a>
-            <a href="#">Entertainment</a>
-            <a href="#">Footwear</a>
-            <a href="#">Games</a>
-            <a href="#">Gifts & Collectibles</a>
-        </div>
+    <div class="home_page">
 
-        <div class="nav-more-dropdown">
-            <button class="more-button" id="toggleMore" aria-expanded="false" aria-controls="moreLinks">
-                More
-            </button>
+        <header class="utilbar">
+            <div class="container row">
+                <button class="hamburger" id="openDrawer" aria-label="Open Menu" title="Open Menu">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+                </button>
+                <div class="brand">
+                    <img src="https://foremade.com/assets/foremade-Bxu0VQA7.png" alt="Foremade Logo">
+                </div>
+                <div class="search">
+                    <input aria-label="Search" placeholder="Search for anything here…">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.53 20.47l-4.6-4.6a8 8 0 10-1.06 1.06l4.6 4.6a.75.75 0 101.06-1.06zM10.5 18a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"></path></svg>
+                </div>
+                <div class="iconbar">
+                    <a class="icon" aria-label="Account" title="Account" href="signup.html">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21a8 8 0 10-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </a>
+                    <a class="icon" aria-label="Favourites" title="Favourites" href="#">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"></path></svg>
+                    </a>
+                    <a class="icon" aria-label="Bag" title="Bag" href="#">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7z"></path><path d="M9 7a3 3 0 016 0"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </header>
 
-            <div class="dropdown-content" id="moreLinks">
-                <a href="#">Health & Wellness</a>
-                <a href="#">Home & Furniture</a>
-                <a href="#">Jewellery & Watches</a>
-                <a href="#">Kids</a>
-                <a href="#">Men</a>
-                <a href="#">Mother Care</a>
-                <a href="#">Sports & Outdoor</a>
-                <a href="#">Women</a>
+        <div class="home_navbar">
+            <div class="nav-bar-wrapper">
+                <nav class="container primary-nav" role="navigation" aria-label="Secondary Navigation">
+                    <div class="nav-links-visible">
+                        <a href="#">All Party Essential</a>
+                        <a href="#">Beauty</a>
+                        <a href="#">Christmas</a>
+                        <a href="#">Electronics</a>
+                        <a href="#">Entertainment</a>
+                        <a href="#">Footwear</a>
+                        <a href="#">Games</a>
+                        <a href="#">Gifts &amp; Collectibles</a>
+                    </div>
+
+                    <div class="nav-more-dropdown">
+                        <button class="more-button" id="toggleMore" aria-expanded="false" aria-controls="moreLinks">
+                            More
+                        </button>
+
+                        <div class="dropdown-content" id="moreLinks">
+                            <a href="#">Health &amp; Wellness</a>
+                            <a href="#">Home &amp; Furniture</a>
+                            <a href="#">Jewellery &amp; Watches</a>
+                            <a href="#">Kids</a>
+                            <a href="#">Men</a>
+                            <a href="#">Mother Care</a>
+                            <a href="#">Sports &amp; Outdoor</a>
+                            <a href="#">Women</a>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
-    </nav>
-</div>
+        
+        <div class="mobile-menu-content">
+            <div class="brand">
+                <img src="https://foremade.com/assets/foremade-Bxu0VQA7.png" alt="Foremade Logo" style="height: 28px;">
+            </div>
+            
+            <div class="nav-links-visible">
+                <a href="#">All Party Essential</a>
+                <a href="#">Beauty</a>
+                <a href="#">Christmas</a>
+                <a href="#">Electronics</a>
+                <a href="#">Entertainment</a>
+                <a href="#">Footwear</a>
+                <a href="#">Games</a>
+                <a href="#">Gifts &amp; Collectibles</a>
+            </div>
 
-<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Mobile Menu">
-    <div class="head">
-        <img src="https://foremade.com/assets/foremade-Bxu0VQA7.png" alt="Foremade Logo" style="height: 28px; width: auto;">
-        <button id="closeDrawer" aria-label="Close Menu">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
-        </button>
-    </div>
-    <nav>
-        <a href="#">All Party Essential</a>
-        <a href="#">Beauty</a>
-        <a href="#">Christmas</a>
-        <a href="#">Electronics</a>
-        <a href="#">Entertainment</a>
-        <a href="#">Footwear</a>
-        <a href="#">Games</a>
-        <a href="#">Gifts & Collectibles</a>
-        <a href="#">Health & Wellness</a>
-        <a href="#">Home & Furniture</a>
-        <a href="#">Jewellery & Watches</a>
-        <a href="#">Kids</a>
-        <a href="#">Men</a>
-        <a href="#">Mother Care</a>
-        <a href="#">Sports & Outdoor</a>
-        <a href="#">Women</a>
-    </nav>
-</aside>
-  <div class="backdrop" id="backdrop"></div>
-
-  <main class="stack">
-    <section class="hero-section-full">
-      <div class="hero bg-1">
-        <!-- <div class="caption">
-          <h1>Fashion’s Favourite Season</h1>
-          <p>Layer up with statement outerwear and cold‑weather staples.</p>
-          <a href="#" class="cta">Shop now</a>
-        </div> -->
-      </div>
-    </section>
-
-    <section class="hero-video-section">
-      <video autoplay loop muted playsinline poster="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/Brand_Campaign_Hero_Outerwear_V1_7x3_3_1.jpg">
-        <source src="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/Brand_Campaign_Hero_Outerwear_V1_7x3_3_1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="content">
-        <div class="title-group">
-          <h1>Fashion’s Favourite Season</h1>
+            <div class="nav-more-dropdown">
+                <div class="dropdown-content" id="moreLinksMobile">
+                    <a href="#">Health &amp; Wellness</a>
+                    <a href="#">Home &amp; Furniture</a>
+                    <a href="#">Jewellery &amp; Watches</a>
+                    <a href="#">Kids</a>
+                    <a href="#">Men</a>
+                    <a href="#">Mother Care</a>
+                    <a href="#">Sports &amp; Outdoor</a>
+                    <a href="#">Women</a>
+                </div>
+            </div>
         </div>
-        <div class="tag">AUTUMN OUTERWEAR</div>
-      </div>
-    </section>
-
-    <section style="padding: 0;">
-      <div class="christmas-grid-full">
-        <a href="https://www.next.co.uk/shop/department-homeware-productaffiliation-christmasdecorations/0-homepage" class="christmas-text-sidebar">
-          <span>CHRISTMAS</span>
+        <section class="home_hero">
+            <div class="home_hero_content">
+                <!-- <p class="hero_from_text">FROM</p>
+                <h1 class="hero_heading">CONSOLES TO GAMES</h1>
+                <p class="hero_subheading">Play starts here.</p> -->
+            </div>
+        </section>
+        <section class="home_video_hero">
+            <div class="video-background">
+                <video autoplay loop muted playsinline poster="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/Brand_Campaign_Hero_Outerwear_V1_7x3_3_1.jpg">
+                <source src="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/Brand_Campaign_Hero_Outerwear_V1_7x3_3_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            </div>
+            <div class="video-overlay"></div>
+            <div class="home_video_hero_content container">
+                <h2 class="hero_title">Fashion's Favourite Season</h2>
+                <p class="hero_label">AUTUMN OUTERWEAR</p>
+            </div>
+        </section>
+        <section class="home_christmas_grid_section">
+    <div class="home_christmas_grid_container">
+        
+        <a href="#" class="home_christmas_sidebar left">
+            <span>CHRISTMAS</span>
         </a>
         
-        <a href="https://www.next.co.uk/shop/department-homeware-productaffiliation-christmasdecorations/0-homepage" class="card-image" style="background-image: url('https://www.next.co.uk/cms/resource/blob/1320376/05bf35e39b2144dc6f67bf813d83e966/christmas-decorations-1-data.jpg');"></a>
+        <a href="#" class="home_christmas_card card-1" style="background-image: url('https://www.next.co.uk/cms/resource/blob/1320376/05bf35e39b2144dc6f67bf813d83e966/christmas-decorations-1-data.jpg');"></a>
         
-        <a href="https://www.next.co.uk/shop/department-homeware-productaffiliation-christmasdecorations/0-homepage" class="card-image" style="background-image: url('https://www.next.co.uk/cms/resource/blob/1320372/e96952b9182c64873123d5a6d3bba513/christmas-decorations-2-data.jpg');"></a>
+        <a href="#" class="home_christmas_card card-2" style="background-image: url('https://www.next.co.uk/cms/resource/blob/1320372/e96952b9182c64873123d5a6d3bba513/christmas-decorations-2-data.jpg');"></a>
 
-        <a href="https://www.next.co.uk/shop/department-homeware-productaffiliation-christmasdecorations/0-homepage" class="card-image" style="background-image: url('https://www.next.co.uk/cms/resource/blob/1320370/613872613917d5f57db32f1a526e9f28/christmas-decorations-3-data.jpg');"></a>
+        <a href="#" class="home_christmas_card card-3" style="background-image: url('https://www.next.co.uk/cms/resource/blob/1320370/613872613917d5f57db32f1a526e9f28/christmas-decorations-3-data.jpg');"></a>
 
-        <a href="https://www.next.co.uk/shop/department-homeware-productaffiliation-christmasdecorations/0-homepage" class="christmas-text-sidebar right">
-          <span>DECORATIONS</span>
+        <a href="#" class="home_christmas_sidebar right">
+            <span>DECORATIONS</span>
         </a>
-      </div>
-    </section>
-    <section class="hero-video-section">
-      <video autoplay loop muted playsinline poster="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/MO_GILLIGAN_7x3_2_9.mp4">
+    </div>
+        </section>
+                <section class="home_video_hero">
+            <div class="video-background">
+               <video autoplay loop muted playsinline poster="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/MO_GILLIGAN_7x3_2_9.mp4">
         <source src="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/MO_GILLIGAN_7x3_2_9.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <div class="content">
-        <div class="title-group">
-          <h1>Mo Gilligan x Foremade</h1>
-        </div>
-        </div>
-    </section>
-
+            </div>
+            <div class="video-overlay"></div>
+            <div class="home_video_hero_content container">
+                 <h2>Mo Gilligan x Foremade</h2>
+                <!-- <p class="hero_label">AUTUMN OUTERWEAR</p> -->
+            </div>
+        </section>
+        
     <section id="trends-section" style="padding: 28px 0;">
     <div class="row-styled-title-outer">
         <div class="row-styled-title-inner">
@@ -223,47 +227,13 @@
         </div>
     </div>
 </section>
-<section class="brand-animator-section">
-    <div class="brands-outerDiv">
-        <div class="brands-innerDiv">
-
-            <span class="brand-span-container">
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/1056144/2ead99741c5f016ecfb9c0323caf52d1/river-island-1-min-data.jpg" alt="ADIDAS Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/779644/e857e80b7630294fad8ec0902c265017/nike-data.jpg" alt="NIKE Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/968092/c24621910b165f3e7d9a93721464be73/nina-campbell-data.jpg" alt="REISS Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/1317582/c3b649cffa0cdd9a4b577693e857b23e/disney-data.jpg" alt="BARBOUR Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/889928/64cedfb8010a07e5201722cf9fc01184/barbour-data.jpg" alt="RIVER ISLAND Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/948442/59f822008d8b5333abda3fc778e29e8a/the-set-data.jpg" alt="JOULES Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/779638/5a04f4772e6d494956224ec126e48988/friends-like-these-data.jpg" alt="CLARINS Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/998968/106dab9451ff376248d946616ff588ba/smallsaints-min-data.jpg" alt="DISNEY Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/1317584/70cc0f9b287535629bda8d2c3a0c8e7c/tog24-data.jpg" alt="TOG24 Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/968092/c24621910b165f3e7d9a93721464be73/nina-campbell-data.jpg" alt="FRIENDS LIKE THESE Logo"></a></div>
-                 <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/889928/64cedfb8010a07e5201722cf9fc01184/barbour-data.jpg" alt="RIVER ISLAND Logo"></a></div>
-            </span>
-
-            <span class="brand-span-container">
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/1056144/2ead99741c5f016ecfb9c0323caf52d1/river-island-1-min-data.jpg" alt="ADIDAS Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/779644/e857e80b7630294fad8ec0902c265017/nike-data.jpg" alt="NIKE Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/968092/c24621910b165f3e7d9a93721464be73/nina-campbell-data.jpg" alt="REISS Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/1317582/c3b649cffa0cdd9a4b577693e857b23e/disney-data.jpg" alt="BARBOUR Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/889928/64cedfb8010a07e5201722cf9fc01184/barbour-data.jpg" alt="RIVER ISLAND Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/948442/59f822008d8b5333abda3fc778e29e8a/the-set-data.jpg" alt="JOULES Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/779638/5a04f4772e6d494956224ec126e48988/friends-like-these-data.jpg" alt="CLARINS Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/998968/106dab9451ff376248d946616ff588ba/smallsaints-min-data.jpg" alt="DISNEY Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/1317584/70cc0f9b287535629bda8d2c3a0c8e7c/tog24-data.jpg" alt="TOG24 Logo"></a></div>
-                <div class="brand-icons"><a href="#"><img src="https://www.next.co.uk/cms/resource/blob/968092/c24621910b165f3e7d9a93721464be73/nina-campbell-data.jpg" alt="FRIENDS LIKE THESE Logo"></a></div>
-            </span>
-
-        </div>
-    </div>
-</section>
 <section class="tiktok-full-width-section">
     <div class="container-full-width">
         <div class="tiktok-content-wrapper">
 
             <div class="tiktok-left-column">
                 <header class="tiktok-header">
-                    <h2 class="tiktok-title">@Foremade OFFICIAL</h2>
+                    <h2 class="tiktok-title">@FOREMADE OFFICIAL</h2>
                     <p class="tiktok-subtitle">AS SEEN ON TIKTOK</p>
                 </header>
             </div>
@@ -285,7 +255,8 @@
                             <a href="#" class="shop-link">SHOP THE VIDEO</a>
                         </div>
                     </div>
-                                        <div class="video-item">
+
+                    <div class="video-item">
                         <div class="video-placeholder">
                             <video controls muted 
                                 poster="[Add-A-Poster-Image-URL-Here-for-Video-2]"> 
@@ -315,7 +286,7 @@
                         </div>
                     </div>
 
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -404,181 +375,272 @@
         </div>
     </div>
 </section>
+<section class="subscription-section">
+    <div class="subscription-icon">
+        <img src="https://www.next.co.uk/Images/Next/gel-newsletter-icon.svg" alt="Email Icon"> 
+    </div>
 
-    
-    <section class="container">
-      <div class="nl">
-        <h3 style="margin:0;">Be In The Know</h3>
-        <p style="margin:0; color:var(--muted);">Keep up to date with the latest FOREMADE news, including exclusive offers and the latest product drops.</p>
-        <form onsubmit="event.preventDefault(); alert('Thanks! You’re subscribed.');">
-          <label for="email" class="sr">Email address</label>
-          <input id="email" type="email" placeholder="Email address" required />
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-    </section>
-  </main>
-<footer class="next-custom-footer">
-    
-    <div class="footer-utility-bar">
+    <header class="subscription-header">
+        <h2 class="subscription-title">BE IN THE KNOW</h2>
+    </header>
+
+    <p class="subscription-text">
+        Keep up to date with the latest Foremade news, including exclusive offers and not to be missed sale and store events.
+    </p>
+    <p class="subscription-text">
+        Enter your email address below to opt in to email marketing.
+    </p>
+
+    <form class="subscription-form">
+        <div class="form-field">
+            <label for="email-address">Email Address</label>
+            <input type="email" id="email-address" name="email" required placeholder="Enter your email address">
+        </div>
+
+        <button type="submit" class="subscribe-button">
+            SUBSCRIBE
+        </button>
+    </form>
+
+    <p class="legal-text">
+        See Next's full <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a> to find out more.
+    </p>
+</section>
+<footer class="site-footer">
+    <div class="footer-container">
         
-        <div class="footer-quick-links-row">
-            <div class="quick-link-item">
-                <i class="icon icon-account"></i> <h5>My Account</h5>
-                <p>Sign-in to your account</p>
+        <div class="social-networks">
+            <h4>OUR SOCIAL NETWORKS</h4>
+            <div class="social-icons">
+                
+                <a href="https://www.facebook.com/nextofficial" aria-label="facebook">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.196v-7.989H4.896V12h2.731V9.593c0-2.71 1.657-4.176 4.053-4.176 1.157 0 2.37.205 2.37.205v2.607h-1.339c-1.325 0-1.743.822-1.743 1.666V12h3.914l-.626 3.207h-3.288v7.989C20.837 21.426 24 17.084 24 12 24 5.373 18.627 0 12 0z"/>
+                    </svg>
+                </a>
+                
+                <a href="https://www.x.com/nextofficial" aria-label="X/Twitter">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M18.901 1.258h3.97l-8.627 9.872 9.608 12.87H15.01l-7.234-9.697L2.16 23h-3.97l8.91-10.187L-2.296 1.258h9.097l5.882 7.915L18.9 1.258zm-1.724 20.354h2.46L6.524 2.9h-2.52l14.177 18.712z"/>
+                    </svg>
+                </a>
+                
+                <a href="https://www.tiktok.com/@nextofficial" aria-label="tiktok">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M12.38 0a.39.39 0 0 0-.25.08c-2.48.91-4.22 3.19-4.22 5.76v8.69a6.66 6.66 0 0 0 6.66 6.66c.2 0 .4 0 .6-.02V15.71c-.02.01-.03.01-.05.01a4.67 4.67 0 0 1-4.66-4.67c0-.28.03-.56.07-.84h3.66v-4.12h-3.66V6.1c0-.42.06-.82.17-1.2h-.01c-.11.23-.21.49-.28.76v.36h-4.04V.07a.38.38 0 0 0-.38-.36z"/>
+                    </svg>
+                </a>
+                
+                <a href="https://instagram.com/nextofficial/" aria-label="instagram">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M12 2.163c3.204 0 3.58.012 4.85.071l.715.034c1.15.053 1.98.248 2.583.486a3.84 3.84 0 0 1 1.341.87 3.84 3.84 0 0 1 .87 1.341c.238.603.433 1.433.486 2.583l.034.715c.059 1.27.071 1.646.071 4.85s-.012 3.58-.071 4.85l-.034.715c-.053 1.15-.248 1.98-.486 2.583a3.84 3.84 0 0 1-.87 1.341 3.84 3.84 0 0 1-1.341.87c-.603.238-1.433.433-2.583.486l-.715.034c-1.27.059-1.646.071-4.85.071s-3.58-.012-4.85-.071l-.715-.034c-1.15-.053-1.98-.248-2.583-.486a3.84 3.84 0 0 1-1.341-.87 3.84 3.84 0 0 1-.87-1.341c-.238-.603-.433-1.433-.486-2.583l-.034-.715c-.059-1.27-.071-1.646-.071-4.85s.012-3.58.071-4.85l.034-.715c.053-1.15.248-1.98.486-2.583a3.84 3.84 0 0 1 .87-1.341 3.84 3.84 0 0 1 1.341-.87c.603-.238 1.433-.433 2.583-.486l.715-.034c1.27-.059 1.646-.071 4.85-.071zm0-2.163c-3.325 0-3.742.012-5.066.07l-.746.035c-1.33.061-2.433.266-3.332.617a6 6 0 0 0-2.23 1.488 6 6 0 0 0-1.488 2.23c-.351.9-.556 2.002-.617 3.332l-.035.746c-.058 1.324-.07 1.741-.07 5.066s.012 3.742.07 5.066l.035.746c.061 1.33.266 2.433.617 3.332a6 6 0 0 0 1.488 2.23 6 6 0 0 0 2.23 1.488c.9.351 2.002.556 3.332.617l.746.035c1.324.058 1.741.07 5.066.07s3.742-.012 5.066-.07l.746-.035c1.33-.061 2.433-.266 3.332-.617a6 6 0 0 0 2.23-1.488 6 6 0 0 0 1.488-2.23c.351-.9.556-2.002.617-3.332l.035-.746c.058-1.324.07-1.741.07-5.066s-.012-3.742-.07-5.066l-.035-.746c-.061-1.33-.266-2.433-.617-3.332a6 6 0 0 0-1.488-2.23 6 6 0 0 0-2.23-1.488c-.9-.351-2.002-.556-3.332-.617l-.746-.035c-1.324-.058-1.741-.07-5.066-.07zM12 6.865a5.135 5.135 0 1 0 0 10.27 5.135 5.135 0 0 0 0-10.27zm0 8.365a3.23 3.23 0 1 1 0-6.46 3.23 3.23 0 0 1 0 6.46zm6.18-7.906a1.22 1.22 0 1 0 0 2.44 1.22 1.22 0 0 0 0-2.44z"/>
+                    </svg>
+                </a>
+                
+                <!-- <a href="https://www.pinterest.com/nextofficial" aria-label="pinterest">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M12 0C5.373 0 0 5.373 0 12c0 4.625 2.675 8.647 6.55 10.536-.088-.737-.144-1.92-.008-2.618.156-1.12.87-4.524.87-4.524.148-.288.08-1.01-.068-1.248-.152-.239-.99-.594-.99-2.31 0-1.785 1.053-3.11 2.364-3.11 1.116 0 1.65.836 1.65 1.83 0 1.206-.767 3.018-1.16 4.673-.327 1.365.688 2.477 2.053 2.477 2.464 0 4.13-2.924 4.13-6.43 0-3.39-2.812-5.786-6.666-5.786-4.532 0-7.252 3.44-7.252 6.843 0 1.34.484 2.378 1.15 3.125.134.148.15.267.11.43l-.066.275c-.066.27-.225.86-.29.98-.066.12-.224.16-.364.092-1.346-.576-2.09-2.55-2.09-3.95 0-3.14 2.28-7.394 8.018-7.394 4.312 0 7.425 3.09 7.425 7.155 0 4.34-2.88 7.49-7.07 7.49-1.43 0-2.785-.758-3.236-1.638-.2-.39-.333-.94-.333-1.677 0-3.18 1.87-4.47 1.87-5.918 0-1.28-1.03-2.028-2.126-2.028-1.523 0-2.63 1.323-2.63 3.01 0 .66.223 1.32.427 1.94.49 1.488-.5 3.337-2.054 3.737-1.44.38-3.18-1.076-3.18-3.57 0-2.73 2.1-5.18 5.75-5.18 3.07 0 5.4 1.77 5.4 4.75 0 2.22-.9 3.99-2.28 4.74-.93.5-1.16.82-.7 1.75.44.92.21 1.47 1.32 1.47 1.1 0 2.4-1.28 2.4-2.6 0-1.84-1.12-3.13-2.6-3.13-1.12 0-2.01.6-2.01 1.47 0 .5.33 1.14.7 1.62.2.27.27.42.14.65-.2.36-.67.36-.9 0-1.2-.56-1.8-1.92-1.8-3.5 0-2.8 2.23-5.07 5.07-5.07 3.03 0 4.7 2.05 4.7 4.9 0 2.4-.73 3.8-2.3 4.45-.66.28-1.05.74-.7 1.45.33.68 1.05.65 1.7.07.97-.87 1.5-2.06 1.5-3.5 0-3.9-3.46-7.3-8.15-7.3-4.57 0-7.8 3.32-7.8 7.3 0 1.25.38 2.3.93 3.12.56.84 1.3 1.3 2.37 1.3 1.15 0 2.22-.65 2.56-1.58.33-.95 0-1.65-.43-2.2-.2-.26-.27-.42-.14-.65.2-.36.67-.36.9 0 1.2.56 1.8 1.92 1.8 3.5 0 2.8-2.23 5.07-5.07 5.07-3.03 0-4.7-2.05-4.7-4.9 0-2.4.73-3.8 2.3-4.45.66-.28 1.05-.74.7-1.45-.33-.68-1.05-.65-1.7-.07-.97.87-1.5 2.06-1.5 3.5 0 3.9 3.46 7.3 8.15 7.3 4.57 0 7.8-3.32 7.8-7.3 0-1.25-.38-2.3-.93-3.12-.56-.84-1.3-1.3-2.37-1.3-1.15 0-2.22.65-2.56 1.58-.33.95 0 1.65.43 2.2.2.26.27.42.14.65z"/>
+                    </svg>
+                </a> -->
+                
+                <a href="https://www.youtube.com/user/nextshopping" aria-label="youtube">
+                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M21.582 7.064s-.175-1.23-.715-1.764c-.66-.66-1.402-.663-1.748-.707C16.898 4.4 12 4.4 12 4.4s-4.898 0-7.119.193c-.346.044-1.088.047-1.748.707-.54.534-.715 1.764-.715 1.764s-.175 1.38-.175 2.753v3.746c0 1.373.175 2.753.175 2.753s.175 1.23.715 1.764c.66.66 1.517.643 1.9.715 1.25.12 6.946.193 6.946.193s4.898 0 7.119-.193c.346-.044 1.088-.047 1.748-.707.54-.534.715-1.764.715-1.764s.175-1.38.175-2.753v-3.746c0-1.373-.175-2.753-.175-2.753zM9.998 14.864V9.136L15.42 12 9.998 14.864z"/>
+                    </svg>
+                </a>
             </div>
-            <div class="quick-link-item">
-                <i class="icon icon-country"></i> <h5>Change Country</h5>
-                <p>Choose your shopping location</p>
-            </div>
-            <div class="quick-link-item">
-                <i class="icon icon-locator"></i> <h5>Store Locator</h5>
-                <p>Find your nearest store</p>
-            </div>
-            <div class="quick-link-item">
-                <i class="icon icon-chat"></i> <h5>Start a Chat</h5>
-                <p>For general enquiries</p>
-            </div>
         </div>
 
-        <div class="footer-social-networks">
-    <h5>Our Social Networks</h5>
-    <div class="social-icons">
-        <a href="#" aria-label="Facebook" class="social-icon"><i class="icon icon-facebook"></i></a>
-        <a href="#" aria-label="X" class="social-icon"><i class="icon icon-x"></i></a>
-        <a href="#" aria-label="TikTok" class="social-icon"><i class="icon icon-tiktok"></i></a>
-        <a href="#" aria-label="Instagram" class="social-icon"><i class="icon icon-instagram"></i></a>
-        <a href="#" aria-label="Pinterest" class="social-icon"><i class="icon icon-pinterest"></i></a>
-        <a href="#" aria-label="YouTube" class="social-icon"><i class="icon icon-youtube"></i></a>
-    </div>
-</div>
-
-    </div>
-    ---
-    <div class="footer-main-links-grid">
-        
-        <div class="link-column">
-            <h6>Help</h6>
-            <ul>
-                <li><a href="#">Frequently Asked Questions</a></li>
-                <li><a href="#">Delivery Information</a></li>
-                <li><a href="#">Arrange A Return</a></li>
-                <li><a href="#">Product Recall</a></li>
-                <li><a href="#">Customer Services - 0333 777 8000</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Accessible Site</a></li>
-                <li><a href="#">Website Accessibility Policy</a></li>
-                <li><a href="#">Accessibility In Our Stores</a></li>
-                <li><a href="#">Site Map</a></li>
-                <li><a href="#">Complaints Process</a></li>
-                <li><a href="#">Furniture Spare Parts</a></li>
-            </ul>
-        </div>
-
-        <div class="link-column">
-            <h6>Shopping With Us</h6>
-            <ul>
-                <li><a href="#">Foremade Unlimited</a></li>
-                <li><a href="#">Foremade Credit Options</a></li>
-                <li><a href="#">eGift Cards</a></li>
-                <li><a href="#">Gift Cards</a></li>
-                <li><a href="#">Gift Experiences</a></li>
-                <li><a href="#">Flowers, Plants & Wine</a></li>
-                <li><a href="#">Privacy & Cookie Policy</a></li>
-                <li><a href="#">Terms & Conditions</a></li>
-                <li><a href="#">Customer Reviews & Ratings Policy</a></li>
-                <li><button class="cookie-manage-btn">Manually Manage Cookies</button></li>
-            </ul>
-        </div>
-
-        <div class="link-column">
-            <h6>Departments</h6>
-            <ul>
-                <li><a href="#">All Party Essential</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Christmas</a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Entertainment</a></li>
-                <li><a href="#">Footwear</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Brands</a></li>
-                <li><a href="#">Baby</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Gifts</a></li>
-                <li><a href="#">Clearance</a></li>
-            </ul>
-        </div>
-        
-        <div class="link-column">
-            <h6>More From Foremade</h6>
-            <ul>
-                <li><a href="#">Foremade App</a></li>
-                <li><a href="#">The Company</a></li>
-                <li><a href="#">Media & Press</a></li>
-                <li><a href="#">Business 2 Business</a></li>
-                <li><a href="#">Careers @ Next</a></li>
-                <li><a href="#">View Our Modern Slavery Statement</a></li>
-                <li><a href="#">Gender Pay Report</a></li>
-                <li><a href="#">Corporate Responsibility Report</a></li>
-            </ul>
-        </div>
-
-    </div>
-    ---
-    <div class="footer-bottom-bar">
-        <a href="#" class="view-mobile-link">View mobile site</a>
-        <p class="copyright">© 2025 foremade. All rights reserved.</p>
-    </div>
-
-</footer>
-<script>
-   document.addEventListener('DOMContentLoaded', function() {
-    // --- More Dropdown Functionality ---
-    const moreButton = document.getElementById('toggleMore');
-    const moreLinks = document.getElementById('moreLinks');
-
-    if (moreButton && moreLinks) {
-        moreButton.addEventListener('click', function() {
-            // Toggle the 'show-dropdown' class to control visibility
-            moreLinks.classList.toggle('show-dropdown');
-
-            // Update ARIA attributes for accessibility
-            const isExpanded = moreButton.getAttribute('aria-expanded') === 'true';
-            moreButton.setAttribute('aria-expanded', !isExpanded);
-        });
-
-        // Hide the dropdown when clicking anywhere else on the page
-        document.addEventListener('click', function(event) {
-            const isClickInside = moreButton.contains(event.target) || moreLinks.contains(event.target);
+        <div class="quick-links">
             
-            if (!isClickInside && moreLinks.classList.contains('show-dropdown')) {
-                moreLinks.classList.remove('show-dropdown');
-                moreButton.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
+            <div class="quick-link-item">
+                <a href="#">
+                    <span class="quick-link-icon">
+                         <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </span> 
+                    <div class="quick-link-text">
+                        <strong>My Account</strong>
+                        <span>Sign-in to your account</span>
+                    </div>
+                </a>
+            </div>
 
-    // --- Mobile Drawer (Hamburger Menu) Functionality ---
-    const openDrawer = document.getElementById('openDrawer');
-    const closeDrawer = document.getElementById('closeDrawer');
-    const drawer = document.getElementById('drawer');
+            <div class="quick-link-item">
+                <a href="#">
+                    <span class="quick-link-icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 19.35c-2.22-.85-3.86-2.92-3.86-5.35h-2.12c.56 3.19 2.76 5.86 5.98 7.37l-.02-2.02zm-3-8.35h2.86c.03-1.42.5-2.74 1.28-3.92-2.08.38-3.84 1.3-4.14 1.3zM12 21.99c-2.61 0-5.06-1.12-6.72-3.03 2.07-.63 3.65-2.3 3.65-4.26h6.14c0 1.96 1.58 3.63 3.65 4.26-1.66 1.91-4.11 3.03-6.72 3.03zm-7.61-9h-2.39c.09-3.21 2.37-5.87 5.5-7.39l.01 2.03c-2.11.83-3.69 2.87-3.12 5.36zM15.86 12h-2.86c-.03 1.42-.5 2.74-1.28 3.92 2.08-.38 3.84-1.3 4.14-1.3zM12 2.01c2.61 0 5.06 1.12 6.72 3.03-2.07.63-3.65 2.3-3.65 4.26H9.01c0-1.96-1.58-3.63-3.65-4.26C6.94 3.13 9.39 2.01 12 2.01zm5.61 9h2.39c-.09 3.21-2.37 5.87-5.5 7.39l-.01-2.03c2.11-.83 3.69-2.87 3.12-5.36z"/>
+                        </svg>
+                    </span>
+                    <div class="quick-link-text">
+                        <strong>Change Country</strong>
+                        <span>Choose your shopping location</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="quick-link-item">
+                <a href="#">
+                    <span class="quick-link-icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                            <path d="M12 0c-4.97 0-9 4.03-9 9 0 5.06 4.97 9 9 9s9-3.94 9-9c0-4.97-4.03-9-9-9zm0 14c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        </svg>
+                    </span>
+                    <div class="quick-link-text">
+                        <strong>Store Locator</strong>
+                        <span>Find your nearest store</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="quick-link-item">
+                <a href="#">
+                    <span class="quick-link-icon">
+                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                            <path d="M21 0H3C1.346 0 0 1.346 0 3v12c0 1.654 1.346 3 3 3h14l4 4V3c0-1.654-1.346-3-3-3zM8 11H5V8h3v3zm5 0h-3V8h3v3zm5 0h-3V8h3v3z"/>
+                        </svg>
+                    </span>
+                    <div class="quick-link-text">
+                        <strong>Start a Chat</strong>
+                        <span>For general enquiries</span>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
 
-    if (openDrawer && closeDrawer && drawer) {
-        // Open Drawer
-        openDrawer.addEventListener('click', () => {
-            drawer.classList.add('open');
-            drawer.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden'; // Prevents background scrolling
-        });
+        <div class="footer-links-wrapper">
+            <div class="footer-column">
+                <h5>Help</h5>
+                <ul>
+                    <li><a href="#">Frequently Asked Questions</a></li>
+                    <li><a href="#">Delivery Information</a></li>
+                    <li><a href="#">Arrange a Return</a></li>
+                    <li><a href="#">Product Recall</a></li>
+                    <li><a href="#">Customer Services - 0333 777 8000</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Accessible Site</a></li>
+                    <li><a href="#">Website Accessibility Policy</a></li>
+                    <li><a href="#">Accessibility in Our Stores</a></li>
+                    <li><a href="#">Site Map</a></li>
+                    <li><a href="#">Complaints Process</a></li>
+                    <li><a href="#">Furniture Spare Parts</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h5>Shopping With Us</h5>
+                <ul>
+                    <li><a href="#">Foremade Unlimited</a></li>
+                    <li><a href="#">Foremade Credit Options</a></li>
+                    <li><a href="#">eGift Cards</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Gift Experiences</a></li>
+                    <li><a href="#">Flowers, Plants & Wine</a></li>
+                    <li><a href="#">Privacy & Cookie Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Customer Reviews & Ratings Policy</a></li>
+                    <li><a href="#">Manually Manage Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h5>Departments</h5>
+                <ul>
+                    <li><a href="#">Womens</a></li>
+                    <li><a href="#">Mens</a></li>
+                    <li><a href="#">Boys</a></li>
+                    <li><a href="#">Girls</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Furniture</a></li>
+                    <li><a href="#">Beauty</a></li>
+                    <li><a href="#">Brands</a></li>
+                    <li><a href="#">Baby</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Gifts</a></li>
+                    <li><a href="#">Clearance</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h5>More From Foremade</h5>
+                <ul>
+                    <li><a href="#">Foremade App</a></li>
+                    <li><a href="#">The Company</a></li>
+                    <li><a href="#">Media & Press</a></li>
+                    <li><a href="#">Business 2 Business</a></li>
+                    <li><a href="#">Careers @ Foremade</a></li>
+                    <li><a href="#">View Our Modern Slavery Statement</a></li>
+                    <li><a href="#">Gender Pay Report</a></li>
+                    <li><a href="#">Corporate Responsibility Report</a></li>
+                </ul>
+            </div>
+        </div>
 
-        // Close Drawer
-        closeDrawer.addEventListener('click', () => {
-            drawer.classList.remove('open');
-            drawer.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = 'auto'; // Allows background scrolling
-        });
-    }
-});
-</script>
+        <div class="footer-bottom">
+            <a href="#" class="mobile-view-link">View mobile site</a>
+            <p class="copyright">
+                &copy; 2025 Foremade. All rights reserved.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+        // --- JAVASCRIPT FOR INTERACTIVITY ---
+        const body = document.body;
+        const hamburgerButton = document.getElementById('openDrawer');
+        const navBarWrapper = document.querySelector('.nav-bar-wrapper');
+        const moreButton = document.getElementById('toggleMore');
+        const desktopDropdownContent = document.getElementById('moreLinks');
+
+        // 1. Mobile Hamburger Menu Toggle
+        if (hamburgerButton) {
+            hamburgerButton.addEventListener('click', () => {
+                // Toggle the 'mobile-open' class on the BODY for full-screen control
+                body.classList.toggle('mobile-open');
+
+                const isExpanded = body.classList.contains('mobile-open');
+                hamburgerButton.setAttribute('aria-expanded', isExpanded);
+
+                // Close desktop 'More' dropdown if open
+                if (moreButton) {
+                    moreButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+
+        // 2. Desktop "More" Dropdown Toggle (Remains the same)
+        if (moreButton && desktopDropdownContent) {
+            moreButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+
+                const isExpanded = moreButton.getAttribute('aria-expanded') === 'true' || false;
+                moreButton.setAttribute('aria-expanded', !isExpanded);
+
+                // Close mobile drawer if open when toggling desktop dropdown
+                if (body.classList.contains('mobile-open')) {
+                     body.classList.remove('mobile-open');
+                     hamburgerButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close dropdown if user clicks outside of it
+            document.addEventListener('click', (event) => {
+                const isClickInsideDropdown = event.target.closest('.nav-more-dropdown');
+                
+                // Do not close if clicking inside the mobile drawer
+                const isClickInsideMobileMenu = event.target.closest('.mobile-menu-content');
+
+                if (!isClickInsideDropdown && !isClickInsideMobileMenu) {
+                    moreButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>

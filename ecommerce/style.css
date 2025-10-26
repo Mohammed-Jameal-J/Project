@@ -1,1130 +1,1448 @@
-    /* a11y: screen-reader-only utility */
-    .sr{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-    /* =========================
-       RESET & TOKENS
-       ==========================*/
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { all: unset; cursor: pointer; }
+        /* --- FULL CSS FOR VERTICAL LEFT-SLIDING DRAWER --- */
 
-    :root{
-      /* Color & design tokens */ 
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #6b7280; 
-      --muted-2: #9ca3af;
-      --line: #e5e7eb;
-      --chip: #f7f7f5;
-      --accent: #111111;
-      --accent-2: #1f2937;
-      --maxw: 1200px;
-      --radius: 16px;
-      --shadow: 0 10px 24px rgba(0,0,0,.08);
+        /* --- GLOBAL RESET & UTILITIES --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        /* --- 1. HEADER STYLES (.utilbar) --- */
+
+        .utilbar {
+            background-color: #1a2538;
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .brand img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        .search {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 4px;
+            padding: 8px 15px;
+        }
+
+        .search input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 0;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        .search svg {
+            color: #555;
+            flex-shrink: 0;
+        }
+
+        .iconbar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .iconbar .icon {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .iconbar .icon:hover {
+            color: #ff9900;
+        }
 
 
-    }
+        /* --- 2. NAVIGATION BAR STYLES (.home_navbar) --- */
 
-    body{ font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color: var(--text); background: var(--bg); }
+        .home_navbar {
+            background-color: #384252;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    /* Standard container with max-width and padding */
-    .container{ width: min(100%, var(--maxw)); margin-inline: auto; padding-inline: 16px; }
-    .stack{ display: grid; gap: 28px; }
-    .grid{ display: grid; gap: 16px; }
+        .nav-bar-wrapper {
+            position: relative;
+        }
 
-    /* =========================
-       HEADER: UTIL BAR
-       ==========================*/
-    .utilbar{ position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid var(--line); }
-    .utilbar .row{ display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 8px 0; }
-    .brand img { height: 28px; width: auto; }
+        .primary-nav {
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            height: 50px;
+            padding: 0 20px;
+        }
 
-    /* Search */
-    .search{ position: relative; }
-    .search input{ width: 100%; border: 1px solid var(--line); padding: 10px 40px 10px 12px; border-radius: 999px; background: #fafafa; }
-    .search svg{ position: absolute; right: 12px; top: 50%; transform: translateY(-50%); opacity:.6; }
+        /* Hamburger button - hidden on desktop */
+        .hamburger {
+            display: none;
+        }
 
-    /* Icons */
-    .iconbar{ display: flex; align-items: center; gap: 14px; }
-    .icon{ width: 22px; height: 22px; display: grid; place-items: center; }
+        .nav-links-visible {
+            display: flex; /* Default desktop layout: Horizontal */
+        }
 
-    /* =========================
-       MAIN NAV
-       ==========================*/
-    .nav{ position: sticky; top: 0; z-index: 39; background: var(--bg); border-bottom: 1px solid var(--line); }
-    .nav .row{ display: flex; align-items: center; gap: 18px; padding: 10px 0; }
-    .nav a{ font-size: 14px; text-transform: uppercase; letter-spacing:.06em; padding: 8px 6px; border-radius: 8px; }
-    .nav a:hover{ background: var(--chip); }
+        .nav-links-visible a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            transition: background-color 0.2s;
+        }
 
-    /* Mobile hamburger */
-    .hamburger{ display: none; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); display: none; place-items: center; }
+        .nav-links-visible a:hover {
+            background-color: #1a2538;
+        }
 
-    /* Mobile drawer */
-    .drawer{ position: fixed; inset: 0 22% 0 0; transform: translateX(-100%); background: var(--bg); z-index: 60; transition: .3s transform; box-shadow: var(--shadow); display: grid; grid-template-rows: auto 1fr; }
-    .drawer.open{ transform: translateX(0); }
-    .drawer .head{ padding: 14px 16px; border-bottom: 1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
-    .drawer nav{ padding: 14px 8px 40px; overflow: auto; }
-    .drawer nav a{ display: block; padding: 12px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing:.06em; }
-    .backdrop{ position: fixed; inset:0; background: rgba(0,0,0,.35); opacity:0; pointer-events:none; transition:.2s opacity; z-index:59; }
-    .backdrop.open{ opacity:1; pointer-events:auto; }
+        /* "More" Dropdown Container (Desktop) */
+        .nav-more-dropdown {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            margin-left: 20px;
+        }
 
-    /* =========================
-       HEROES
-       ==========================*/
-    /* Custom styling for the full-width hero section (image banner) */
-    .hero-section-full{ padding: 0; } /* Remove padding from the section wrapper */
-    .hero-section-full .hero{ border-radius: 0; } /* Remove border-radius to ensure sharp edges */
+        .more-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        
+        /* ... (rest of desktop CSS for More dropdown) ... */
+        .more-button::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 8px;
+            vertical-align: middle;
+            border-top: 4px solid white;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }
 
-    .hero{ position: relative; border-radius: var(--radius); overflow: hidden; min-height: 54vh; display:grid; place-items:end start; color:#fff; }
-    .hero .caption{ padding: 22px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 80%); width: 100%; }
-    /* Apply container-like padding to the caption for inner content spacing */
-    .hero.bg-1 .caption{ padding-inline: 32px; } 
-    /* --- THE FIX: ADDING THE BACKGROUND IMAGE --- */
-.hero.bg-1 {
-    /* 1. Set the background image using the correct path/URL */
-    /* NOTE: I am using the image from your uploaded files as the Cloudinary link may be expired/invalid. */
-    background-image: url("path/to/your/local/image/Fashion-Favorite-Season-banner.jpg"); 
-    background-image: url('https://res.cloudinary.com/dbczfoqnc/image/upload/v1761264575/products/t5oa2hujblyaiigo7dtu.jpg'); 
+        .more-button:hover,
+        .more-button[aria-expanded="true"] {
+            background-color: #1a2538;
+        }
 
-    
-    /* 2. Ensure the image covers the entire hero area */
-    background-size: cover; 
-    
-    /* 3. Center the image */
-    background-position: center center;
-    
-    /* 4. Ensure the background doesn't repeat */
-    background-repeat: no-repeat;
-}
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            min-width: 200px;
+            display: none;
+            padding: 10px 0;
+            margin: 0;
+        }
 
-    .hero h1{ font-size: clamp(28px, 3.6vw, 48px); margin: 0 0 6px; letter-spacing:.02em; }
-    .hero p{ margin:0; opacity:.9; }
-    .hero .cta{ margin-top:12px; display:inline-block; background:#fff; color:#111; padding:10px 16px; border-radius:999px; font-weight:600; }
+        .more-button[aria-expanded="true"] + .dropdown-content {
+            display: block;
+        }
 
-    /* Video Hero Section */
-    .hero-video-section {
-      position: relative;
-      width: 100%;
-      height: 54vh; /* Match primary hero height */
-      overflow: hidden;
-      display: flex;
-      align-items: center; /* Vertically center content */
-      padding-inline: 32px; /* Add padding for text content */
-      color: #fff;
-      margin-top: 28px; /* Standard section gap */
-    }
-    a.icon {
-    background-color: #112639;
+        .dropdown-content a {
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        /* New wrapper for the mobile menu content, essential for sliding */
+        .mobile-menu-content {
+            position: fixed; /* Absolute positioning relative to the viewport for the drawer effect */
+            top: 0; /* Align to the top of the viewport */
+            left: 0;
+            width: 300px; /* Fixed width for the drawer */
+            height: 100vh; /* Full viewport height */
+            background-color: #1a2538;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 99; /* Below the utility bar, but above page content */
+            padding: 0;
+            /* Initial state: Hidden off-screen to the left */
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            /* Set the vertical layout for the contents */
+            display: flex;
+            flex-direction: column; 
+            overflow-y: auto; /* Allows scrolling if menu is long */
+            margin-top: 59px;
+        }
+        
+        /* Logo/Branding inside the drawer */
+        .mobile-menu-content .brand {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- 3. HERO BANNER STYLES (.home_hero) --- */
+        
+        /* ... (Hero styles unchanged) ... */
+        .home_hero {
+            height: 450px;
+            background-image: url('https://res.cloudinary.com/dbczfoqnc/image/upload/v1761264575/products/t5oa2hujblyaiigo7dtu.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+            overflow: hidden;
+        }
+
+        .home_hero_content {
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero_from_text {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero_heading {
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0;
+            padding: 5px 15px;
+            display: inline-block;
+            background-color: #ff9900;
+            text-transform: uppercase;
+            clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+        }
+
+        .hero_subheading {
+            font-size: 36px;
+            font-family: 'Brush Script MT', cursive;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        /* --- 4. RESPONSIVENESS (Media Queries) --- */
+
+        @media (max-width: 1024px) {
+            /* Header Responsive Order */
+            .utilbar .row {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .brand { order: 1; }
+            .iconbar { order: 2; margin-left: auto; }
+            .search { order: 3; flex-basis: 100%; max-width: 100%; margin-top: 15px; }
+
+            /* Navigation Bar Mobile Setup */
+            .nav-links-visible,
+            .nav-more-dropdown,
+            .primary-nav {
+                display: none; /* Hide desktop navigation layout completely */
+            }
+            
+            /* Show the hamburger icon */
+            .hamburger {
+                display: flex;
+                align-items: center;
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                padding: 0 15px 0 0;
+                /* Place the hamburger inside the utility bar row for better positioning */
+                position: absolute; /* Allows for easy top-left positioning */
+                top: 22px; /* Center vertically within the utility bar */
+                left: 10px;
+                z-index: 101; /* Above all else */
+            }
+            
+            /* ADJUSTED: Make space for the hamburger icon in the main row */
+            .utilbar .brand {
+                margin-left: 40px; /* Push the logo slightly to the right */
+            }
+
+            /* --- MOBILE DRAWER STYLES (OPEN STATE) --- */
+            /* Show the drawer when 'mobile-open' is on the body */
+            body.mobile-open .mobile-menu-content {
+                transform: translateX(0); /* Slide in */
+            }
+            
+            /* Hide body scrollbar when menu is open (Optional but recommended) */
+            body.mobile-open {
+                overflow: hidden;
+            }
+
+            /* Style the links inside the drawer (Ensures VERTICAL stacking) */
+            /* We target the direct links and the dropdown content links now */
+            .mobile-menu-content .nav-links-visible,
+            .mobile-menu-content .dropdown-content {
+                display: flex;
+                flex-direction: column; /* FORCES VERTICAL STACKING */
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .mobile-menu-content .nav-links-visible a,
+            .mobile-menu-content .dropdown-content a {
+                color: white;
+                padding: 12px 20px;
+                font-size: 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                text-align: left;
+                width: 100%;
+                /* Remove default flex display from links to prevent horizontal issue */
+                display: block; 
+                height: auto;
+            }
+
+            .mobile-menu-content .dropdown-content a {
+                padding-left: 35px; /* Indent sub-links */
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Hide the unused More button and its container in the mobile structure */
+            .mobile-menu-content .nav-more-dropdown {
+                display: block;
+            }
+            .mobile-menu-content .more-button {
+                display: none;
+            }
+
+
+            /* Hero Banner Mobile Styling */
+            /* ... (Hero styles unchanged) ... */
+            .home_hero { height: 300px; padding-left: 5%; justify-content: center; }
+            .hero_heading { font-size: 36px; padding: 5px 10px; }
+            .hero_subheading { font-size: 24px; margin-left: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .hero_heading { font-size: 28px; }
+            .hero_subheading { font-size: 20px; }
+            .home_hero { padding-left: 0; }
+        }
+ /* video section  */
+
+ /* --- 5. VIDEO HERO STYLES (.home_video_hero) --- */
+
+.home_video_hero {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Set a height relative to the viewport for modern feel */
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
 }
 
-/* --- 1. General Navigation Layout (Unchanged) --- */
-.nav-bar-wrapper {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
-}
-
-.container-nav {
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.primary-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    justify-content: center; /* Centers the navigation links */
-}
-
-.hamburger {
-    display: none; 
-}
-
-.nav-links-visible {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px; 
-}
-
-.nav-links-visible a {
-    color: #333;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: capitalize; 
-    padding: 5px 0;
-    white-space: nowrap;
-    transition: color 0.2s, border-bottom 0.2s;
-}
-
-.nav-links-visible a:hover {
-    color: #000;
-    border-bottom: 2px solid #000;
-}
-
-/* --- 2. More Dropdown Styling (Mostly Unchanged) --- */
-
-.nav-more-dropdown {
-    position: relative; 
-    display: inline-block;
-    margin-left: 5px; 
-}
-
-.more-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: capitalize;
-    position: relative;
-    padding: 5px 18px 5px 0; /* Updated padding for icon space */
-    white-space: nowrap;
-    transition: color 0.2s;
-}
-
-.more-button::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid #333; 
-    transition: transform 0.2s;
-}
-
-.more-button[aria-expanded="true"]::after {
-    transform: translateY(-50%) rotate(180deg);
-    border-top: 4px solid #0000ff;
-}
-
-.more-button:hover {
-    color: #0000ff;
-}
-
-.dropdown-content {
-    display: none; 
-    position: absolute;
-    top: 100%; 
-    right: 0; 
-    z-index: 100;
-    background-color: #fff;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
-    border-top: none; 
-    padding: 5px 0;
-}
-
-/* JavaScript toggles this class to show the dropdown */
-.show-dropdown {
-    display: block;
-}
-
-/* FIX: Increased padding for a better visual look and click target */
-.dropdown-content a {
-    color: #333;
-    /* Increased vertical padding (12px top/bottom) and horizontal padding (16px left/right) */
-    padding: 12px 16px; 
-    text-decoration: none;
-    display: block; 
-    text-transform: none; 
-    font-size: 0.95rem;
-    font-weight: 400;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-    color: #000;
-}
-
-/* --- 3. Mobile Drawer Styles (Unchanged) --- */
-/* ... (Keep your existing mobile drawer styles here) ... */
-
-header.utilbar {
-    background-color: #112639;
-}
-
-    .hero-video-section video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      background-size: cover;
-      filter: brightness(0.7); /* Slightly darken video for text readability */
-    }
-
-    .hero-video-section .content {
-      position: relative; /* Ensure content is above the video */
-      z-index: 10;
-      max-width: var(--maxw); /* Align with container max-width */
-      margin-inline: auto;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end; /* Align "Autumn Outerwear" to the bottom right */
-      flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    }
-
-    .hero-video-section .title-group {
-      flex: 1 1 60%; /* Take up more space for title */
-      max-width: 60%;
-    }
-    .hero-video-section h1 {
-      font-size: clamp(28px, 3.6vw, 48px);
-      margin: 0;
-      letter-spacing:.02em;
-      text-shadow: 0 2px 4px rgba(0,0,0,.3);
-    }
-    .hero-video-section .tag {
-      flex: 0 0 auto; /* Don't grow/shrink */
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      opacity: .8;
-      text-shadow: 0 1px 2px rgba(0,0,0,.2);
-    }
-    
-    /* NEW: Full-width Christmas Grid Layout */
-    .christmas-grid-full {
-        position: relative;
-        display: grid;
-        /* Sidebar (Text) | Card 1 | Card 2 | Card 3 | Sidebar (Text) */
-        grid-template-columns: 80px 1fr 1fr 1fr 80px; 
-        gap: 0;
-        width: 100%;
-        margin-top: 28px; /* Standard section gap */
-        height: 70vh; /* Set a fixed height */
-        overflow: hidden;
-    }
-    
-    .christmas-grid-full a {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-
-    .christmas-grid-full .card-image {
-        background-size: cover;
-        background-position: center;
-        height: 100%;
-        border-inline: 1px solid #fff; /* White line separation for visual appeal, can be removed */
-    }
-    .christmas-grid-full .card-image:first-of-type { border-left: none; }
-    .christmas-grid-full .card-image:last-of-type { border-right: none; }
-
-    /* Vertical Text Sidebars */
-    .christmas-text-sidebar {
-        grid-column: span 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f8f8f8; /* Light gray background for text area */
-        padding: 10px;
-        text-align: center;
-    }
-    .christmas-text-sidebar.right {
-        background: #e9e9e9; /* Slightly different gray for the right side */
-    }
-
-    .christmas-text-sidebar span {
-        display: block;
-        font-size: 20px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        white-space: nowrap;
-        /* Rotate text vertically */
-        transform: rotate(-90deg);
-        width: 80vh; /* Ensure full vertical coverage using viewport height */
-        max-width: 100%;
-        margin-top: 297px;
-    }
-
-
-    /* =========================
-       THE LATEST TRENDS (Updated 4-Card Section)
-       ==========================*/
-    .row-styled-title-outer {
-        background-color: var(--chip); /* Corresponds to #F7F7F5 */
-        padding: 0 16px; /* Match container padding */
-    }
-    .row-styled-title-inner {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 0; /* Adjust padding relative to the container */
-        align-items: center;
-    }
-    .row-styled-title-outer h2 {
-        font-family: 'NextDisplayExtended-Medium', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; 
-        font-size: clamp(32px, 5vw, 70px); /* Responsive font size */
-        font-weight: normal;
-        letter-spacing: 2px;
-        color: var(--text);
-        line-height: 1.4;
-        text-transform: uppercase;
-        margin: 0;
-    }
-    .row-styled-title-outer h3 {
-        font-family: 'NextDisplayExtended-Medium', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; 
-        font-size: 14px; 
-        font-weight: 600;
-        letter-spacing: 2px;
-        color: var(--text);
-        line-height: 1.4;
-        text-transform: uppercase;
-        margin: 0;
-    }
-    
-    /* Styles for the 4-Card Grid (Combining the original 3-up and the 1-up) */
-    #multi-4-teaser-trends .multi-teaser-outer-container {
-        display: flex;
-        flex-wrap: nowrap; /* Keep items on one line for desktop */
-        justify-content: space-between;
-    }
-    
-    /* Each item takes 25% width for a 4-up layout */
-    #multi-4-teaser-trends .multi-teaser-item {
-        min-width: calc(100% / 4);
-        width: calc(100% / 4);
-        padding: 0 8px; /* Add small gutter between cards */
-    }
-    
-    /* Adjust padding for the outermost items to look flush if necessary, or rely on the small gutter */
-    #multi-4-teaser-trends_item_0 { padding-left: 0; }
-    #multi-4-teaser-trends_item_3 { padding-right: 0; }
-
-    .portrait_ratio4x5-box {
-        width: 100%;
-        aspect-ratio: 4 / 5; 
-        overflow: hidden;
-        border-radius: var(--radius);
-    }
-    .portrait_ratio4x5-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-    .hp-teaser-wrapper {
-        text-align: center; /* CENTERS THE TEXT BELOW THE CARD */
-        padding: 10px 0;
-    }
-    .hp-teaser-wrapper p, .hp-tile-module-teaser__header {
-        margin: 0;
-        font-size: 15px; 
-        font-weight: 600;
-    }
-
-    /* =========================
-       PROMO ROWS & OTHERS (Kept from original for context)
-       ==========================*/
-    section{ padding: 28px 0; }
-    .section-title{ font-size: 22px; font-weight: 700; margin: 8px 0 14px; letter-spacing:.02em; }
-    .promo-grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .promo-xl{ grid-column: 1 / -1; }
-    .promo-lg{ grid-column: span 12; min-height: 420px; }
-    .promo-md{ min-height: 360px; }
-    .card{ background:#f8f8f8; border-radius: var(--radius); overflow: hidden; min-height: 220px; position: relative; }
-    .card .tag{ position: absolute; inset: auto 12px 12px 12px; background: rgba(255,255,255,.85); padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; text-transform: uppercase; }
-    .scroll{ display:flex; gap: 16px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom: 6px; }
-    .scroll::-webkit-scrollbar{ height: 8px; }
-    .scroll::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 999px; }
-    .snap{ scroll-snap-align:center; min-width: 260px; flex: 0 0 auto; }
-    .nl{ background: #fafafa; border:1px solid var(--line); border-radius: var(--radius); padding: 22px; display:grid; gap: 10px; }
-    .nl form{ display:flex; gap: 10px; flex-wrap: wrap; } .nl button{ flex:0 0 auto; }
-    .nl input{ flex:1; border:1px solid var(--line); padding: 12px 12px; border-radius: 12px; }
-    .nl button{ background: var(--accent); color:#fff; padding: 12px 16px; border-radius: 12px; font-weight: 700; }
-    footer{ background:#0c0c0c; color:#e5e7eb; margin-top: 36px; }
-    .foot-wrap{ padding: 28px 16px 40px; }
-    .foot-grid{ display:grid; gap: 18px; grid-template-columns: repeat(5, minmax(0,1fr)); }
-    .foot-grid h4{ color:#fff; margin: 0 0 10px; font-size: 14px; letter-spacing:.06em; text-transform:uppercase; }
-    .foot-grid a{ display:block; color:#c7c9cf; font-size: 14px; padding: 6px 0; }
-    .legal{ border-top: 1px solid #1f2937; padding: 18px 0; font-size: 12px; color:#9ca3af; }
-
-    /* slider  */
-    /* --- 1. KEYFRAMES FOR THE INFINITE SCROLL --- */
-/* --- 1. KEYFRAMES FOR THE INFINITE SCROLL - FIXED --- */
-@keyframes scroll-brands {
-    0% {
-        transform: translateX(0); /* Start position */
-    }
-    100% {
-        /* This must be the negative value of the .brand-span-container width (e.g., -1750px) */
-        transform: translateX(-1750px); 
-    }
-}
-
-/* --- 2. CONTAINER STYLES --- */
-
-/* The main section wrapper */
-.brand-animator-section {
-    width: 100%;
-    margin: 25px 0 15px 0;
-    /* padding: 0 0 35px 0; */
-    overflow: hidden; /* Crucial: hides the duplicated content outside the view */
-    background-color: #f7f7f7; /* Light background matching your screenshot */
-}
-
-/* Outer wrapper (viewport for the scroll) */
-.brands-outerDiv {
-    /* Max-width can be set here to contain the overall look if needed, 
-       but for true "edge-to-edge" scrolling, keep this at 100% width. */
-    width: 100%; 
-}
-
-/* Inner wrapper (the element that moves) */
-.brands-innerDiv {
-    display: flex;
-    /* Use a large, explicit width for the element that scrolls. */
-    /* If you have 10 logos * 2 sets * (120px width + 40px padding) = 3200px. */
-    width: 3500px; /* Use a value slightly larger than the total content width (e.g., 3200px) for safety */
-    
-    /* Apply the animation */
-    /* Adjusted the duration slightly to account for the new width */
-    animation: scroll-brands 30s linear infinite; 
-}
-
-/* Pauses the animation when the mouse hovers over the entire brands bar */
-.brand-animator-section:hover .brands-innerDiv {
-    animation-play-state: paused;
-}
-
-/* --- 3. BRAND LOGO STYLES --- */
-
-/* Container for the original and duplicated content */
-.brand-span-container {
-    display: flex;
-    flex-shrink: 0; 
-    /* Set the width of the span container to exactly half of the .brands-innerDiv width */
-    width: 1750px; 
-}
-
-/* Individual brand logo box */
-.brand-icons {
-    flex-shrink: 0;
-    width: 160px; /* Force a consistent width (120px logo + 40px padding) */
-    padding: 0 20px; 
-    opacity: 0.7;
-    transition: opacity 0.3s;
-}
-
-/* Logo image styling */
-.brand-icons img {
-    display: block;
-    width: 120px; /* Adjust size as needed */
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.3s; /* Smooth transition for the zoom effect */
-}
-
-/* --- 4. HOVER EFFECTS (STOP & ZOOM) --- */
-
-/* Hover state for the individual logo: increase opacity */
-.brand-icons:hover {
-    opacity: 1; 
-}
-
-/* Hover state for the image: zoom in */
-.brand-icons:hover img {
-    transform: scale(1.15); /* Zooms the logo by 15% */
-}
-
-/* OPTIONAL: To make the individual item hover stop the animation too (Redundant if applied to parent but useful if the parent hover is too large) */
-/*
-.brand-icons:hover ~ .brands-innerDiv {
-    animation-play-state: paused;
-}
-*/
-
-
-    /* footer  */
-
-    /* Base Footer Styling */
-.next-custom-footer {
-    background-color: #000000; /* Solid Black Background */
-    color: #ffffff;
-    padding: 0;
-    font-family: Arial, sans-serif; /* Use a standard sans-serif font */
-}
-
-/* --- 1. UTILITY & SOCIAL BAR --- */
-.footer-utility-bar {
-    padding: 30px 20px;
-    border-bottom: 1px solid #333333; /* Subtle divider line */
-    max-width: 1280px; /* Keep this contained if required, or remove for full width */
-    margin: 0 auto;
-}
-
-.footer-quick-links-row {
-    display: flex;
-    justify-content: space-around; /* Spreads the 4 main utility links */
-    margin-bottom: 30px;
-}
-
-.quick-link-item {
-    text-align: center;
-    flex: 1;
-    min-width: 100px;
-}
-
-.quick-link-item h5 {
-    font-size: 0.9em;
-    font-weight: 700;
-    margin: 5px 0 2px 0;
-}
-
-.quick-link-item p {
-    font-size: 0.75em;
-    color: #aaaaaa;
-    margin: 0;
-}
-
-/* Placeholder for Icons (You MUST replace these with actual SVG/Icon Library markup) */
-.icon {
-    display: block;
-    margin: 0 auto 5px;
-    height: 24px;
-    width: 24px;
-    background-color: #ffffff; /* White icon placeholder */
-    border-radius: 3px;
-}
-
-.footer-social-networks {
-    text-align: center;
-    padding-top: 20px; /* Add some space between the quick links and social links */
-}
-
-.footer-social-networks h5 {
-    font-size: 0.9em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-.social-icons {
-    /* KEY FIX 1: Use flexbox to arrange children (the icons) in a row */
-    display: flex;
-    justify-content: center; /* Center the icons horizontally */
-    align-items: center;
-    /* Optional: Limit the width if needed */
-    max-width: 300px;
-    margin: 0 auto; 
-}
-
-.social-icons a {
-    /* Give each icon space and make it a flex item */
-    margin: 0 10px; 
-    color: #ffffff;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    /* Ensure the link is treated as a block for the icon inside */
-    display: block; 
-}
-
-.social-icons a:hover {
-    opacity: 0.7;
-}
-/* Updated Icon Placeholder Styling */
-.social-icons .icon {
-    /* KEY FIX 2: Ensure the icon itself is an inline element or sized block */
-    display: block; 
-    height: 24px;
-    width: 24px;
-    background-color: #ffffff; /* White icon placeholder */
-    border-radius: 0; /* Removing radius for a square icon look */
-    margin: 0; /* Remove previous center margin */
-}
-
-/* Ensure any unnecessary vertical list styles are overridden if present globally */
-.footer-social-networks ul, 
-.footer-social-networks li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-/* --- 2. MAIN LINK COLUMNS (FULL WIDTH APPLICATION) --- */
-.footer-main-links-grid {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 40px 20px; /* Padding on the sides for structure */
-    gap: 20px; /* Space between columns */
-    max-width: 1280px; /* Keep the overall block contained by default */
-    margin: 0 auto;
-}
-
-.link-column {
-    flex: 1 1 calc(25% - 15px); /* 4 equal columns based on default max-width */
-    min-width: 180px; /* Prevents columns from getting too narrow */
-}
-
-.link-column h6 {
-    font-size: 0.95em;
-    font-weight: 700;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.link-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.link-column li {
-    margin-bottom: 8px;
-}
-
-.link-column a {
-    color: #aaaaaa; /* Light grey links */
-    text-decoration: none;
-    font-size: 0.8em;
-    transition: color 0.2s;
-}
-
-.link-column a:hover {
-    color: #ffffff; /* White on hover */
-    text-decoration: underline;
-}
-
-.cookie-manage-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    color: #aaaaaa;
-    text-align: left;
-    font-size: 0.8em;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-}
-
-.cookie-manage-btn:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-/* --- 3. BOTTOM BAR --- */
-.footer-bottom-bar {
-    border-top: 1px solid #333333;
-    padding: 15px 20px;
-    text-align: center;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.view-mobile-link {
-    color: #aaaaaa;
-    text-decoration: none;
-    font-size: 0.75em;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.copyright {
-    font-size: 0.7em;
-    color: #666666;
-    margin: 0;
-}
-
-/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
-@media (max-width: 1024px) {
-    .link-column {
-        flex: 1 1 calc(50% - 10px); /* 2 columns on medium screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .footer-quick-links-row {
-        flex-wrap: wrap;
-    }
-    .quick-link-item {
-        flex: 1 1 45%; /* 2 per row for utility links */
-        margin-bottom: 20px;
-    }
-    .link-column {
-        flex: 1 1 100%; /* Single column on small screens */
-    }
-}
-
-    /* =========================
-       RESPONSIVE
-       ==========================*/
-    .brands-grid{ grid-template-columns: repeat(6, 1fr); }
-    @media (max-width: 1024px){ 
-        .brands-grid{ grid-template-columns: repeat(3,1fr);} 
-        .promo-md{ grid-column: span 6; }
-    }
-    @media (max-width: 860px){
-        .nav .row{ display:none; }
-        .hamburger{ display: grid; }
-        .utilbar .row{ grid-template-columns: auto 1fr auto; }
-        .foot-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-        /* Adjust video hero content layout */
-        .hero-video-section {
-          padding-inline: 16px; /* Smaller padding on mobile */
-          height: 44vh;
-        }
-        .hero-video-section .content {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-        }
-        .hero-video-section .title-group {
-          max-width: 100%;
-        }
-        /* Christmas Grid mobile adjustments */
-        .christmas-grid-full {
-            grid-template-columns: 1fr; /* Stack vertically */
-            height: auto; /* Let height adjust */
-        }
-        .christmas-text-sidebar {
-            display: none; /* Hide text sidebars if they stack awkwardly */
-        }
-        .christmas-grid-full .card-image {
-            min-height: 300px; /* Give cards height when stacked */
-            border-inline: none; /* Remove white borders */
-        }
-    }
-    @media (max-width: 700px){ 
-        .tiktok-grid{ grid-template-columns: 1fr; } 
-        .tiktok-grid .card{ grid-column: 1 / -1; min-height: 260px; } 
-    }
-    @media (max-width: 560px){
-        .nav .row{ display:none; }
-        .hamburger{ display: grid; }
-        .scroll .snap{ min-width: 80%; }
-        .nl form{ flex-direction: column; }
-        .nl button, .nl input{ width: 100%; }
-        
-        /* Styles for the 4-Card Grid on mobile */
-        #multi-4-teaser-trends .multi-teaser-item {
-            min-width: 50%; /* 2-up on smaller screens */
-            width: 50%;
-        }
-        .row-styled-title-inner {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-        }
-        .row-styled-title-outer h2 {
-            font-size: 48px;
-        }
-        /* Adjust hero height */
-        .hero{ min-height: 44vh; }
-        /* Stack footer */
-        .foot-grid{ grid-template-columns: 1fr; }
-    }
-    /* --- FULL WIDTH CONTAINER (Same as before) --- */
-/* Container for content, adjust max-width to match your site */
-.container-b {
-    /* max-width: 1280px;  */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- FEATURED BRANDS SECTION --- */
-.featured-brands-section {
-    padding: 40px 0 80px 0; /* Add generous bottom padding */
-    background-color: #ffffff; /* Assuming a white background */
-}
-
-/* Header Styling */
-.brands-header {
-    margin-bottom: 20px;
-}
-
-.brands-title {
-    font-size: 1.5em; /* Large, uppercase text */
-    font-weight: 700;
-    margin: 0;
-    text-transform: uppercase;
-}
-
-/* --- BRAND GRID LAYOUT --- */
-.brand-grid {
-    display: flex;
-    /* Allows items to scroll horizontally if they don't fit */
-    overflow-x: auto; 
-    /* Prevents the grid from wrapping onto multiple rows */
-    flex-wrap: nowrap; 
-    gap: 10px; /* Space between each image tile */
-    /* Hide scrollbar on some browsers, or style it if required */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    padding-bottom: 10px; /* Add space for a better look if a scrollbar appears */
-}
-
-.brand-grid::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-}
-
-
-/* Individual Brand Item Sizing */
-.brand-item {
-    /* Set a fixed size for each item (1/8th of the max container width minus gap) */
-    /* If you want 8 items, set width to roughly 12.5% minus gap adjustment */
-    flex: 0 0 calc(12.5% - 9px); 
-    min-width: 120px; /* Ensure items don't get too small on wider screens */
-    position: relative; /* Essential for positioning the overlay */
-}
-
-/* Link Styling */
-.brand-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Image Wrapper and Square Aspect Ratio */
-.brand-image-wrapper {
-    width: 100%;
-    /* Creates a perfect square container */
-    aspect-ratio: 1 / 1; 
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.brand-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image covers the square container */
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-/* Hover Effect (Optional - makes the image slightly zoom in on hover) */
-.brand-image-wrapper:hover .brand-img {
-    transform: scale(1.05);
-}
-
-/* --- OVERLAY TEXT STYLING (The dark text on the image) --- */
-.brand-name-overlay {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #ffffff; /* White text */
-    background-color: rgba(0, 0, 0, 0.55); /* Semi-transparent dark background */
-    padding: 5px 10px;
-    font-size: 0.85em;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.2;
-    z-index: 10;
-    pointer-events: none; /* Allows clicks to go through to the link */
-    white-space: nowrap; /* Prevents long names from wrapping */
-}
-
-/* --- OFFER TAG STYLING --- */
-.offer-tag {
+/* Video Background Container */
+.video-background {
     position: absolute;
     top: 0;
-    right: 0;
-    background-color: #B4282D; /* Red/Maroon background */
-    color: white;
-    padding: 4px 8px;
-    font-size: 0.7em;
-    font-weight: 700;
-    text-transform: uppercase;
-    z-index: 10;
-}
-
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 1100px) {
-    /* Switch to showing 6 items at once for tablets */
-    .brand-item {
-        flex: 0 0 calc(16.66% - 8.33px); /* 1/6th width */
-    }
-}
-
-@media (max-width: 768px) {
-    /* Switch to showing 4 items at once for large mobiles/small tablets */
-    .brand-item {
-        flex: 0 0 calc(25% - 7.5px); /* 1/4th width */
-    }
-}
-
-@media (max-width: 480px) {
-    /* Switch to showing 3 items at once for small mobiles */
-    .brand-item {
-        flex: 0 0 calc(33.33% - 6.66px); /* 1/3rd width */
-    }
-}
-
-    /* tiktok  */
-.tiktok-full-width-section {
-    width: 100%;
-    background-color: #f7f7f7;
-    padding: 50px 0; 
-}
-
-/* ... other container/layout styles ... */
-
-/* --- VIDEO GRID LAYOUT (The three videos in a row) --- */
-.video-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.video-item {
-    flex: 1 1 30%;
-    text-align: left;
-}
-
-.video-placeholder {
-    width: 100%;
-    /* --- KEY CHANGE HERE: SHORTER ASPECT RATIO --- */
-    /* 1 / 1.25 makes the height 1.25 times the width (a short portrait) */
-    /* Adjust '1.25' higher for taller videos, lower for shorter videos */
-    aspect-ratio: 1 / 1.25; 
-    margin-bottom: 10px;
-    /* Optional: Add a subtle border to mimic the image frames */
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.video-placeholder video {
+    left: 0;
     width: 100%;
     height: 100%;
-    display: block;
-    object-fit: cover;
-    /* Ensure the poster image also covers the container */
-    background-size: cover; 
-    background-position: center;
+    z-index: 1;
 }
 
-.container-full-width {
+.video-background video,
+.video-background img { /* Added img for the fallback image */
     width: 100%;
-    padding: 0 40px; 
-    box-sizing: border-box; 
-    margin: 0 auto;
+    height: 100%;
+    object-fit: cover; /* Ensures media covers the entire container */
+    display: block;
 }
 
-.tiktok-content-wrapper {
-    display: flex;
-    align-items: flex-start; 
-    gap: 30px; 
+/* Dark Overlay for better text visibility */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 40% opaque black */
+    z-index: 2;
 }
 
-.tiktok-left-column {
-    flex: 0 0 350px; 
-    padding-top: 20px; 
+/* Content Styles - USE FLEXBOX TO PUSH LEFT/RIGHT */
+.home_video_hero_content {
+    position: relative;
+    z-index: 3;
+    display: flex; /* Enable flex for left/right alignment */
+    align-items: center; 
+    justify-content: space-between; /* Pushes content to the far left and far right */
+    width: 100%;
+    /* Remove padding-left from here as the title is its own flex item */
+    /* Padding is handled by .container */
 }
 
-.tiktok-right-column {
-    flex: 1; 
-}
-
-.tiktok-title {
-    font-size: 3em; 
+.hero_title {
+    font-size: 5vw; /* Responsive font size */
     font-weight: 700;
     margin: 0;
-    line-height: 1;
-    color: #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    line-height: 1.1;
+    flex-grow: 1; /* Allows title to take up space on the left */
+    max-width: 70%; /* Prevents title from running into the label */
+}
+
+.hero_label {
+    /* Position is no longer absolute, it's positioned by flexbox */
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    opacity: 0.8;
+    text-align: right;
+    padding-right: 20px; /* Add padding consistent with .container */
 }
 
-.tiktok-subtitle {
-    font-size: 1.1em;
-    font-weight: 400;
-    margin-top: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #333;
-}
+/* --- Responsive Adjustments for VIDEO HERO --- */
 
-.video-tag, .video-title {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.video-tag {
-    font-size: 0.8em;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 2px;
-}
-
-.video-title {
-    font-size: 0.9em;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.shop-link {
-    font-size: 0.85em;
-    font-weight: 600;
-    color: #000;
-    text-decoration: none;
-    border-bottom: 2px solid #000;
-    padding-bottom: 2px;
-    display: inline-block;
-}
-
-.shop-link:hover {
-    color: #666;
-    border-color: #666;
-}
-
-@media (max-width: 992px) {
-    .tiktok-content-wrapper {
-        flex-direction: column;
-        align-items: center;
+@media (max-width: 1024px) {
+    .home_video_hero {
+        height: 50vh;
+        min-height: 300px;
     }
-    .tiktok-left-column {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 600px;
-        text-align: center;
-        padding-top: 0;
-        margin-bottom: 30px;
+    
+    .hero_title {
+        font-size: 40px;
+        max-width: 60%; 
     }
-    .tiktok-header {
-        text-align: center;
+
+    .home_video_hero_content {
+         /* Adjust for smaller screens */
     }
-    .tiktok-right-column {
-        width: 100%;
-        max-width: 900px;
-    }
-    .video-grid {
-        gap: 15px;
+    
+    .hero_label {
+        font-size: 13px;
     }
 }
 
 @media (max-width: 600px) {
-    .video-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
+    .home_video_hero {
+        height: 40vh;
+        min-height: 250px;
     }
-    .video-item {
-        max-width: 300px; 
+    
+    .hero_title {
+        font-size: 30px;
+        max-width: 100%; /* Allow title to take full width */
+    }
+    
+    /* On small phones, stack the text vertically to avoid running out of space */
+    .home_video_hero_content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    
+    .hero_label {
+        font-size: 12px;
+        margin-top: 10px;
+        text-align: left;
+        padding-right: 0;
     }
 }
 
-    /* Desktop: push main nav below util bar */
-    @media (min-width: 861px){ .nav{ top:54px; } }
+/* 3 photos hero styles */
+
+/* --- 6. CHRISTMAS GRID STYLES (.home_christmas_grid_section) --- */
+
+.home_christmas_grid_section {
+    padding: 60px 0; /* Add top/bottom padding for separation */
+    background-color: white; /* Ensure white background for the content */
+}
+
+.home_christmas_grid_container {
+    max-width: 1400px; /* Use a slightly wider container for this section */
+    margin: 0 auto;
+    display: grid;
+    /* Desktop Grid: Sidebar | Image 1 | Image 2 | Image 3 | Sidebar */
+    grid-template-columns: 80px 1fr 1fr 1fr 80px; /* Fixed width for sidebars, equal width for images */
+    gap: 10px; /* Small gap between elements */
+    align-items: stretch; /* Stretch images to fill the height */
+    height: 550px; /* Define a fixed height for the entire grid */
+    padding: 0 20px;
+}
+
+/* --- Sidebar Text Styles (Vertical Text) --- */
+
+.home_christmas_sidebar {
+    display: flex;
+    justify-content: center; /* Center the text container horizontally */
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.home_christmas_sidebar:hover {
+    color: #cc0000; /* Subtle hover effect */
+}
+
+.home_christmas_sidebar span {
+    /* Magic for vertical text */
+    writing-mode: vertical-rl; /* Writes text vertically, right-to-left */
+    transform: rotate(180deg); /* Flips the text to read correctly from bottom to top */
+    white-space: nowrap;
+}
+
+/* --- Image Card Styles --- */
+
+.home_christmas_card {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    height: 100%; /* Fill the grid row height */
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.home_christmas_card:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    z-index: 5; /* Keep it above other cards during zoom */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 1200px) {
+    .home_christmas_grid_container {
+        height: 450px;
+        grid-template-columns: 60px 1fr 1fr 1fr 60px; /* Smaller sidebar width */
+    }
+    .home_christmas_sidebar {
+        font-size: 13px;
+    }
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 1200px) {
+    .home_christmas_grid_container {
+        height: 450px;
+        grid-template-columns: 60px 1fr 1fr 1fr 60px; /* Smaller sidebar width */
+    }
+    .home_christmas_sidebar {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 900px) {
+    .home_christmas_grid_container {
+        /* Shrink the entire grid proportionally */
+        height: 350px; /* Reduced overall height */
+        grid-template-columns: 40px 1fr 1fr 1fr 40px; /* Even smaller sidebar width */
+        gap: 8px; /* Slightly smaller gap */
+        padding: 0 10px; /* Less horizontal padding */
+    }
+
+    .home_christmas_sidebar {
+        font-size: 11px; /* Smaller font size for vertical text */
+        letter-spacing: 1px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .home_christmas_grid_section {
+        padding: 30px 0; /* Less padding around the section */
+    }
+    
+    .home_christmas_grid_container {
+        height: 250px; /* Significantly reduced height for very small screens */
+        grid-template-columns: 30px 1fr 1fr 1fr 30px; /* Tiny sidebars */
+        gap: 5px; /* Minimal gap */
+        padding: 0 5px; /* Edge-to-edge on very small screens */
+    }
+
+    .home_christmas_sidebar {
+        font-size: 9px; /* Even smaller font size */
+        letter-spacing: 0.5px;
+    }
+}
+
+/* trends  */
+/* ==================================== */
+/* === GLOBAL RESETS AND TEXT STYLING === */
+/* ==================================== */
+
+/* Remove text underline from all links in this section */
+#trends-section a {
+    text-decoration: none !important; 
+}
+
+/* --- Section and Container Setup (Full Width with Padding) --- */
+
+#trends-section {
+    padding: 15px 0 30px 0 !important; 
+}
+
+/* APPLY PADDING HERE: 20px on left/right for desktop */
+.row-styled-title-outer {
+    padding: 0 20px; /* Comfortable desktop padding */
+    max-width: unset; 
+    margin: 0;
+}
+
+/* APPLY PADDING HERE: 20px on left/right for desktop */
+.multi-teaser-outer-container {
+    padding: 0 20px; /* Comfortable desktop padding */
+    max-width: unset; 
+    margin: 0;
+}
+
+/* --- Header Styling --- */
+
+.row-styled-title-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+    margin-bottom: 10px; 
+}
+
+.row-styled-title-inner h3 {
+    font-size: 1.5em; 
+    font-weight: 500; 
+    color: #000000; 
+    margin: 0;
+    text-transform: uppercase; 
+}
+
+.row-styled-title-inner h2 {
+    font-size: 3em; 
+    font-weight: 700; 
+    color: #000000; 
+    margin: 0; 
+    letter-spacing: 2px;
+}
+
+/* --- Image Grid Layout (Flexbox 1:1:1:2) --- */
+
+#multi-4-teaser-trends {
+    margin-top: 0 !important; 
+}
+
+.multi-teaser-item {
+    /* Overrides for 1:1:1:2 ratio */
+    min-width: unset !important;
+    width: unset !important;
+    padding: 0 !important;
+    margin-right: 8px; 
+    flex-grow: 1; 
+}
+
+/* Apply specific flex-basis for the 1:1:1:2 ratio on desktop */
+#multi-4-teaser-trends_item_0,
+#multi-4-teaser-trends_item_1,
+#multi-4-teaser-trends_item_2 {
+    flex-basis: 20%; 
+}
+
+#multi-4-teaser-trends_item_3 {
+    flex-basis: 40%;
+    margin-right: 0; 
+}
+
+
+/* --- Image Container (Border Radius and Fill) --- */
+
+.portrait_ratio4x5-box {
+    height: 380px !important; 
+    display: flex; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+.portrait_ratio4x5-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* --- Text Under Images --- */
+
+.hp-tile-module-teaser__kicker {
+    text-align: center;
+    padding: 5px 0 10px 0; 
+    margin: 0;
+}
+
+.hp-tile-module-teaser__kicker p {
+    color: #000000 !important;
+    font-weight: 600; 
+    font-size: 0.85em;
+    text-transform: uppercase;
+    white-space: nowrap; 
+    margin: 0;
+    font-family: Arial, sans-serif !important; 
+}
+
+/* ==================================== */
+/* === MOBILE RESPONSIVENESS FIX (Horizontal Scroll) === */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    
+    /* REDUCE PADDING ON MOBILE SCREENS */
+    .row-styled-title-outer,
+    .multi-teaser-outer-container {
+        padding: 0 10px; /* Reduced padding for mobile */
+    }
+    
+    /* Header font size adjustments for mobile */
+    .row-styled-title-inner h3 {
+        font-size: 1.2em;
+    }
+
+    .row-styled-title-inner h2 {
+        font-size: 2em;
+    }
+    
+    /* Enable Horizontal Scroll */
+    .multi-3-teaser-module {
+        overflow-x: auto; 
+        width: 100%;
+        padding-bottom: 10px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .multi-3-teaser-module::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Force Flex Items to maintain minimum width and stay in one row */
+    .multi-teaser-outer-container {
+        /* Need to override the full-width setting for the scrollable content */
+        min-width: 760px; 
+        width: fit-content; 
+    }
+    
+    .multi-teaser-item {
+        min-width: 150px; 
+    }
+    
+    #multi-4-teaser-trends_item_3 {
+        min-width: 300px; 
+    }
+}
+
+/* tiktok */
+
+/* --- 8. TIKTOK VIDEO SECTION STYLES --- */
+.tiktok-full-width-section {
+    padding: 60px 0; /* Vertical padding */
+    background-color: #f8f8f8; /* Light background to match your site's style */
+}
+
+/* Main Two-Column Layout (Desktop) */
+.tiktok-content-wrapper {
+    max-width: 1400px; /* Wider container for the full-width look */
+    margin: 0 auto;
+    padding: 0 40px; /* Horizontal padding for desktop */
+    display: flex;
+    gap: 30px;
+}
+
+/* Left Column: Title/Header */
+.tiktok-left-column {
+    /* Fixed width for the title block (e.g., 20-25% of the container) */
+    flex: 0 0 280px; 
+    padding-top: 20px; /* Align top with the videos */
+}
+
+.tiktok-header {
+    margin: 0;
+}
+
+.tiktok-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+.tiktok-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* Right Column: Video Grid */
+.tiktok-right-column {
+    flex-grow: 1;
+    /* Ensure the videos take up the rest of the space */
+}
+
+.video-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap; /* Keep videos in a single row on desktop */
+}
+
+.video-item {
+    /* Videos take an equal share of the right column space (approx 1/3) */
+    flex: 1 1 33.33%; 
+    max-width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Video Placeholder/Wrapper - Enforce Aspect Ratio (Portrait 9:16) */
+.video-placeholder {
+    width: 100%;
+    /* Use padding-bottom for the 9:16 aspect ratio (height is 16/9 * width ≈ 177.7%) */
+    padding-bottom: 177.77%; 
+    height: 0; /* Necessary for padding-bottom hack */
+    position: relative;
+    overflow: hidden;
+}
+
+.video-placeholder video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure video covers the entire container */
+    border-radius: 8px 8px 0 0;
+}
+
+/* Video Details Below Video */
+.video-details {
+    padding: 10px 15px 20px;
+    text-align: left;
+}
+
+.video-tag {
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.video-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.shop-link {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 2px solid #333; /* Underline effect */
+    padding-bottom: 2px;
+}
+
+/* --- Mobile / Tablet Responsive (Stacked & Scrollable) --- */
+@media (max-width: 992px) {
+    .tiktok-content-wrapper {
+        flex-direction: column; /* Stack columns */
+        padding: 0 20px;
+        gap: 30px;
+    }
+
+    /* Left Column takes full width on mobile/tablet */
+    .tiktok-left-column {
+        flex: 1 1 100%;
+        padding-top: 0;
+    }
+    
+    .tiktok-title {
+        font-size: 32px;
+    }
+
+    /* Video Grid becomes horizontally scrollable */
+    .video-grid {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px; /* Space for scrollbar */
+        gap: 12px; /* Slightly smaller gap */
+        justify-content: flex-start;
+    }
+
+    .video-item {
+        /* Fixed, smaller width for scrollable mobile view */
+        flex: 0 0 200px; /* Fixed width of 200px for each video */
+        max-width: 200px;
+    }
+    
+    /* Video Aspect Ratio maintained */
+    .video-placeholder {
+        padding-bottom: 177.77%; /* 9:16 ratio maintained */
+    }
+}
+
+/* brand  */
+/* --- 9. FEATURED BRANDS SECTION STYLES (.featured-brands-section) --- */
+
+.featured-brands-section {
+    padding: 28px 0 40px; 
+    background-color: white; 
+}
+
+.container-b {
+    /* REMOVED: max-width: 1200px; - This enables full-width stretching */
+    width: 100%;
+    margin: 0 auto;
+    /* We'll manage the horizontal padding on the header and grid below */
+}
+
+/* Header Styles */
+.brands-header {
+    padding: 0 20px 20px; /* Adds padding to the left/right of the title */
+}
+
+.brands-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    color: #333;
+}
+
+/* Brand Grid (Desktop: Full Width, 8 items per row) */
+.brand-grid {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-start; /* Use flex-start or space-between. Using space-between often looks better for 8 items. */
+    gap: 16px; 
+    padding: 0 20px; /* Adds consistent padding to the edges of the full-width grid */
+}
+
+.brand-item {
+    /* Calculate width for 8 items per row with 16px gaps and 20px padding on container */
+    /* Formula: (100% - 2*20px padding - 7*16px gap) / 8. This is complex. 
+       A cleaner way is to use a calc based on 100%/8 and slightly reducing it. */
+    flex: 1 1 calc(12.5% - 14px); 
+    max-width: calc(12.5% - 14px);
+    position: relative;
+    overflow: hidden;
+}
+
+.brand-link {
+    text-decoration: none;
+    display: block; 
+    color: white;
+}
+
+/* Image Wrapper: Enforce Aspect Ratio (Approx 4:5 Portrait) */
+.brand-image-wrapper {
+    width: 100%;
+    padding-bottom: 125%; 
+    position: relative; 
+    height: 0; 
+    overflow: hidden;
+    border-radius: 4px; 
+}
+
+.brand-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* Offer Tag */
+.offer-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background-color: #ff0000; 
+    color: white;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+/* Brand Name Overlay */
+.brand-item .brand-link::after { 
+    content: attr(title); 
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7); 
+    line-height: 1.2;
+    z-index: 5;
+    pointer-events: none; 
+    display: none;
+}
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 992px) {
+    /* Mobile/Tablet: 2 items per row */
+    .brands-header {
+        padding: 0 20px 15px;
+    }
+    
+    .brand-grid {
+        padding: 0 20px;
+        gap: 10px;
+    }
+
+    .brand-item {
+        /* Calculate width for 2 items per row with a gap */
+        flex: 1 1 calc(50% - 8px); 
+        max-width: calc(50% - 8px);
+    }
+    
+    .brands-title {
+        font-size: 20px;
+    }
+
+    .brand-item .brand-link::after {
+        font-size: 12px;
+        bottom: 10px;
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .brand-grid {
+        gap: 8px;
+    }
+    .brand-item {
+        /* Slight adjustment for smaller gaps on small phones */
+        flex: 1 1 calc(50% - 6px);
+        max-width: calc(50% - 6px);
+    }
+}
+
+/* subscription mail  */
+
+/* --- 10. SUBSCRIPTION / BE IN THE KNOW SECTION STYLES --- */
+
+.subscription-section {
+    padding: 60px 20px;
+    background-color: white; 
+    text-align: center; /* Centers all inline content (text, icon) and block content (like max-width paragraphs) */
+}
+
+/* Icon (The envelope) */
+.subscription-icon {
+    margin-bottom: 20px;
+    /* Since the image is inline content, text-align: center on parent centers it */
+}
+
+.subscription-icon img {
+    /* Set icon size to match standard newsletter icon size */
+    width: 40px; 
+    height: auto;
+    display: inline-block; /* Ensure it respects vertical alignment */
+}
+
+/* Header and Text */
+.subscription-header {
+    margin-bottom: 30px;
+}
+
+.subscription-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.subscription-text {
+    max-width: 500px; /* Constrain text width for readability */
+    margin: 0 auto 20px auto; /* CRUCIAL: Centers the text block itself */
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Form and Input Area */
+.subscription-form {
+    max-width: 400px; /* Set a max width for the entire form element */
+    margin: 0 auto; /* CRUCIAL: Centers the form block itself */
+}
+
+.form-field {
+    text-align: left; /* Align label/input to the left within the form's centered block */
+    margin-bottom: 10px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-field input[type="email"] {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; 
+    border-radius: 2px;
+}
+
+/* Submit Button */
+.subscribe-button {
+    width: 100%; 
+    padding: 15px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 2px;
+    margin-top: 10px;
+}
+
+.subscribe-button:hover {
+    background-color: #333;
+}
+
+/* Legal/Privacy Text */
+.legal-text {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+}
+
+.legal-text a {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 500px) {
+    .subscription-section {
+        padding: 40px 15px; 
+    }
+    
+    .subscription-title {
+        font-size: 18px;
+    }
+
+    .form-field input[type="email"],
+    .subscribe-button {
+        padding: 10px; 
+        font-size: 15px;
+    }
+}
+
+/* footer  */
+/* --- 1. General Footer Styles --- */
+.site-footer {
+    background-color: black;
+    color: white;
+    padding-top: 30px; 
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 2. Social Networks Section Styles --- */
+.social-networks {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333; 
+}
+
+.social-networks h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    color: #ccc;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: white; /* Base color for icons */
+    transition: color 0.3s;
+    /* Important for icon links */
+    display: inline-flex; 
+    width: 24px;
+    height: 24px;
+}
+
+.social-icons a:hover {
+    color: #ccc;
+}
+
+/* THE FIX FOR SOCIAL SVGS: */
+.social-icons svg {
+    fill: currentColor; /* Allows the SVG to inherit the 'white' color from the parent link */
+    width: 100%;
+    height: 100%;
+}
+
+/* --- 3. Quick Links Section Styles --- */
+.quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.quick-link-item {
+    flex: 1 1 20%; 
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    min-width: 200px;
+}
+
+.quick-link-item a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.quick-link-item a:hover {
+    color: #ccc;
+}
+
+.quick-link-icon {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+/* THE FIX FOR QUICK LINK SVGS: */
+.quick-link-icon svg {
+    fill: currentColor; /* Inherit color from the parent link 'a' */
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.quick-link-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.quick-link-text span {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    font-weight: 400;
+}
+
+
+/* --- 4. Main Footer Links (4 Columns) & Responsiveness --- */
+.footer-links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+.footer-column {
+    flex: 1 1 25%;
+    padding: 0 10px;
+    min-width: 150px; 
+}
+
+.footer-column h5 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    color: white;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* --- Bottom Section (Copyright) --- */
+.footer-bottom {
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.mobile-view-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.copyright {
+    font-size: 11px;
+    color: #888;
+    margin: 0;
+}
+
+
+
+/* --- Responsive Layout (Tablet: 2x2, Mobile: Stacked) --- */
+@media (max-width: 992px) {
+    .footer-links-wrapper {
+        flex-wrap: wrap;
+        gap: 20px 0;
+    }
+    .footer-column {
+        flex: 1 1 50%;
+        max-width: 50%;
+        min-width: auto;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 576px) {
+    .quick-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .quick-link-item {
+        flex: 1 1 100%;
+        min-width: 100%;
+        justify-content: center;
+    }
+    .footer-links-wrapper {
+        flex-direction: column;
+        gap: 25px;
+        padding: 20px 0;
+    }
+    .footer-column {
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+    .footer-column ul {
+        text-align: center;
+    }
+}

@@ -1,0 +1,549 @@
+/* GLOBAL RESET & BASE STYLES */
+/* a11y: screen-reader-only utility */
+.sr{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* FIX: Prevent horizontal scrolling on mobile caused by content exceeding viewport */
+body { overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { all: unset; cursor: pointer; }
+
+:root{
+    /* Color & design tokens */
+    --bg: #ffffff;
+    --text: #111111;
+    --muted: #6b7280;
+    --muted-2: #9ca3af;
+    --line: #e5e7eb;
+    --chip: #f7f7f5;
+    --accent: #111111;
+    --accent-2: #1f2937;
+    --maxw: 1200px;
+    --radius: 16px;
+    --shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+body{ font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color: var(--text); background: var(--bg); }
+
+/* Main Content Container (keeps content constrained and centered) */
+.container{ width: min(100%, var(--maxw)); margin-inline: auto; padding-inline: 16px; }
+
+/* FULL BLEED UTILITY CLASS (FOR EDGE-TO-EDGE MEDIA) */
+/* This class must be used on sections that should ignore the .container padding */
+.full-bleed {
+    width: 100%;
+    margin-inline: 0; /* Ensures no margin is constraining it */
+    padding-inline: 0 !important; /* Forces removal of horizontal padding */
+    box-sizing: border-box;
+}
+
+.stack{ display: grid; gap: 28px; }
+.grid{ display: grid; gap: 16px; }
+
+.utilbar{ position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid var(--line); }
+.utilbar .row{ display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 8px 0; }
+.brand img { height: 28px; width: auto; }
+
+/* Search */
+.search{ position: relative; }
+.search input{ width: 100%; border: 1px solid var(--line); padding: 10px 40px 10px 12px; border-radius: 999px; background: #fafafa; }
+.search svg{ position: absolute; right: 12px; top: 50%; transform: translateY(-50%); opacity:.6; }
+
+/* Icons */
+.iconbar{ display: flex; align-items: center; gap: 14px; }
+.icon{ width: 22px; height: 22px; display: grid; place-items: center; }
+a.icon { background-color: #112639; color: white; }
+
+/* =========================
+    MAIN NAV
+    ==========================*/
+.nav{ position: sticky; top: 0; z-index: 39; background: var(--bg); border-bottom: 1px solid var(--line); }
+.nav .row{ display: flex; align-items: center; gap: 18px; padding: 10px 0; }
+.nav a{ font-size: 14px; text-transform: uppercase; letter-spacing:.06em; padding: 8px 6px; border-radius: 8px; }
+.nav a:hover{ background: var(--chip); }
+
+/* Mobile hamburger */
+.hamburger{ display: none; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); place-items: center; }
+/* Mobile drawer */
+.drawer{ position: fixed; inset: 0 22% 0 0; transform: translateX(-100%); background: var(--bg); z-index: 60; transition: .3s transform; box-shadow: var(--shadow); display: grid; grid-template-rows: auto 1fr; }
+.drawer.open{ transform: translateX(0); }
+.drawer .head{ padding: 14px 16px; border-bottom: 1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
+.drawer nav{ padding: 14px 8px 40px; overflow: auto; }
+.drawer nav a{ display: block; padding: 12px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing:.06em; }
+.backdrop{ position: fixed; inset:0; background: rgba(0,0,0,.35); opacity:0; pointer-events:none; transition:.2s opacity; z-index:59; }
+.backdrop.open{ opacity:1; pointer-events:auto; }
+
+/* Custom styling for the full-width hero section (image banner) */
+.hero-section-full{ padding: 0; } /* Remove padding from the section wrapper */
+.hero-section-full .hero{ border-radius: 0; } /* Remove border-radius to ensure sharp edges */
+
+.hero{ position: relative; border-radius: var(--radius); overflow: hidden; min-height: 54vh; display:grid; place-items:end start; color:#fff; }
+.hero .caption{ padding: 22px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 80%); width: 100%; }
+/* Apply container-like padding to the caption for inner content spacing */
+.hero.bg-1 .caption{ padding-inline: 32px; }
+/* --- THE FIX: ADDING THE BACKGROUND IMAGE --- */
+.hero.bg-1 {
+    background-image: url("path/to/your/local/image/Fashion-Favorite-Season-banner.jpg");
+    background-image: url('https://res.cloudinary.com/dbczfoqnc/image/upload/v1761264575/products/t5oa2hujblyaiigo7dtu.jpg');
+
+    /* 2. Ensure the image covers the entire hero area */
+    background-size: cover;
+
+    /* 3. Center the image */
+    background-position: center center;
+
+    /* 4. Ensure the background doesn't repeat */
+    background-repeat: no-repeat;
+}
+
+.hero h1{ font-size: clamp(28px, 3.6vw, 48px); margin: 0 0 6px; letter-spacing:.02em; }
+.hero p{ margin:0; opacity:.9; }
+.hero .cta{ margin-top:12px; display:inline-block; background:#fff; color:#111; padding:10px 16px; border-radius:999px; font-weight:600; }
+
+/* Video Hero Section */
+.hero-video-section {
+    position: relative;
+    width: 100%;
+    height: 54vh; /* Match primary hero height */
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* Vertically center content */
+    /* FIX: Remove horizontal padding here so video is full width */
+    padding-inline: 0;
+    color: #fff;
+    margin-top: 28px; /* Standard section gap */
+}
+
+/* Video Stretched to Cover */
+.hero-video-section video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    filter: brightness(0.7); /* Slightly darken video for text readability */
+    /* ADDED: Ensure video covers its parent even if dimensions are unequal */
+    object-fit: cover; 
+}
+
+/* Content Container for Video Hero Text */
+.hero-video-section .content {
+    position: relative; /* Ensure content is above the video */
+    z-index: 10;
+    max-width: var(--maxw); /* Align with container max-width */
+    margin-inline: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Align "Autumn Outerwear" to the bottom right */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    /* ADDED: Re-introduce container padding to the content wrapper */
+    padding-inline: 16px;
+}
+
+.hero-video-section .title-group {
+    flex: 1 1 60%; /* Take up more space for title */
+    max-width: 60%;
+}
+.hero-video-section h1 {
+    font-size: clamp(28px, 3.6vw, 48px);
+    margin: 0;
+    letter-spacing:.02em;
+    text-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+.hero-video-section .tag {
+    flex: 0 0 auto; /* Don't grow/shrink */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: .8;
+    text-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+/* NEW: Full-width Christmas Grid Layout */
+.christmas-grid-full {
+    position: relative;
+    display: grid;
+    /* Sidebar (Text) | Card 1 | Card 2 | Card 3 | Sidebar (Text) */
+    grid-template-columns: 80px 1fr 1fr 1fr 80px;
+    gap: 0;
+    width: 100%;
+    margin-top: 28px; /* Standard section gap */
+    height: 70vh; /* Set a fixed height */
+    overflow: hidden;
+}
+
+.christmas-grid-full a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.christmas-grid-full .card-image {
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    border-inline: 1px solid #fff; /* White line separation for visual appeal, can be removed */
+}
+.christmas-grid-full .card-image:first-of-type { border-left: none; }
+.christmas-grid-full .card-image:last-of-type { border-right: none; }
+
+/* Vertical Text Sidebars */
+.christmas-text-sidebar {
+    grid-column: span 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f8f8; /* Light gray background for text area */
+    padding: 10px;
+    text-align: center;
+}
+.christmas-text-sidebar.right {
+    background: #e9e9e9; /* Slightly different gray for the right side */
+}
+
+.christmas-text-sidebar span {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    /* Rotate text vertically */
+    transform: rotate(-90deg);
+    width: 80vh; /* Ensure full vertical coverage using viewport height */
+    max-width: 100%;
+    margin-top: 297px;
+}
+
+.row-styled-title-outer {
+    background-color: var(--chip); /* Corresponds to #F7F7F5 */
+    padding: 0 16px; /* Match container padding */
+}
+.row-styled-title-inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0; /* Adjust padding relative to the container */
+    align-items: center;
+    /* ADDED: Constrain inner content to max width */
+    max-width: var(--maxw);
+    margin-inline: auto;
+}
+.row-styled-title-outer h2 {
+    font-family: 'NextDisplayExtended-Medium', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    font-size: clamp(32px, 5vw, 70px); /* Responsive font size */
+    font-weight: normal;
+    letter-spacing: 2px;
+    color: var(--text);
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin: 0;
+}
+.row-styled-title-outer h3 {
+    font-family: 'NextDisplayExtended-Medium', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text);
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Styles for the 4-Card Grid (Combining the original 3-up and the 1-up) */
+#multi-4-teaser-trends .multi-teaser-outer-container {
+    display: flex;
+    flex-wrap: nowrap; /* Keep items on one line for desktop */
+    justify-content: space-between;
+}
+
+/* Each item takes 25% width for a 4-up layout */
+#multi-4-teaser-trends .multi-teaser-item {
+    min-width: calc(100% / 4);
+    width: calc(100% / 4);
+    padding: 0 8px; /* Add small gutter between cards */
+}
+
+/* Adjust padding for the outermost items to look flush if necessary, or rely on the small gutter */
+#multi-4-teaser-trends_item_0 { padding-left: 0; }
+#multi-4-teaser-trends_item_3 { padding-right: 0; }
+
+.portrait_ratio4x5-box {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+.portrait_ratio4x5-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hp-teaser-wrapper {
+    text-align: center; /* CENTERS THE TEXT BELOW THE CARD */
+    padding: 10px 0;
+}
+.hp-teaser-wrapper p, .hp-tile-module-teaser__header {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+section{ padding: 28px 0; }
+.section-title{ font-size: 22px; font-weight: 700; margin: 8px 0 14px; letter-spacing:.02em; }
+.promo-grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.promo-xl{ grid-column: 1 / -1; }
+.promo-lg{ grid-column: span 12; min-height: 420px; }
+.promo-md{ min-height: 360px; }
+.card{ background:#f8f8f8; border-radius: var(--radius); overflow: hidden; min-height: 220px; position: relative; }
+.card .tag{ position: absolute; inset: auto 12px 12px 12px; background: rgba(255,255,255,.85); padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+.scroll{ display:flex; gap: 16px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom: 6px; }
+.scroll::-webkit-scrollbar{ height: 8px; }
+.scroll::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 999px; }
+.snap{ scroll-snap-align:center; min-width: 260px; flex: 0 0 auto; }
+.nl{ background: #fafafa; border:1px solid var(--line); border-radius: var(--radius); padding: 22px; display:grid; gap: 10px; }
+.nl form{ display:flex; gap: 10px; flex-wrap: wrap; } .nl button{ flex:0 0 auto; }
+.nl input{ flex:1; border:1px solid var(--line); padding: 12px 12px; border-radius: 12px; }
+.nl button{ background: var(--accent); color:#fff; padding: 12px 16px; border-radius: 12px; font-weight: 700; }
+footer{ background:#0c0c0c; color:#e5e7eb; margin-top: 36px; }
+.foot-wrap{ padding: 28px 16px 40px; }
+.foot-grid{ display:grid; gap: 18px; grid-template-columns: repeat(5, minmax(0,1fr)); }
+.foot-grid h4{ color:#fff; margin: 0 0 10px; font-size: 14px; letter-spacing:.06em; text-transform:uppercase; }
+.foot-grid a{ display:block; color:#c7c9cf; font-size: 14px; padding: 6px 0; }
+.legal{ border-top: 1px solid #1f2937; padding: 18px 0; font-size: 12px; color:#9ca3af; }
+
+/* NAV STYLES (Unchanged) */
+.nav-bar-wrapper { background-color: #fff; border-bottom: 1px solid #eee; padding: 10px 0; }
+.container-nav { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+.primary-nav { display: flex; align-items: center; gap: 15px; justify-content: center; }
+.nav-links-visible { display: flex; flex-wrap: wrap; gap: 20px; }
+.nav-links-visible a { color: #333; text-decoration: none; font-size: 0.85rem; font-weight: 500; text-transform: capitalize; padding: 5px 0; white-space: nowrap; transition: color 0.2s, border-bottom 0.2s; }
+.nav-links-visible a:hover { color: #000; border-bottom: 2px solid #000; }
+.nav-more-dropdown { position: relative; display: inline-block; margin-left: 5px; }
+.more-button { background: none; border: none; cursor: pointer; color: #333; font-size: 0.85rem; font-weight: 500; text-transform: capitalize; position: relative; padding: 5px 18px 5px 0; white-space: nowrap; transition: transform 0.2s; }
+.more-button::after { content: ''; position: absolute; top: 50%; right: 0; transform: translateY(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid #333; transition: transform 0.2s; }
+.more-button[aria-expanded="true"]::after { transform: translateY(-50%) rotate(180deg); border-top: 4px solid #0000ff; }
+.more-button:hover { color: #0000ff; }
+.dropdown-content { display: none; position: absolute; top: 100%; right: 0; z-index: 100; background-color: #fff; min-width: 200px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); border: 1px solid #ddd; border-top: none; padding: 5px 0; }
+.show-dropdown { display: block; }
+.dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; text-transform: none; font-size: 0.95rem; font-weight: 400; }
+.dropdown-content a:hover { background-color: #f1f1f1; color: #000; }
+header.utilbar { background-color: #112639; }
+
+/* Brand Animator Section */
+@keyframes scroll-brands {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1750px); }
+}
+.brand-animator-section { width: 100%; margin: 25px 0 15px 0; overflow: hidden; background-color: #f7f7f7; }
+.brands-outerDiv { width: 100%; }
+.brands-innerDiv { display: flex; width: 3500px; animation: scroll-brands 30s linear infinite; }
+.brand-animator-section:hover .brands-innerDiv { animation-play-state: paused; }
+.brand-span-container { display: flex; flex-shrink: 0; width: 1750px; }
+.brand-icons { flex-shrink: 0; width: 160px; padding: 0 20px; opacity: 0.7; transition: opacity 0.3s; }
+.brand-icons img { display: block; width: 120px; height: auto; object-fit: contain; transition: transform 0.3s; }
+.brand-icons:hover { opacity: 1; }
+.brand-icons:hover img { transform: scale(1.15); }
+
+/* FOOTER STYLES */
+.next-custom-footer { background-color: #000000; color: #ffffff; padding: 0; font-family: Arial, sans-serif; }
+.footer-utility-bar { padding: 30px 20px; border-bottom: 1px solid #333333; max-width: 1280px; margin: 0 auto; }
+.footer-quick-links-row { display: flex; justify-content: space-around; margin-bottom: 30px; }
+.quick-link-item { text-align: center; flex: 1; min-width: 100px; }
+.quick-link-item h5 { font-size: 0.9em; font-weight: 700; margin: 5px 0 2px 0; }
+.quick-link-item p { font-size: 0.75em; color: #aaaaaa; margin: 0; }
+.icon { display: block; margin: 0 auto 5px; height: 24px; width: 24px; background-color: #ffffff; border-radius: 3px; }
+.footer-social-networks { text-align: center; padding-top: 20px; }
+.footer-social-networks h5 { font-size: 0.9em; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+.social-icons { display: flex; justify-content: center; align-items: center; max-width: 300px; margin: 0 auto; }
+.social-icons a { margin: 0 10px; color: #ffffff; text-decoration: none; transition: opacity 0.2s; display: block; }
+.social-icons a:hover { opacity: 0.7; }
+.social-icons .icon { display: block; height: 24px; width: 24px; background-color: #ffffff; border-radius: 0; margin: 0; }
+.footer-social-networks ul, .footer-social-networks li { list-style: none; padding: 0; margin: 0; }
+.footer-main-links-grid { display: flex; flex-wrap: wrap; padding: 40px 20px; gap: 20px; max-width: 1280px; margin: 0 auto; }
+.link-column { flex: 1 1 calc(25% - 15px); min-width: 180px; }
+.link-column h6 { font-size: 0.95em; font-weight: 700; color: #ffffff; margin-top: 0; margin-bottom: 15px; text-transform: uppercase; }
+.link-column ul { list-style: none; padding: 0; margin: 0; }
+.link-column li { margin-bottom: 8px; }
+.link-column a { color: #aaaaaa; text-decoration: none; font-size: 0.8em; transition: color 0.2s; }
+.link-column a:hover { color: #ffffff; text-decoration: underline; }
+.cookie-manage-btn { background: none; border: none; padding: 0; color: #aaaaaa; text-align: left; font-size: 0.8em; cursor: pointer; font-family: Arial, sans-serif; }
+.cookie-manage-btn:hover { color: #ffffff; text-decoration: underline; }
+.footer-bottom-bar { border-top: 1px solid #333333; padding: 15px 20px; text-align: center; max-width: 1280px; margin: 0 auto; }
+.view-mobile-link { color: #aaaaaa; text-decoration: none; font-size: 0.75em; display: block; margin-bottom: 8px; }
+.copyright { font-size: 0.7em; color: #666666; margin: 0; }
+
+/* Featured Brands */
+.container-b { margin: 0 auto; padding: 0 20px; }
+.featured-brands-section { padding: 40px 0 80px 0; background-color: #ffffff; }
+.brands-header { margin-bottom: 20px; }
+.brands-title { font-size: 1.5em; font-weight: 700; margin: 0; text-transform: uppercase; }
+.brand-grid { display: flex; overflow-x: auto; flex-wrap: nowrap; gap: 10px; -ms-overflow-style: none; scrollbar-width: none; padding-bottom: 10px; }
+.brand-grid::-webkit-scrollbar { display: none; }
+.brand-item { flex: 0 0 calc(12.5% - 9px); min-width: 120px; position: relative; }
+.brand-link { display: block; text-decoration: none; color: inherit; }
+.brand-image-wrapper { width: 100%; aspect-ratio: 1 / 1; position: relative; overflow: hidden; cursor: pointer; }
+.brand-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+.brand-image-wrapper:hover .brand-img { transform: scale(1.05); }
+.brand-name-overlay { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: #ffffff; background-color: rgba(0, 0, 0, 0.55); padding: 5px 10px; font-size: 0.85em; font-weight: 700; text-transform: uppercase; text-align: center; line-height: 1.2; z-index: 10; pointer-events: none; white-space: nowrap; }
+.offer-tag { position: absolute; top: 0; right: 0; background-color: #B4282D; color: white; padding: 4px 8px; font-size: 0.7em; font-weight: 700; text-transform: uppercase; z-index: 10; }
+
+/* TikTok Section */
+.tiktok-full-width-section { width: 100%; background-color: #f7f7f7; padding: 50px 0; }
+.video-grid { display: flex; justify-content: space-between; gap: 20px; }
+.video-item { flex: 1 1 30%; text-align: left; }
+.video-placeholder { width: 100%; aspect-ratio: 1 / 1.25; margin-bottom: 10px; border: 1px solid #ccc; box-sizing: border-box; }
+.video-placeholder video { width: 100%; height: 100%; display: block; object-fit: cover; background-size: cover; background-position: center; }
+.container-full-width { width: 100%; padding: 0 40px; box-sizing: border-box; margin: 0 auto; }
+.tiktok-content-wrapper { display: flex; align-items: flex-start; gap: 30px; }
+.tiktok-left-column { flex: 0 0 350px; padding-top: 20px; }
+.tiktok-right-column { flex: 1; }
+.tiktok-title { font-size: 3em; font-weight: 700; margin: 0; line-height: 1; color: #000; text-transform: uppercase; }
+.tiktok-subtitle { font-size: 1.1em; font-weight: 400; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; color: #333; }
+.video-tag, .video-title { font-family: Arial, sans-serif; margin: 0; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.video-tag { font-size: 0.8em; font-weight: 600; color: #666; margin-bottom: 2px; }
+.video-title { font-size: 0.9em; font-weight: 700; margin-bottom: 8px; }
+.shop-link { font-size: 0.85em; font-weight: 600; color: #000; text-decoration: none; border-bottom: 2px solid #000; padding-bottom: 2px; display: inline-block; }
+.shop-link:hover { color: #666; border-color: #666; }
+
+
+/* ============================================================
+    MEDIA QUERIES FOR RESPONSIVENESS (UPDATED FOR MOBILE FIXES)
+    ============================================================ */
+
+/* Desktop: push main nav below util bar */
+@media (min-width: 861px){ .nav{ top:54px; } }
+
+
+@media (max-width: 1100px) {
+    .brand-item { flex: 0 0 calc(16.66% - 8.33px); }
+}
+
+@media (max-width: 1024px) {
+    .link-column { flex: 1 1 calc(50% - 10px); }
+    .brands-grid{ grid-template-columns: repeat(3,1fr);}
+    .promo-md{ grid-column: span 6; }
+}
+
+@media (max-width: 992px) {
+    .tiktok-content-wrapper { flex-direction: column; align-items: center; }
+    .tiktok-left-column { flex: 0 0 auto; width: 100%; max-width: 600px; text-align: center; padding-top: 0; margin-bottom: 30px; }
+    .tiktok-header { text-align: center; }
+    .tiktok-right-column { width: 100%; max-width: 900px; }
+    .video-grid { gap: 15px; }
+}
+
+@media (max-width: 860px){
+    /* General Mobile Layout */
+    .nav .row{ display:none; }
+    .hamburger{ display: grid; }
+    .utilbar .row{ grid-template-columns: auto 1fr auto; }
+    .foot-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+    /* Video Hero Mobile Adjustments */
+    .hero-video-section {
+        /* FIX: Ensure the video section itself has no padding to go edge-to-edge */
+        padding-inline: 0;
+        height: 44vh; /* Reduced height for better mobile fit */
+    }
+    .hero-video-section .content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        /* FIX: Re-apply container padding to the content/text only */
+        padding-inline: 16px;
+    }
+    .hero-video-section .title-group {
+        max-width: 100%;
+    }
+
+    /* Christmas Grid Mobile Adjustments - BETTER STACKING */
+    .christmas-grid-full {
+        grid-template-columns: 1fr; /* Stack all columns vertically */
+        height: auto; /* Let height adjust to content */
+        min-height: 400px; /* Give it some base height if needed */
+    }
+    .christmas-text-sidebar {
+        display: none; /* Hide text sidebars on smaller screens */
+    }
+    .christmas-grid-full .card-image {
+        min-height: 300px; /* Give cards height when stacked */
+        border-inline: none; /* Remove white borders */
+        border-block: 1px solid #fff; /* Add horizontal separators instead */
+    }
+    /* Re-align grid items after hiding sidebars */
+    .christmas-grid-full .card-image:first-of-type { border-top: none; }
+    .christmas-grid-full .card-image:last-of-type { border-bottom: none; }
+
+    /* Hero Height Adjustment */
+    .hero{ min-height: 44vh; } /* Reduced height for better mobile fit */
+}
+
+@media (max-width: 768px) {
+    .brand-item { flex: 0 0 calc(25% - 7.5px); }
+}
+
+@media (max-width: 700px){
+    /* TikTok is fine, kept as is */
+}
+
+@media (max-width: 600px) {
+    /* TikTok Grid Adjustments for smallest screens (Ensuring no overflow) */
+    .video-grid { flex-direction: column; align-items: center; gap: 30px; }
+    .video-item { 
+        flex: 1 1 100%; /* Take full width */
+        max-width: 320px; /* Constrain the width of the stacked item for a phone-like view */
+    }
+    .video-placeholder { 
+        /* Ensures video scales within its 320px max-width parent */
+        width: 100%; 
+    }
+
+    /* Small Mobile Layout */
+    .nav .row{ display:none; }
+    .hamburger{ display: grid; }
+    .scroll .snap{ min-width: 80%; }
+    .nl form{ flex-direction: column; }
+    .nl button, .nl input{ width: 100%; }
+
+    /* 4-Card Grid on mobile - Changed to 2-up */
+    #multi-4-teaser-trends .multi-teaser-outer-container {
+        flex-wrap: wrap; /* Allow wrapping now */
+    }
+    #multi-4-teaser-trends .multi-teaser-item {
+        min-width: 50%; /* 2-up on smaller screens */
+        width: 50%;
+        /* FIX: Adjust padding for 2-up layout to look good */
+        padding: 0 4px;
+    }
+    /* **REVISED** Ensure proper guttering for 2-up: Use the padding on alternating items */
+    #multi-4-teaser-trends_item_0, #multi-4-teaser-trends_item_2 { padding-right: 4px; padding-left: 0; }
+    #multi-4-teaser-trends_item_1, #multi-4-teaser-trends_item_3 { padding-left: 4px; padding-right: 0; }
+
+
+    .row-styled-title-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .row-styled-title-outer h2 {
+        font-size: 48px;
+    }
+
+    /* Stack footer */
+    .foot-grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .brand-item { flex: 0 0 calc(33.33% - 6.66px); }
+}
