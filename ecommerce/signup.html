@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Foremade</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="signup-container">
+        <div class="signup-left-panel">
+            <div class="signup-logo-group">
+                
+                <h1 class="signup-join-text">Join</h1>
+                <img src="https://foremade.com/assets/logi-DGW4y32z.png" alt="Foremade Logo" class="signup-logo">
+            </div>
+            <p class="signup-tagline">Join our community for buyers and sellers!</p>
+        </div>
+
+        <div class="signup-right-panel">
+            <div id="standard-signup" class="signup-form-content">
+                <h2 class="signup-title">Sign Up</h2>
+                <p class="signup-login-text">Already have an account? <a href="login.html" class="signup-sign-in-link">Sign In</a></p>
+
+                <form class="signup-form">
+                    <div class="signup-name-row">
+                        <input type="text" placeholder="First Name" class="signup-input" required>
+                        <input type="text" placeholder="Last Name" class="signup-input" required>
+                    </div>
+
+                    <input type="email" placeholder="Email" class="signup-input signup-full-width" required>
+                    <input type="tel" placeholder="Phone Number" class="signup-input signup-full-width">
+                    
+                    <div class="signup-date-input-wrapper">
+                        <input type="text" placeholder="dd-mm-yyyy" class="signup-input signup-full-width" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                        <i class="fas fa-calendar-alt signup-calendar-icon"></i>
+                    </div>
+
+                    <div class="signup-password-wrapper">
+                        <input type="password" placeholder="Password" class="signup-input signup-full-width signup-password-field" required>
+                        <i class="fas fa-eye signup-toggle-password"></i>
+                    </div>
+
+                    <button type="submit" class="signup-button">Sign Up</button>
+                </form>
+
+                <p class="signup-or-divider">Or continue with</p>
+
+                <div class="signup-social-login">
+                    <button class="signup-social-btn signup-google">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="signup-social-btn signup-facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                    <button class="signup-social-btn signup-apple">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                </div>
+            </div>
+
+            <div id="merchant-signup" class="signup-form-content hidden-form">
+                
+                <div class="merchant-stepper">
+                    <div class="step active">
+                        <div class="step-num">1</div>
+                        <div class="step-label">BUSINESS INFO</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-label">CONTACT INFO</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-label">PRODUCTS & BANKING</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-label">REVIEW & SUBMIT</div>
+                    </div>
+                </div>
+                
+                <h2 class="signup-title merchant-title">Pro Seller Registration</h2>
+                <i class="fas fa-check-circle merchant-check-icon"></i> <div id="merchant-form-steps">
+                    <form id="step-1-business" class="merchant-form step-form">
+                        <div class="merchant-step-info">
+                            <i class="fas fa-briefcase merchant-icon"></i>
+                            <p class="merchant-subtitle-main">Business Information</p>
+                            <p class="merchant-subtitle-details">Let's start with your business details</p>
+                        </div>
+
+                        <label for="business-name" class="form-label">Business Name*</label>
+                        <input type="text" id="business-name" placeholder="Business Name" class="signup-input" required>
+
+                        <label for="registration-number" class="form-label">Registration Number*</label>
+                        <input type="text" id="registration-number" placeholder="7-8 digits (e.g. 1234567)" class="signup-input" required>
+
+                        <label for="tax-reference" class="form-label">Tax Reference (Optional)</label>
+                        <input type="text" id="tax-reference" placeholder="Tax Reference (optional)" class="signup-input">
+                        
+                        <label for="business-address" class="form-label">Business Address*</label>
+                        <input type="text" id="business-address" placeholder="Business Address" class="signup-input" required>
+
+                        <label for="country" class="form-label">Country*</label>
+                        <select id="country" class="signup-input" required>
+                            <option value="NG">Nigeria</option>
+                            <option value="US">United States</option>
+                            </select>
+
+                        <button type="button" class="signup-button merchant-button" onclick="nextStep(2)">Continue</button>
+                    </form>
+
+                    <form id="step-2-contact" class="merchant-form step-form hidden-step">
+                        <h3>Step 2: Contact Information</h3>
+                        <button type="button" class="signup-button merchant-button" onclick="nextStep(3)">Continue</button>
+                        <button type="button" class="signup-button back-button" onclick="nextStep(1)">Back</button>
+                    </form>
+
+                    <form id="step-3-products" class="merchant-form step-form hidden-step">
+                        <h3>Step 3: Products & Banking</h3>
+                        <button type="button" class="signup-button merchant-button" onclick="nextStep(4)">Continue</button>
+                        <button type="button" class="signup-button back-button" onclick="nextStep(2)">Back</button>
+                    </form>
+                    
+                    <form id="step-4-review" class="merchant-form step-form hidden-step">
+                        <h3>Step 4: Review & Submit</h3>
+                        <button type="submit" class="signup-button merchant-button">Submit Registration</button>
+                        <button type="button" class="signup-button back-button" onclick="nextStep(3)">Back</button>
+                    </form>
+                </div>
+            </div>
+            
+            
+            <div id="signup-modal" class="signup-modal-backdrop">
+                <div class="signup-modal-content">
+                    <div class="signup-modal-header">
+                        <i class="fas fa-user-friends signup-modal-icon"></i>
+                        <h3 class="signup-modal-title">Choose Your Option</h3>
+                    </div>
+                    <p class="signup-modal-subtitle">Merchant or Standard user</p>
+
+                    <div class="signup-modal-options">
+                        <button class="signup-modal-btn signup-all-users" onclick="showStandardSignup(event)">
+                            <span class="signup-btn-main-text">ALL USERS</span>
+                            <span class="signup-btn-sub-text">Sign Up. Sell / Buy</span>
+                        </button>
+                        
+                        <button class="signup-modal-btn signup-merchant" onclick="showMerchantSignup(event)">
+                            <span class="signup-btn-main-text">MERCHANT</span>
+                            <span class="signup-btn-sub-text">Sign Up / Pro Seller Benefits Included</span>
+                            <span class="signup-btn-sub-text">Registered Businesses only</span>
+                        </button>
+                    </div>
+                    
+                    <a href="login.html" class="signup-modal-continue">Continue with Sign In</a>
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const modal = document.getElementById('signup-modal');
+        const standardForm = document.getElementById('standard-signup');
+        const merchantFormContainer = document.getElementById('merchant-signup');
+        const steps = document.querySelectorAll('.merchant-stepper .step');
+        const stepForms = document.querySelectorAll('.step-form');
+        
+        // --- Modal/Form Swapping Logic ---
+
+        // Function to show the modal (now centered over the entire page)
+        function showModal() {
+            modal.style.display = 'flex';
+        }
+
+        // Function to hide the modal and show the standard form
+        function showStandardSignup(event) {
+            event.preventDefault();
+            modal.style.display = 'none';
+            standardForm.classList.remove('hidden-form');
+            merchantFormContainer.classList.add('hidden-form');
+            // Ensure standard form is centered when visible
+            document.querySelector('.signup-right-panel').style.alignItems = 'center';
+        }
+
+        // Function to hide the modal and show the merchant form
+        function showMerchantSignup(event) {
+            event.preventDefault();
+            modal.style.display = 'none';
+            standardForm.classList.add('hidden-form');
+            merchantFormContainer.classList.remove('hidden-form');
+            // Ensure merchant form aligns to top (better for scrolling long forms)
+            document.querySelector('.signup-right-panel').style.alignItems = 'flex-start';
+            
+            // Start at step 1
+            nextStep(1); 
+        }
+
+        // --- Multi-Step Logic ---
+        function nextStep(stepNum) {
+            // Update active state on stepper
+            steps.forEach((step, index) => {
+                if (index + 1 === stepNum) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Show/Hide form content
+            stepForms.forEach((form, index) => {
+                if (index + 1 === stepNum) {
+                    form.classList.remove('hidden-step');
+                } else {
+                    form.classList.add('hidden-step');
+                }
+            });
+            
+            // Scroll to top of the form content after step change
+            merchantFormContainer.scrollTop = 0; 
+        }
+
+        // --- Initial Setup & Helpers ---
+        
+        // Simple script to toggle password visibility
+        document.querySelector('.signup-right-panel').addEventListener('click', function(e) {
+            if (e.target.classList.contains('signup-toggle-password')) {
+                const passwordField = document.querySelector('.signup-password-field');
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                e.target.classList.toggle('fa-eye');
+                e.target.classList.toggle('fa-eye-slash');
+            }
+        });
+
+        // Show the modal after 2 seconds (2000 milliseconds)
+        window.addEventListener('load', () => {
+            setTimeout(showModal, 2000); 
+        });
+        
+        // Initial state: ensure standard form is ready and merchant is hidden
+        standardForm.classList.remove('hidden-form');
+        merchantFormContainer.classList.add('hidden-form');
+        document.querySelector('.signup-right-panel').style.alignItems = 'center';
+    </script>
+</body>
+</html>

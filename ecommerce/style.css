@@ -1,0 +1,1130 @@
+    /* a11y: screen-reader-only utility */
+    .sr{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* =========================
+       RESET & TOKENS
+       ==========================*/
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { all: unset; cursor: pointer; }
+
+    :root{
+      /* Color & design tokens */ 
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #6b7280; 
+      --muted-2: #9ca3af;
+      --line: #e5e7eb;
+      --chip: #f7f7f5;
+      --accent: #111111;
+      --accent-2: #1f2937;
+      --maxw: 1200px;
+      --radius: 16px;
+      --shadow: 0 10px 24px rgba(0,0,0,.08);
+
+
+    }
+
+    body{ font: 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; color: var(--text); background: var(--bg); }
+
+    /* Standard container with max-width and padding */
+    .container{ width: min(100%, var(--maxw)); margin-inline: auto; padding-inline: 16px; }
+    .stack{ display: grid; gap: 28px; }
+    .grid{ display: grid; gap: 16px; }
+
+    /* =========================
+       HEADER: UTIL BAR
+       ==========================*/
+    .utilbar{ position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .utilbar .row{ display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 8px 0; }
+    .brand img { height: 28px; width: auto; }
+
+    /* Search */
+    .search{ position: relative; }
+    .search input{ width: 100%; border: 1px solid var(--line); padding: 10px 40px 10px 12px; border-radius: 999px; background: #fafafa; }
+    .search svg{ position: absolute; right: 12px; top: 50%; transform: translateY(-50%); opacity:.6; }
+
+    /* Icons */
+    .iconbar{ display: flex; align-items: center; gap: 14px; }
+    .icon{ width: 22px; height: 22px; display: grid; place-items: center; }
+
+    /* =========================
+       MAIN NAV
+       ==========================*/
+    .nav{ position: sticky; top: 0; z-index: 39; background: var(--bg); border-bottom: 1px solid var(--line); }
+    .nav .row{ display: flex; align-items: center; gap: 18px; padding: 10px 0; }
+    .nav a{ font-size: 14px; text-transform: uppercase; letter-spacing:.06em; padding: 8px 6px; border-radius: 8px; }
+    .nav a:hover{ background: var(--chip); }
+
+    /* Mobile hamburger */
+    .hamburger{ display: none; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); display: none; place-items: center; }
+
+    /* Mobile drawer */
+    .drawer{ position: fixed; inset: 0 22% 0 0; transform: translateX(-100%); background: var(--bg); z-index: 60; transition: .3s transform; box-shadow: var(--shadow); display: grid; grid-template-rows: auto 1fr; }
+    .drawer.open{ transform: translateX(0); }
+    .drawer .head{ padding: 14px 16px; border-bottom: 1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
+    .drawer nav{ padding: 14px 8px 40px; overflow: auto; }
+    .drawer nav a{ display: block; padding: 12px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing:.06em; }
+    .backdrop{ position: fixed; inset:0; background: rgba(0,0,0,.35); opacity:0; pointer-events:none; transition:.2s opacity; z-index:59; }
+    .backdrop.open{ opacity:1; pointer-events:auto; }
+
+    /* =========================
+       HEROES
+       ==========================*/
+    /* Custom styling for the full-width hero section (image banner) */
+    .hero-section-full{ padding: 0; } /* Remove padding from the section wrapper */
+    .hero-section-full .hero{ border-radius: 0; } /* Remove border-radius to ensure sharp edges */
+
+    .hero{ position: relative; border-radius: var(--radius); overflow: hidden; min-height: 54vh; display:grid; place-items:end start; color:#fff; }
+    .hero .caption{ padding: 22px; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 80%); width: 100%; }
+    /* Apply container-like padding to the caption for inner content spacing */
+    .hero.bg-1 .caption{ padding-inline: 32px; } 
+    /* --- THE FIX: ADDING THE BACKGROUND IMAGE --- */
+.hero.bg-1 {
+    /* 1. Set the background image using the correct path/URL */
+    /* NOTE: I am using the image from your uploaded files as the Cloudinary link may be expired/invalid. */
+    background-image: url("path/to/your/local/image/Fashion-Favorite-Season-banner.jpg"); 
+    background-image: url('https://res.cloudinary.com/dbczfoqnc/image/upload/v1761264575/products/t5oa2hujblyaiigo7dtu.jpg'); 
+
+    
+    /* 2. Ensure the image covers the entire hero area */
+    background-size: cover; 
+    
+    /* 3. Center the image */
+    background-position: center center;
+    
+    /* 4. Ensure the background doesn't repeat */
+    background-repeat: no-repeat;
+}
+
+    .hero h1{ font-size: clamp(28px, 3.6vw, 48px); margin: 0 0 6px; letter-spacing:.02em; }
+    .hero p{ margin:0; opacity:.9; }
+    .hero .cta{ margin-top:12px; display:inline-block; background:#fff; color:#111; padding:10px 16px; border-radius:999px; font-weight:600; }
+
+    /* Video Hero Section */
+    .hero-video-section {
+      position: relative;
+      width: 100%;
+      height: 54vh; /* Match primary hero height */
+      overflow: hidden;
+      display: flex;
+      align-items: center; /* Vertically center content */
+      padding-inline: 32px; /* Add padding for text content */
+      color: #fff;
+      margin-top: 28px; /* Standard section gap */
+    }
+    a.icon {
+    background-color: #112639;
+    color: white;
+}
+
+/* --- 1. General Navigation Layout (Unchanged) --- */
+.nav-bar-wrapper {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.container-nav {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.primary-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center; /* Centers the navigation links */
+}
+
+.hamburger {
+    display: none; 
+}
+
+.nav-links-visible {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; 
+}
+
+.nav-links-visible a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize; 
+    padding: 5px 0;
+    white-space: nowrap;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+.nav-links-visible a:hover {
+    color: #000;
+    border-bottom: 2px solid #000;
+}
+
+/* --- 2. More Dropdown Styling (Mostly Unchanged) --- */
+
+.nav-more-dropdown {
+    position: relative; 
+    display: inline-block;
+    margin-left: 5px; 
+}
+
+.more-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    position: relative;
+    padding: 5px 18px 5px 0; /* Updated padding for icon space */
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.more-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #333; 
+    transition: transform 0.2s;
+}
+
+.more-button[aria-expanded="true"]::after {
+    transform: translateY(-50%) rotate(180deg);
+    border-top: 4px solid #0000ff;
+}
+
+.more-button:hover {
+    color: #0000ff;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    right: 0; 
+    z-index: 100;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+    border-top: none; 
+    padding: 5px 0;
+}
+
+/* JavaScript toggles this class to show the dropdown */
+.show-dropdown {
+    display: block;
+}
+
+/* FIX: Increased padding for a better visual look and click target */
+.dropdown-content a {
+    color: #333;
+    /* Increased vertical padding (12px top/bottom) and horizontal padding (16px left/right) */
+    padding: 12px 16px; 
+    text-decoration: none;
+    display: block; 
+    text-transform: none; 
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+/* --- 3. Mobile Drawer Styles (Unchanged) --- */
+/* ... (Keep your existing mobile drawer styles here) ... */
+
+header.utilbar {
+    background-color: #112639;
+}
+
+    .hero-video-section video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      background-size: cover;
+      filter: brightness(0.7); /* Slightly darken video for text readability */
+    }
+
+    .hero-video-section .content {
+      position: relative; /* Ensure content is above the video */
+      z-index: 10;
+      max-width: var(--maxw); /* Align with container max-width */
+      margin-inline: auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end; /* Align "Autumn Outerwear" to the bottom right */
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    }
+
+    .hero-video-section .title-group {
+      flex: 1 1 60%; /* Take up more space for title */
+      max-width: 60%;
+    }
+    .hero-video-section h1 {
+      font-size: clamp(28px, 3.6vw, 48px);
+      margin: 0;
+      letter-spacing:.02em;
+      text-shadow: 0 2px 4px rgba(0,0,0,.3);
+    }
+    .hero-video-section .tag {
+      flex: 0 0 auto; /* Don't grow/shrink */
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: .8;
+      text-shadow: 0 1px 2px rgba(0,0,0,.2);
+    }
+    
+    /* NEW: Full-width Christmas Grid Layout */
+    .christmas-grid-full {
+        position: relative;
+        display: grid;
+        /* Sidebar (Text) | Card 1 | Card 2 | Card 3 | Sidebar (Text) */
+        grid-template-columns: 80px 1fr 1fr 1fr 80px; 
+        gap: 0;
+        width: 100%;
+        margin-top: 28px; /* Standard section gap */
+        height: 70vh; /* Set a fixed height */
+        overflow: hidden;
+    }
+    
+    .christmas-grid-full a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .christmas-grid-full .card-image {
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        border-inline: 1px solid #fff; /* White line separation for visual appeal, can be removed */
+    }
+    .christmas-grid-full .card-image:first-of-type { border-left: none; }
+    .christmas-grid-full .card-image:last-of-type { border-right: none; }
+
+    /* Vertical Text Sidebars */
+    .christmas-text-sidebar {
+        grid-column: span 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f8f8; /* Light gray background for text area */
+        padding: 10px;
+        text-align: center;
+    }
+    .christmas-text-sidebar.right {
+        background: #e9e9e9; /* Slightly different gray for the right side */
+    }
+
+    .christmas-text-sidebar span {
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        white-space: nowrap;
+        /* Rotate text vertically */
+        transform: rotate(-90deg);
+        width: 80vh; /* Ensure full vertical coverage using viewport height */
+        max-width: 100%;
+        margin-top: 297px;
+    }
+
+
+    /* =========================
+       THE LATEST TRENDS (Updated 4-Card Section)
+       ==========================*/
+    .row-styled-title-outer {
+        background-color: var(--chip); /* Corresponds to #F7F7F5 */
+        padding: 0 16px; /* Match container padding */
+    }
+    .row-styled-title-inner {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0; /* Adjust padding relative to the container */
+        align-items: center;
+    }
+    .row-styled-title-outer h2 {
+        font-family: 'NextDisplayExtended-Medium', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; 
+        font-size: clamp(32px, 5vw, 70px); /* Responsive font size */
+        font-weight: normal;
+        letter-spacing: 2px;
+        color: var(--text);
+        line-height: 1.4;
+        text-transform: uppercase;
+        margin: 0;
+    }
+    .row-styled-title-outer h3 {
+        font-family: 'NextDisplayExtended-Medium', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; 
+        font-size: 14px; 
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: var(--text);
+        line-height: 1.4;
+        text-transform: uppercase;
+        margin: 0;
+    }
+    
+    /* Styles for the 4-Card Grid (Combining the original 3-up and the 1-up) */
+    #multi-4-teaser-trends .multi-teaser-outer-container {
+        display: flex;
+        flex-wrap: nowrap; /* Keep items on one line for desktop */
+        justify-content: space-between;
+    }
+    
+    /* Each item takes 25% width for a 4-up layout */
+    #multi-4-teaser-trends .multi-teaser-item {
+        min-width: calc(100% / 4);
+        width: calc(100% / 4);
+        padding: 0 8px; /* Add small gutter between cards */
+    }
+    
+    /* Adjust padding for the outermost items to look flush if necessary, or rely on the small gutter */
+    #multi-4-teaser-trends_item_0 { padding-left: 0; }
+    #multi-4-teaser-trends_item_3 { padding-right: 0; }
+
+    .portrait_ratio4x5-box {
+        width: 100%;
+        aspect-ratio: 4 / 5; 
+        overflow: hidden;
+        border-radius: var(--radius);
+    }
+    .portrait_ratio4x5-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .hp-teaser-wrapper {
+        text-align: center; /* CENTERS THE TEXT BELOW THE CARD */
+        padding: 10px 0;
+    }
+    .hp-teaser-wrapper p, .hp-tile-module-teaser__header {
+        margin: 0;
+        font-size: 15px; 
+        font-weight: 600;
+    }
+
+    /* =========================
+       PROMO ROWS & OTHERS (Kept from original for context)
+       ==========================*/
+    section{ padding: 28px 0; }
+    .section-title{ font-size: 22px; font-weight: 700; margin: 8px 0 14px; letter-spacing:.02em; }
+    .promo-grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .promo-xl{ grid-column: 1 / -1; }
+    .promo-lg{ grid-column: span 12; min-height: 420px; }
+    .promo-md{ min-height: 360px; }
+    .card{ background:#f8f8f8; border-radius: var(--radius); overflow: hidden; min-height: 220px; position: relative; }
+    .card .tag{ position: absolute; inset: auto 12px 12px 12px; background: rgba(255,255,255,.85); padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .scroll{ display:flex; gap: 16px; overflow:auto; scroll-snap-type:x mandatory; padding-bottom: 6px; }
+    .scroll::-webkit-scrollbar{ height: 8px; }
+    .scroll::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 999px; }
+    .snap{ scroll-snap-align:center; min-width: 260px; flex: 0 0 auto; }
+    .nl{ background: #fafafa; border:1px solid var(--line); border-radius: var(--radius); padding: 22px; display:grid; gap: 10px; }
+    .nl form{ display:flex; gap: 10px; flex-wrap: wrap; } .nl button{ flex:0 0 auto; }
+    .nl input{ flex:1; border:1px solid var(--line); padding: 12px 12px; border-radius: 12px; }
+    .nl button{ background: var(--accent); color:#fff; padding: 12px 16px; border-radius: 12px; font-weight: 700; }
+    footer{ background:#0c0c0c; color:#e5e7eb; margin-top: 36px; }
+    .foot-wrap{ padding: 28px 16px 40px; }
+    .foot-grid{ display:grid; gap: 18px; grid-template-columns: repeat(5, minmax(0,1fr)); }
+    .foot-grid h4{ color:#fff; margin: 0 0 10px; font-size: 14px; letter-spacing:.06em; text-transform:uppercase; }
+    .foot-grid a{ display:block; color:#c7c9cf; font-size: 14px; padding: 6px 0; }
+    .legal{ border-top: 1px solid #1f2937; padding: 18px 0; font-size: 12px; color:#9ca3af; }
+
+    /* slider  */
+    /* --- 1. KEYFRAMES FOR THE INFINITE SCROLL --- */
+/* --- 1. KEYFRAMES FOR THE INFINITE SCROLL - FIXED --- */
+@keyframes scroll-brands {
+    0% {
+        transform: translateX(0); /* Start position */
+    }
+    100% {
+        /* This must be the negative value of the .brand-span-container width (e.g., -1750px) */
+        transform: translateX(-1750px); 
+    }
+}
+
+/* --- 2. CONTAINER STYLES --- */
+
+/* The main section wrapper */
+.brand-animator-section {
+    width: 100%;
+    margin: 25px 0 15px 0;
+    /* padding: 0 0 35px 0; */
+    overflow: hidden; /* Crucial: hides the duplicated content outside the view */
+    background-color: #f7f7f7; /* Light background matching your screenshot */
+}
+
+/* Outer wrapper (viewport for the scroll) */
+.brands-outerDiv {
+    /* Max-width can be set here to contain the overall look if needed, 
+       but for true "edge-to-edge" scrolling, keep this at 100% width. */
+    width: 100%; 
+}
+
+/* Inner wrapper (the element that moves) */
+.brands-innerDiv {
+    display: flex;
+    /* Use a large, explicit width for the element that scrolls. */
+    /* If you have 10 logos * 2 sets * (120px width + 40px padding) = 3200px. */
+    width: 3500px; /* Use a value slightly larger than the total content width (e.g., 3200px) for safety */
+    
+    /* Apply the animation */
+    /* Adjusted the duration slightly to account for the new width */
+    animation: scroll-brands 30s linear infinite; 
+}
+
+/* Pauses the animation when the mouse hovers over the entire brands bar */
+.brand-animator-section:hover .brands-innerDiv {
+    animation-play-state: paused;
+}
+
+/* --- 3. BRAND LOGO STYLES --- */
+
+/* Container for the original and duplicated content */
+.brand-span-container {
+    display: flex;
+    flex-shrink: 0; 
+    /* Set the width of the span container to exactly half of the .brands-innerDiv width */
+    width: 1750px; 
+}
+
+/* Individual brand logo box */
+.brand-icons {
+    flex-shrink: 0;
+    width: 160px; /* Force a consistent width (120px logo + 40px padding) */
+    padding: 0 20px; 
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+/* Logo image styling */
+.brand-icons img {
+    display: block;
+    width: 120px; /* Adjust size as needed */
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s; /* Smooth transition for the zoom effect */
+}
+
+/* --- 4. HOVER EFFECTS (STOP & ZOOM) --- */
+
+/* Hover state for the individual logo: increase opacity */
+.brand-icons:hover {
+    opacity: 1; 
+}
+
+/* Hover state for the image: zoom in */
+.brand-icons:hover img {
+    transform: scale(1.15); /* Zooms the logo by 15% */
+}
+
+/* OPTIONAL: To make the individual item hover stop the animation too (Redundant if applied to parent but useful if the parent hover is too large) */
+/*
+.brand-icons:hover ~ .brands-innerDiv {
+    animation-play-state: paused;
+}
+*/
+
+
+    /* footer  */
+
+    /* Base Footer Styling */
+.next-custom-footer {
+    background-color: #000000; /* Solid Black Background */
+    color: #ffffff;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Use a standard sans-serif font */
+}
+
+/* --- 1. UTILITY & SOCIAL BAR --- */
+.footer-utility-bar {
+    padding: 30px 20px;
+    border-bottom: 1px solid #333333; /* Subtle divider line */
+    max-width: 1280px; /* Keep this contained if required, or remove for full width */
+    margin: 0 auto;
+}
+
+.footer-quick-links-row {
+    display: flex;
+    justify-content: space-around; /* Spreads the 4 main utility links */
+    margin-bottom: 30px;
+}
+
+.quick-link-item {
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.quick-link-item h5 {
+    font-size: 0.9em;
+    font-weight: 700;
+    margin: 5px 0 2px 0;
+}
+
+.quick-link-item p {
+    font-size: 0.75em;
+    color: #aaaaaa;
+    margin: 0;
+}
+
+/* Placeholder for Icons (You MUST replace these with actual SVG/Icon Library markup) */
+.icon {
+    display: block;
+    margin: 0 auto 5px;
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff; /* White icon placeholder */
+    border-radius: 3px;
+}
+
+.footer-social-networks {
+    text-align: center;
+    padding-top: 20px; /* Add some space between the quick links and social links */
+}
+
+.footer-social-networks h5 {
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.social-icons {
+    /* KEY FIX 1: Use flexbox to arrange children (the icons) in a row */
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center;
+    /* Optional: Limit the width if needed */
+    max-width: 300px;
+    margin: 0 auto; 
+}
+
+.social-icons a {
+    /* Give each icon space and make it a flex item */
+    margin: 0 10px; 
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    /* Ensure the link is treated as a block for the icon inside */
+    display: block; 
+}
+
+.social-icons a:hover {
+    opacity: 0.7;
+}
+/* Updated Icon Placeholder Styling */
+.social-icons .icon {
+    /* KEY FIX 2: Ensure the icon itself is an inline element or sized block */
+    display: block; 
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff; /* White icon placeholder */
+    border-radius: 0; /* Removing radius for a square icon look */
+    margin: 0; /* Remove previous center margin */
+}
+
+/* Ensure any unnecessary vertical list styles are overridden if present globally */
+.footer-social-networks ul, 
+.footer-social-networks li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+/* --- 2. MAIN LINK COLUMNS (FULL WIDTH APPLICATION) --- */
+.footer-main-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 20px; /* Padding on the sides for structure */
+    gap: 20px; /* Space between columns */
+    max-width: 1280px; /* Keep the overall block contained by default */
+    margin: 0 auto;
+}
+
+.link-column {
+    flex: 1 1 calc(25% - 15px); /* 4 equal columns based on default max-width */
+    min-width: 180px; /* Prevents columns from getting too narrow */
+}
+
+.link-column h6 {
+    font-size: 0.95em;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.link-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-column li {
+    margin-bottom: 8px;
+}
+
+.link-column a {
+    color: #aaaaaa; /* Light grey links */
+    text-decoration: none;
+    font-size: 0.8em;
+    transition: color 0.2s;
+}
+
+.link-column a:hover {
+    color: #ffffff; /* White on hover */
+    text-decoration: underline;
+}
+
+.cookie-manage-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #aaaaaa;
+    text-align: left;
+    font-size: 0.8em;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+}
+
+.cookie-manage-btn:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* --- 3. BOTTOM BAR --- */
+.footer-bottom-bar {
+    border-top: 1px solid #333333;
+    padding: 15px 20px;
+    text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.view-mobile-link {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.75em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.copyright {
+    font-size: 0.7em;
+    color: #666666;
+    margin: 0;
+}
+
+/* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+    .link-column {
+        flex: 1 1 calc(50% - 10px); /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-quick-links-row {
+        flex-wrap: wrap;
+    }
+    .quick-link-item {
+        flex: 1 1 45%; /* 2 per row for utility links */
+        margin-bottom: 20px;
+    }
+    .link-column {
+        flex: 1 1 100%; /* Single column on small screens */
+    }
+}
+
+    /* =========================
+       RESPONSIVE
+       ==========================*/
+    .brands-grid{ grid-template-columns: repeat(6, 1fr); }
+    @media (max-width: 1024px){ 
+        .brands-grid{ grid-template-columns: repeat(3,1fr);} 
+        .promo-md{ grid-column: span 6; }
+    }
+    @media (max-width: 860px){
+        .nav .row{ display:none; }
+        .hamburger{ display: grid; }
+        .utilbar .row{ grid-template-columns: auto 1fr auto; }
+        .foot-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+        /* Adjust video hero content layout */
+        .hero-video-section {
+          padding-inline: 16px; /* Smaller padding on mobile */
+          height: 44vh;
+        }
+        .hero-video-section .content {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+        .hero-video-section .title-group {
+          max-width: 100%;
+        }
+        /* Christmas Grid mobile adjustments */
+        .christmas-grid-full {
+            grid-template-columns: 1fr; /* Stack vertically */
+            height: auto; /* Let height adjust */
+        }
+        .christmas-text-sidebar {
+            display: none; /* Hide text sidebars if they stack awkwardly */
+        }
+        .christmas-grid-full .card-image {
+            min-height: 300px; /* Give cards height when stacked */
+            border-inline: none; /* Remove white borders */
+        }
+    }
+    @media (max-width: 700px){ 
+        .tiktok-grid{ grid-template-columns: 1fr; } 
+        .tiktok-grid .card{ grid-column: 1 / -1; min-height: 260px; } 
+    }
+    @media (max-width: 560px){
+        .nav .row{ display:none; }
+        .hamburger{ display: grid; }
+        .scroll .snap{ min-width: 80%; }
+        .nl form{ flex-direction: column; }
+        .nl button, .nl input{ width: 100%; }
+        
+        /* Styles for the 4-Card Grid on mobile */
+        #multi-4-teaser-trends .multi-teaser-item {
+            min-width: 50%; /* 2-up on smaller screens */
+            width: 50%;
+        }
+        .row-styled-title-inner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .row-styled-title-outer h2 {
+            font-size: 48px;
+        }
+        /* Adjust hero height */
+        .hero{ min-height: 44vh; }
+        /* Stack footer */
+        .foot-grid{ grid-template-columns: 1fr; }
+    }
+    /* --- FULL WIDTH CONTAINER (Same as before) --- */
+/* Container for content, adjust max-width to match your site */
+.container-b {
+    /* max-width: 1280px;  */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- FEATURED BRANDS SECTION --- */
+.featured-brands-section {
+    padding: 40px 0 80px 0; /* Add generous bottom padding */
+    background-color: #ffffff; /* Assuming a white background */
+}
+
+/* Header Styling */
+.brands-header {
+    margin-bottom: 20px;
+}
+
+.brands-title {
+    font-size: 1.5em; /* Large, uppercase text */
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* --- BRAND GRID LAYOUT --- */
+.brand-grid {
+    display: flex;
+    /* Allows items to scroll horizontally if they don't fit */
+    overflow-x: auto; 
+    /* Prevents the grid from wrapping onto multiple rows */
+    flex-wrap: nowrap; 
+    gap: 10px; /* Space between each image tile */
+    /* Hide scrollbar on some browsers, or style it if required */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    padding-bottom: 10px; /* Add space for a better look if a scrollbar appears */
+}
+
+.brand-grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+
+/* Individual Brand Item Sizing */
+.brand-item {
+    /* Set a fixed size for each item (1/8th of the max container width minus gap) */
+    /* If you want 8 items, set width to roughly 12.5% minus gap adjustment */
+    flex: 0 0 calc(12.5% - 9px); 
+    min-width: 120px; /* Ensure items don't get too small on wider screens */
+    position: relative; /* Essential for positioning the overlay */
+}
+
+/* Link Styling */
+.brand-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Image Wrapper and Square Aspect Ratio */
+.brand-image-wrapper {
+    width: 100%;
+    /* Creates a perfect square container */
+    aspect-ratio: 1 / 1; 
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.brand-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the square container */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect (Optional - makes the image slightly zoom in on hover) */
+.brand-image-wrapper:hover .brand-img {
+    transform: scale(1.05);
+}
+
+/* --- OVERLAY TEXT STYLING (The dark text on the image) --- */
+.brand-name-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff; /* White text */
+    background-color: rgba(0, 0, 0, 0.55); /* Semi-transparent dark background */
+    padding: 5px 10px;
+    font-size: 0.85em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+    z-index: 10;
+    pointer-events: none; /* Allows clicks to go through to the link */
+    white-space: nowrap; /* Prevents long names from wrapping */
+}
+
+/* --- OFFER TAG STYLING --- */
+.offer-tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #B4282D; /* Red/Maroon background */
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1100px) {
+    /* Switch to showing 6 items at once for tablets */
+    .brand-item {
+        flex: 0 0 calc(16.66% - 8.33px); /* 1/6th width */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Switch to showing 4 items at once for large mobiles/small tablets */
+    .brand-item {
+        flex: 0 0 calc(25% - 7.5px); /* 1/4th width */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Switch to showing 3 items at once for small mobiles */
+    .brand-item {
+        flex: 0 0 calc(33.33% - 6.66px); /* 1/3rd width */
+    }
+}
+
+    /* tiktok  */
+.tiktok-full-width-section {
+    width: 100%;
+    background-color: #f7f7f7;
+    padding: 50px 0; 
+}
+
+/* ... other container/layout styles ... */
+
+/* --- VIDEO GRID LAYOUT (The three videos in a row) --- */
+.video-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.video-item {
+    flex: 1 1 30%;
+    text-align: left;
+}
+
+.video-placeholder {
+    width: 100%;
+    /* --- KEY CHANGE HERE: SHORTER ASPECT RATIO --- */
+    /* 1 / 1.25 makes the height 1.25 times the width (a short portrait) */
+    /* Adjust '1.25' higher for taller videos, lower for shorter videos */
+    aspect-ratio: 1 / 1.25; 
+    margin-bottom: 10px;
+    /* Optional: Add a subtle border to mimic the image frames */
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.video-placeholder video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* Ensure the poster image also covers the container */
+    background-size: cover; 
+    background-position: center;
+}
+
+.container-full-width {
+    width: 100%;
+    padding: 0 40px; 
+    box-sizing: border-box; 
+    margin: 0 auto;
+}
+
+.tiktok-content-wrapper {
+    display: flex;
+    align-items: flex-start; 
+    gap: 30px; 
+}
+
+.tiktok-left-column {
+    flex: 0 0 350px; 
+    padding-top: 20px; 
+}
+
+.tiktok-right-column {
+    flex: 1; 
+}
+
+.tiktok-title {
+    font-size: 3em; 
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.tiktok-subtitle {
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+.video-tag, .video-title {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-tag {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.video-title {
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.shop-link {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+    display: inline-block;
+}
+
+.shop-link:hover {
+    color: #666;
+    border-color: #666;
+}
+
+@media (max-width: 992px) {
+    .tiktok-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tiktok-left-column {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        padding-top: 0;
+        margin-bottom: 30px;
+    }
+    .tiktok-header {
+        text-align: center;
+    }
+    .tiktok-right-column {
+        width: 100%;
+        max-width: 900px;
+    }
+    .video-grid {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .video-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .video-item {
+        max-width: 300px; 
+    }
+}
+
+    /* Desktop: push main nav below util bar */
+    @media (min-width: 861px){ .nav{ top:54px; } }

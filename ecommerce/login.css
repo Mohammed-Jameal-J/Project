@@ -1,0 +1,287 @@
+/* =========================================================================
+   SETUP & BASE STYLES
+   ========================================================================= */
+:root {
+    --login-primary-color: #2c3e50; /* Dark Blue-Gray */
+    --login-secondary-color: #f7f7f7; /* Light Gray for background */
+    --login-text-color-light: #ffffff;
+    --login-text-color-dark: #333333;
+    --login-button-color: #556c80;
+    --login-border-color: #e0e0e0;
+    --login-focus-color: #007bff;
+    --login-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+
+    /* Merchant Colors (Used for accents) */
+    --merchant-orange: #FF7F2A; 
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    display: flex;
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--login-secondary-color);
+}
+
+/* =========================================================================
+   CONTAINER AND LAYOUT
+   ========================================================================= */
+
+.login_container {
+    display: flex;
+    width: 100vw; 
+    height: 100vh;
+    min-height: 100vh; 
+    background: var(--login-text-color-light);
+    overflow: hidden;
+}
+
+/* =========================================================================
+   LEFT PANEL (PROMO) - NEW BG IMAGE & FULL WIDTH
+   ========================================================================= */
+
+.login_left-panel {
+    flex: 1; /* Takes up space on desktop */
+    /* NEW FULL WIDTH BACKGROUND IMAGE */
+    background-image: url('https://images.pexels.com/photos/7621356/pexels-photo-7621356.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    padding: 40px;
+    color: var(--login-text-color-light);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.login_left-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for better text readability */
+    z-index: 1;
+}
+
+.login_logo-group,
+.login_tagline,
+.login_welcome-text {
+    position: relative; 
+    z-index: 10;
+}
+
+.login_logo-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.login_logo {
+    width: 165px; 
+    height: 50px;
+    margin-right: 10px;
+    filter: brightness(1.2); /* Make the logo stand out */
+}
+
+.login_welcome-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+}
+
+.login_tagline {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+
+/* =========================================================================
+   RIGHT PANEL (FORM)
+   ========================================================================= */
+
+.login_right-panel {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center form vertically and horizontally */
+    padding: 20px;
+    color: var(--login-text-color-dark);
+    background-color: var(--login-text-color-light); /* White background for contrast */
+}
+
+.login_form-content {
+    width: 100%;
+    max-width: 650px; /* Kept max-width standard */
+    padding: 30px; 
+    border-radius: 8px;
+    /* Removed box-shadow here to match the Sign Up page's right panel style */
+    transition: opacity 0.3s ease;
+}
+
+.login_title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--login-primary-color);
+}
+
+.login_signup-text {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+/* FIX: Sign Up link style (Use orange accent) */
+.login_sign-up-link {
+    color: var(--merchant-orange); 
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login_sign-up-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Form Elements --- */
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login_input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--login-border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login_input:focus {
+    border-color: var(--login-focus-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.login_password-wrapper { 
+    position: relative; 
+    margin-bottom: 5px;
+}
+
+.login_password-field { 
+    padding-right: 40px; 
+}
+
+.login_toggle-password {
+    position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+    color: #999; cursor: pointer; font-size: 0.9rem;
+}
+
+.login_forgot-password-link {
+    font-size: 0.85rem;
+    color: var(--login-button-color);
+    text-decoration: none;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.login_forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+.login_button {
+    background-color: var(--login-button-color);
+    color: var(--login-text-color-light); border: none; padding: 12px 20px;
+    border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: background-color 0.2s; 
+    margin-top: 5px;
+}
+
+.login_button:hover { 
+    background-color: #3b4d60; 
+}
+
+.login_or-divider { 
+    text-align: center; margin: 25px 0 20px; font-size: 0.9rem; color: #999; position: relative; 
+}
+
+.login_or-divider::before, .login_or-divider::after {
+    content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: var(--login-border-color);
+}
+
+.login_or-divider::before { left: 0; }
+.login_or-divider::after { right: 0; }
+
+.login_social-login { 
+    display: flex; 
+    gap: 8px; 
+}
+
+.login_social-btn {
+    flex: 1; padding: 10px 5px; border-radius: 6px; border: 1px solid var(--login-border-color);
+    background-color: var(--login-text-color-light); font-size: 0.85rem; font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.login_social-btn:hover { 
+    background-color: var(--login-secondary-color); 
+}
+
+.login_google { color: #db4437; }
+.login_facebook { color: #4267b2; }
+.login_apple { color: #000; }
+
+/* =========================================================================
+   MEDIA QUERIES (Responsiveness)
+   ========================================================================= */
+
+@media (max-width: 800px) {
+    .login_container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .login_left-panel {
+        padding: 30px;
+        min-height: 200px;
+        justify-content: center;
+        text-align: center;
+        flex: none; /* Do not take full flex space on mobile */
+    }
+    
+    .login_logo-group { 
+        justify-content: center; 
+    }
+
+    .login_welcome-text { 
+        font-size: 1.8rem; 
+    }
+
+    .login_right-panel {
+        padding: 40px 20px; 
+        align-items: flex-start; /* Align to top on mobile */
+    }
+
+    .login_form-content { 
+        padding: 20px; 
+        max-width: 100%; 
+    }
+
+    .login_social-login { 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+}

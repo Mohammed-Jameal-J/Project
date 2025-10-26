@@ -1,0 +1,482 @@
+/* =========================================================================
+   SETUP & BASE STYLES
+   ========================================================================= */
+:root {
+    --signup-primary-color: #2c3e50; /* Dark Blue-Gray */
+    --signup-secondary-color: #f7f7f7; /* Light Gray for background */
+    --signup-text-color-light: #ffffff;
+    --signup-text-color-dark: #333333;
+    --signup-button-color: #556c80;
+    --signup-border-color: #e0e0e0;
+    --signup-focus-color: #007bff;
+    --signup-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+
+    /* NEW Modal & Merchant Colors */
+    --modal-accent-orange: #ff7f2a;
+    --modal-all-users-dark: #374759;
+    --merchant-orange: #FF7F2A; /* For the merchant button/accents */
+    --merchant-bg-light: #fff5ed; /* Light orange background for the merchant form */
+    --merchant-step-gray: #d3d3d3; 
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    display: flex;
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--signup-secondary-color);
+}
+
+/* =========================================================================
+   CONTAINER AND LAYOUT
+   ========================================================================= */
+
+.signup-container {
+    display: flex;
+    width: 100vw; 
+    height: 100vh;
+    min-height: 100vh; 
+    background: var(--signup-text-color-light);
+    border-radius: 0; 
+    overflow: hidden;
+    box-shadow: none;
+}
+
+/* =========================================================================
+   LEFT PANEL (PROMO) - (No changes)
+   ========================================================================= */
+
+.signup-left-panel {
+    flex: 2;
+    background-image: url('https://i.pinimg.com/736x/f2/8c/a4/f28ca4118a46e68b6871946e65ab5665.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    padding: 40px;
+    color: var(--signup-text-color-light);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.signup-left-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.25); 
+}
+
+.signup-logo-group,
+.signup-tagline {
+    position: relative; 
+    z-index: 10;
+}
+
+.signup-logo-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.signup-logo {
+    width: 165px; 
+    height: 50px;
+    margin-right: 10px;
+}
+
+.signup-join-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+}
+
+.signup-tagline {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+
+/* =========================================================================
+   RIGHT PANEL (FORM)
+   ========================================================================= */
+
+.signup-right-panel {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    /* align-items: center is default, set dynamically in JS for merchant form */
+    padding: 20px;
+    color: var(--signup-text-color-dark);
+    background-color: var(--merchant-bg-light); 
+    position: relative; 
+    
+    /* CHANGE: Allow vertical scrolling if content is taller than the panel */
+    overflow-y: auto; 
+}
+
+.signup-form-content {
+    width: 100%;
+    max-width: 650px;
+    padding: 30px; 
+    background: var(--signup-text-color-light);
+    border-radius: 8px;
+    box-shadow: var(--signup-box-shadow);
+    /* Ensures smooth transition when swapping forms */
+    transition: opacity 0.3s ease;
+    
+    /* Prevent shrinking/growing inside flex container */
+    flex-shrink: 0; 
+}
+
+.hidden-form {
+    display: none;
+}
+
+.signup-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--signup-primary-color);
+}
+
+.signup-login-text {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* FIX: Sign In link style */
+.signup-sign-in-link {
+    color: var(--merchant-orange); /* Changed to orange */
+    font-weight: 600;
+    text-decoration: none; /* Removed underline */
+}
+
+.signup-sign-in-link:hover {
+    text-decoration: underline; /* Add underline only on hover */
+}
+
+
+/* --- Form Elements (Standard) --- */
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/* ... (standard form input styles kept the same) ... */
+.signup-name-row { display: flex; gap: 15px; }
+.signup-name-row input { flex: 1; }
+.signup-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--signup-border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.signup-input:focus {
+    border-color: var(--signup-focus-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+.signup-date-input-wrapper, .signup-password-wrapper { position: relative; }
+.signup-calendar-icon, .signup-toggle-password {
+    position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+    color: #999; cursor: pointer; font-size: 0.9rem;
+}
+.signup-date-input-wrapper input[type="date"] { padding-right: 40px; }
+.signup-password-field { padding-right: 40px; }
+.signup-button {
+    background-color: var(--signup-button-color);
+    color: var(--signup-text-color-light); border: none; padding: 12px 20px;
+    border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: background-color 0.2s; margin-top: 5px;
+}
+.signup-button:hover { background-color: #3b4d60; }
+.signup-or-divider { text-align: center; margin: 20px 0; font-size: 0.9rem; color: #999; position: relative; }
+.signup-or-divider::before, .signup-or-divider::after {
+    content: ''; position: absolute; top: 50%; width: 40%; height: 1px; background: var(--signup-border-color);
+}
+.signup-or-divider::before { left: 0; }
+.signup-or-divider::after { right: 0; }
+.signup-social-login { display: flex; gap: 8px; }
+.signup-social-btn {
+    flex: 1; padding: 10px 5px; border-radius: 6px; border: 1px solid var(--signup-border-color);
+    background-color: var(--signup-text-color-light); font-size: 0.85rem; font-weight: 500;
+    transition: background-color 0.2s;
+}
+.signup-social-btn:hover { background-color: var(--signup-secondary-color); }
+.signup-google { color: #db4437; }
+.signup-facebook { color: #4267b2; }
+.signup-apple { color: #000; }
+
+/* =========================================================================
+   MERCHANT FORM STYLES (Pro Seller Registration)
+   ========================================================================= */
+
+.merchant-title {
+    color: var(--merchant-orange);
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.merchant-check-icon {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    font-size: 1.5rem;
+    color: #4CAF50; /* Green checkmark color */
+}
+
+/* --- Stepper Styles --- */
+.merchant-stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+
+.merchant-stepper .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.merchant-stepper .step-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--merchant-step-gray);
+    color: var(--signup-text-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid var(--merchant-step-gray);
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.merchant-stepper .step-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #999;
+    margin-top: 5px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* Line connecting steps */
+.merchant-stepper .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 0%;
+    transform: translateX(50%);
+    width: 100%;
+    height: 2px;
+    background-color: var(--merchant-step-gray);
+    z-index: 1;
+}
+
+.merchant-stepper .step.active .step-num {
+    background-color: var(--merchant-orange);
+    border-color: var(--merchant-orange);
+    color: var(--signup-text-color-light);
+}
+.merchant-stepper .step.active .step-label {
+    color: var(--merchant-orange);
+}
+
+/* Active line coloring logic remains the same */
+
+/* --- Step 1 Info Block --- */
+.merchant-step-info {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.merchant-icon {
+    font-size: 1.5rem;
+    color: var(--merchant-orange);
+    margin-bottom: 5px;
+}
+
+.merchant-subtitle-main {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--signup-primary-color);
+    margin-bottom: 2px;
+}
+
+.merchant-subtitle-details {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- Form Fields for Merchant --- */
+
+.step-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Reduced gap between label/input */
+}
+
+.hidden-step {
+    display: none;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--signup-primary-color);
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+/* Specific styling for the Merchant 'Continue' button - Already Orange */
+.merchant-button {
+    background-color: var(--merchant-orange);
+    margin-top: 20px;
+}
+
+.merchant-button:hover {
+    background-color: #e56c1d;
+}
+
+.back-button {
+    background-color: #999;
+    margin-top: 10px;
+}
+
+.back-button:hover {
+    background-color: #666;
+}
+
+/* =========================================================================
+   POPUP STYLES (CENTERED ON SCREEN)
+   ========================================================================= */
+
+.signup-modal-backdrop {
+    /* Fixed positioning to center over the entire viewport */
+    display: none; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1000; 
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-modal-content {
+    background: var(--signup-text-color-light);
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px; 
+    box-shadow: var(--signup-box-shadow);
+    text-align: center;
+    transform: scale(0.9);
+    opacity: 0;
+    animation: modal-fade-in 0.3s forwards;
+}
+
+@keyframes modal-fade-in {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+/* ... (modal content styles kept the same) ... */
+.signup-modal-header { display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+.signup-modal-icon { font-size: 1.5rem; color: var(--signup-primary-color); margin-right: 10px; }
+.signup-modal-title { font-size: 1.3rem; font-weight: 600; color: var(--signup-text-color-dark); margin: 0; }
+.signup-modal-subtitle { font-size: 0.9rem; color: #999; margin-bottom: 25px; }
+.signup-modal-options { display: flex; gap: 15px; margin-bottom: 20px; }
+.signup-modal-btn { flex: 1; padding: 15px 10px; border-radius: 6px; border: none; font-weight: 700; display: flex; flex-direction: column; text-align: center; cursor: pointer; transition: transform 0.2s; }
+.signup-modal-btn:hover { transform: scale(1.05); }
+.signup-btn-main-text { font-size: 0.9rem; margin-bottom: 5px; }
+.signup-btn-sub-text { font-size: 0.75rem; font-weight: 400; line-height: 1.2; opacity: 0.9; }
+.signup-all-users { background-color: var(--modal-all-users-dark); color: var(--signup-text-color-light); border: 1px solid var(--modal-all-users-dark); }
+.signup-merchant { background-color: var(--modal-accent-orange); color: var(--signup-text-color-light); border: 1px solid var(--modal-accent-orange); }
+.signup-modal-continue { font-size: 0.9rem; color: var(--signup-primary-color); text-decoration: none; font-weight: 600; }
+.signup-modal-continue:hover { text-decoration: underline; }
+
+
+/* =========================================================================
+   MEDIA QUERIES (Responsiveness)
+   ========================================================================= */
+
+@media (max-width: 800px) {
+    .signup-container {
+        flex-direction: column;
+        width: 100vw; 
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    .signup-right-panel {
+        padding: 40px 20px; 
+        align-items: flex-start !important; /* Always start aligned on mobile */
+    }
+
+    .signup-left-panel {
+        padding: 30px;
+        min-height: 200px;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .signup-logo-group { justify-content: center; }
+
+    .signup-join-text { font-size: 1.8rem; }
+
+    .signup-form-content { padding: 20px; max-width: 100%; }
+
+    .signup-social-login { flex-direction: column; gap: 10px; }
+    .signup-name-row { flex-direction: column; gap: 15px; }
+
+    /* Modal takes full screen on mobile, now correctly fixed */
+    .signup-modal-backdrop {
+        width: 100vw; 
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9); 
+    }
+    
+    .merchant-stepper .step-label {
+        display: none; /* Hide labels on small screens to save space */
+    }
+    
+    .merchant-stepper .step:not(:last-child)::after {
+        top: 14px;
+        width: 90%;
+    }
+    
+    .merchant-check-icon {
+        top: 20px;
+        right: 20px;
+    }
+}

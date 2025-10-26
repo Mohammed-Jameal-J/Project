@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Foremade</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="login_container">
+        <div class="login_left-panel">
+            <div class="login_logo-group">
+                
+                <h1 class="login_welcome-text">Welcome</h1>
+                <img src="https://foremade.com/assets/logi-DGW4y32z.png" alt="Foremade Logo" class="login_logo">
+            </div>
+            <p class="login_tagline">Join our community for buyers and sellers!</p>
+        </div>
+
+        <div class="login_right-panel">
+            <div class="login_form-content">
+                <h2 class="login_title">Sign In</h2>
+                <p class="login_signup-text">Don't have an account? <a href="signup.html" class="login_sign-up-link">Sign Up</a></p>
+
+                <form class="login_form">
+                    <input type="email" placeholder="Email" class="login_input login_full-width" required>
+                    
+                    <div class="login_password-wrapper">
+                        <input type="password" placeholder="Password" class="login_input login_full-width login_password-field" required>
+                        <i class="fas fa-eye login_toggle-password"></i>
+                    </div>
+                    
+                    <a href="#" class="login_forgot-password-link">Forgot Password?</a>
+
+                    <button type="submit" class="login_button">Sign In</button>
+                </form>
+
+                <p class="login_or-divider">Or continue with</p>
+
+                <div class="login_social-login">
+                    <button class="login_social-btn login_google">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button class="login_social-btn login_facebook">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                    <button class="login_social-btn login_apple">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to toggle password visibility
+        document.querySelector('.login_right-panel').addEventListener('click', function(e) {
+            if (e.target.classList.contains('login_toggle-password')) {
+                const passwordField = document.querySelector('.login_password-field');
+                const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordField.setAttribute('type', type);
+                e.target.classList.toggle('fa-eye');
+                e.target.classList.toggle('fa-eye-slash');
+            }
+        });
+    </script>
+</body>
+</html>
