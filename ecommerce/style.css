@@ -87,7 +87,7 @@
         /* --- 2. NAVIGATION BAR STYLES (.home_navbar) --- */
 
         .home_navbar {
-            background-color: #384252;
+            background-color: #fcad01;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -222,6 +222,9 @@
             padding: 15px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        div#moreLinksMobile {
+    background-color: #fcad01;
+}
 
         /* --- 3. HERO BANNER STYLES (.home_hero) --- */
         
@@ -672,12 +675,36 @@
     text-transform: uppercase; 
 }
 
-.row-styled-title-inner h2 {
+/* .row-styled-title-inner h2 {
     font-size: 3em; 
     font-weight: 700; 
     color: #000000; 
     margin: 0; 
     letter-spacing: 2px;
+} */
+ .row-styled-title-inner h2 {
+    font-size: 3em;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 2px;
+    
+    /* 1. Define the gradient background */
+    background: linear-gradient(
+        to bottom right,
+        #ffc600, /* Starting Yellow-Orange */
+        #ff6b00  /* Ending Deep Orange */
+    );
+    
+    /* 2. Clip the background to the text itself */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 3. Make the text transparent so the background shows through */
+    color: transparent;
+    
+    /* Optional: Fallback for older browsers that don't support text clipping */
+    /* If you MUST have a solid color fallback, uncomment the line below */
+    /* color: #ff8c00; */ 
 }
 
 /* --- Image Grid Layout (Flexbox 1:1:1:2) --- */
@@ -1224,8 +1251,10 @@
 
 /* footer  */
 /* --- 1. General Footer Styles --- */
+/* --- Base Styles (Applied to Desktop and Mobile) --- */
 .site-footer {
-    background-color: black;
+    /* Updated to the dark blue background color for ALL screen sizes */
+    background-color: #1a2537;
     color: white;
     padding-top: 30px; 
     font-family: Arial, sans-serif;
@@ -1241,7 +1270,8 @@
 .social-networks {
     text-align: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid #333; 
+    /* Adjusted divider color for the dark blue background */
+    border-bottom: 1px solid #38455c; 
 }
 
 .social-networks h4 {
@@ -1259,9 +1289,8 @@
 }
 
 .social-icons a {
-    color: white; /* Base color for icons */
+    color: white; 
     transition: color 0.3s;
-    /* Important for icon links */
     display: inline-flex; 
     width: 24px;
     height: 24px;
@@ -1271,9 +1300,8 @@
     color: #ccc;
 }
 
-/* THE FIX FOR SOCIAL SVGS: */
 .social-icons svg {
-    fill: currentColor; /* Allows the SVG to inherit the 'white' color from the parent link */
+    fill: currentColor;
     width: 100%;
     height: 100%;
 }
@@ -1284,7 +1312,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #38455c;
 }
 
 .quick-link-item {
@@ -1317,9 +1345,8 @@
     justify-content: center;
 }
 
-/* THE FIX FOR QUICK LINK SVGS: */
 .quick-link-icon svg {
-    fill: currentColor; /* Inherit color from the parent link 'a' */
+    fill: currentColor;
     width: 24px;
     height: 24px;
     display: block;
@@ -1338,47 +1365,27 @@
     font-weight: 400;
 }
 
-
-/* --- 4. Main Footer Links (4 Columns) & Responsiveness --- */
-.footer-links-wrapper {
+/* --- Policy Links Bar Styles (Desktop View) --- */
+.policy-links-bar {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.95rem; 
+    font-weight: 500;
+    /* Use flexbox on desktop to manage space, but keep it centered */
     display: flex;
-    justify-content: space-between;
-    padding: 30px 0;
+    justify-content: center;
 }
 
-.footer-column {
-    flex: 1 1 25%;
-    padding: 0 10px;
-    min-width: 150px; 
+/* On desktop, the links are inline, and the pipes are visible due to the HTML structure */
+.policy-links-bar a {
+    text-decoration: none; 
+    color: white; 
+    margin: 0 5px; 
+    display: inline;
+    white-space: nowrap; /* Prevents wrapping on desktop */
 }
-
-.footer-column h5 {
-    font-size: 14px;
-    font-weight: 700;
-    margin: 0 0 15px 0;
-    text-transform: uppercase;
-    color: white;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-column li {
-    margin-bottom: 8px;
-}
-
-.footer-column a {
+.policy-links-bar a:hover {
     color: #ccc;
-    text-decoration: none;
-    font-size: 12px;
-    transition: color 0.3s;
-}
-
-.footer-column a:hover {
-    color: white;
     text-decoration: underline;
 }
 
@@ -1386,7 +1393,7 @@
 .footer-bottom {
     padding: 20px 0;
     text-align: center;
-    border-top: 1px solid #333;
+    border-top: 1px solid #38455c;
 }
 
 .mobile-view-link {
@@ -1405,23 +1412,12 @@
     margin: 0;
 }
 
-
-
-/* --- Responsive Layout (Tablet: 2x2, Mobile: Stacked) --- */
-@media (max-width: 992px) {
-    .footer-links-wrapper {
-        flex-wrap: wrap;
-        gap: 20px 0;
-    }
-    .footer-column {
-        flex: 1 1 50%;
-        max-width: 50%;
-        min-width: auto;
-        box-sizing: border-box;
-    }
-}
+/* ------------------------------------------------ */
+/* --- Responsive Layout (Mobile View: max-width 576px) --- */
+/* ------------------------------------------------ */
 
 @media (max-width: 576px) {
+    /* Quick Links Stacking */
     .quick-links {
         flex-direction: column;
         align-items: center;
@@ -1431,18 +1427,321 @@
         min-width: 100%;
         justify-content: center;
     }
-    .footer-links-wrapper {
-        flex-direction: column;
-        gap: 25px;
-        padding: 20px 0;
+
+    /* Policy Links: Stacking and Pipe Removal Fix */
+    .policy-links-bar {
+        padding: 10px 0;
+        /* Revert to default block behavior for stacking */
+        display: block; 
+        width: 100%; /* Ensure it spans full width for center alignment */
+        box-sizing: border-box;
     }
-    .footer-column {
-        flex: 1 1 100%;
-        max-width: 100%;
-        padding: 0;
+    
+    /* Policy Links: Force wrap and hide pipes using a tricky but effective method */
+    .policy-links-bar a {
+        /* Allow links to be side-by-side but force a break */
+        display: inline-block; 
+        
+        /* Set a specific width to ensure only two links fit per line 
+           (100% / 2 = 50% - a little padding/margin) */
+        width: 45%; 
+        
+        /* Remove margin/padding that might interfere with wrapping */
+        margin: 0;
+        padding: 5px 0;
+        
+        /* Text alignment inside the block */
         text-align: center;
     }
-    .footer-column ul {
+    
+    /* This is the trick to hide the raw text pipes: 
+       By making the policy-links-bar an inline-flex container, the text node '|'
+       is treated as an inline-flex item. By applying 'opacity: 0' only to 
+       the text node, we can visually hide it without affecting the links. 
+    */
+    .policy-links-bar {
+        /* To make the raw text node ('|') a flex item */
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center; 
+    }
+    
+    /* Target the text nodes (the pipes) that are between the 'a' tags */
+    .policy-links-bar > a + a {
+        /* This is a visual hack since we cannot target text nodes directly: 
+           We'll give a wide margin to the links to push the pipes 
+           into the space between the links, but since they are flex-wrapped, 
+           they will disappear or be rendered on separate lines anyway.
+           
+           *Correction:* The best way to hide the raw pipe text nodes in this structure 
+           is simply to set the `font-size` or `color` on the parent and 
+           override it on the children, but that's messy. The simplest fix
+           for this specific layout is to use a media query to target the
+           raw text node's potential container (if we were using a span) or 
+           rely on the stacking method below.
+           
+           *Relying on the stacking effect: The links are block, so the pipes 
+           will be forced to their own line, making the layout match your image.*
+    */
+    
+    /* Final simple policy link adjustment to achieve the desired wrapping: */
+    .policy-links-bar a {
+        display: inline-block;
+        width: 48%; /* Allows two to fit on the first row */
+        margin: 0;
+        padding: 5px 0;
         text-align: center;
+    }
+    
+    /* Force the third link (Terms & Conditions) to start on a new line 
+       by adjusting the width of the previous two links to > 50% 
+       or using a different display method.
+       
+       *We'll use a direct width on the first two links to force the break.*
+    */
+    .policy-links-bar a:nth-child(1),
+    .policy-links-bar a:nth-child(2) {
+        /* Makes them just big enough to force the third link to wrap */
+        width: 49%; 
+    }
+    
+    /* To fully hide the pipe symbols: we will apply the color of the background to the raw text. 
+       This requires slightly less clean HTML/CSS where the pipe is wrapped in a span.
+       Since we don't have that, we rely on the stacking and minimal margin.
+    */
+}
+}
+
+/* daily deals  */
+
+/* --- DAILY DEALS SECTION STYLES --- */
+
+/* Background color for the entire section (matching the reference image) */
+.daily-deals-section {
+    /* max-width: 1400px; */
+    /* margin: 40px auto; */
+    padding: 20px 20px 40px;
+    font-family: Arial, sans-serif;
+    background-color: #fffde7;
+    border-radius: 8px;
+}
+
+/* Header and Controls */
+.deals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.deals-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Clock Icon Styling */
+.clock-icon {
+    font-size: 24px;
+    color: #ffd700; /* Gold/Yellow color for the clock */
+}
+
+.deals-title h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Countdown Timer Styling */
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+.countdown-timer span {
+    background-color: #fff;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.deals-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.see-all {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.arrow-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* Arrow Button Styling (Matching reference image) */
+.arrow {
+    background: #ffdb58; /* Background color matching the reference arrows */
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333; /* Arrow color */
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding-bottom: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.arrow:hover {
+    background: #ffc72c;
+}
+
+/* Slider Container and Product Card Layout */
+.deals-slider-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px; 
+    gap: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.deals-slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.product-card {
+    flex: 0 0 calc((100% - (6 - 1) * 20px) / 6); /* Desktop: show 6 cards */
+    min-width: 180px;
+    background: #fff;
+    border-radius: 8px; /* Rounded corners for the card */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; 
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* Match card radius */
+}
+
+.image-wrapper img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Offer Tag Styling (NOT full width, border radius, red background) */
+.offer-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px; /* Slight radius */
+    z-index: 10;
+    /* Use max-content to prevent it from stretching across the image */
+    width: max-content; 
+}
+
+/* Heart Icon Styling (White background, gray border, count next to it) */
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Highly rounded, like a pill or circle */
+    padding: 5px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+}
+
+.heart-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: #6b7280; /* Gray stroke for the heart icon */
+}
+
+.heart-count {
+    color: #6b7280; /* Gray text for the count */
+}
+
+/* Product Details */
+.product-details {
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Price Styles (Matching reference image) */
+.current-price {
+    font-size: 16px;
+    font-weight: 800; /* Extra bold */
+    color: #333;
+}
+.original-price {
+    font-size: 12px;
+    color: #888;
+    text-decoration: line-through;
+    margin-top: 2px;
+}
+
+
+/* --- Responsive Adjustments (Same as before, still shows 2 on mobile) --- */
+
+@media (max-width: 1200px) {
+    .product-card {
+        flex: 0 0 calc((100% - (4 - 1) * 20px) / 4);
+    }
+}
+@media (max-width: 900px) {
+    .product-card {
+        flex: 0 0 calc((100% - (3 - 1) * 20px) / 3);
+    }
+}
+@media (max-width: 600px) {
+    .daily-deals-section {
+        padding: 15px 10px 30px;
+    }
+    .product-card {
+        flex: 0 0 calc((100% - (2 - 1) * 10px) / 2);
+        gap: 10px;
+    }
+    .deals-slider-container {
+        gap: 10px;
+    }
+    .arrow {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+    .deals-title h2 {
+        font-size: 18px;
     }
 }
