@@ -2029,4 +2029,10 @@ body {
         flex-basis: 45%; /* Allow a bit more space */
         margin-bottom: 10px;
     }
+    .deals-controls {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 }
