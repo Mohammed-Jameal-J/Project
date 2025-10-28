@@ -1,5 +1,10 @@
 
         /* --- FULL CSS FOR VERTICAL LEFT-SLIDING DRAWER --- */
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* Import Boxicons for the requested icons */
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'); 
+/* Import Font Awesome for the product status icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
         /* --- GLOBAL RESET & UTILITIES --- */
         body {
@@ -1604,10 +1609,31 @@
     padding-bottom: 2px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
+.arrow-tabs {
+    background: rgb(229 231 235); /* Background color matching the reference arrows */
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333; /* Arrow color */
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding-bottom: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 .arrow:hover {
     background: #ffc72c;
 }
-
+.arrow-tabs:hover {
+    background: #000000;
+    color: #fbad02;
+}
 /* Slider Container and Product Card Layout */
 .deals-slider-container {
     display: flex;
@@ -1741,13 +1767,17 @@
         height: 24px;
         font-size: 14px;
     }
+    .arrow-tabs {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
     .deals-title h2 {
         font-size: 18px;
     }
 }
- /* tabs  */
 
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 
 :root {
     --primary-color: #007bff;
@@ -1757,10 +1787,12 @@
     --white: #fff;
     --green-check: #28a745;
     --red-alert: #dc3545;
-    --product-card-width: 250px; /* Base width for a product card */
+    /* Base width for a product card - used for flex calculation */
+    --product-card-width: 250px; 
+    --grid-gap: 25px; 
 }
 
-/* --- General Styles (Same as before) --- */
+/* --- General Styles --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -1788,12 +1820,13 @@ body {
     font-weight: 600;
 }
 
+/* --- TAB NAVIGATION STYLES (Desktop Default: Text Only) --- */
 .tabs-navigation {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Keep them on one line by default */
 }
 
 .tab-button {
@@ -1806,17 +1839,26 @@ body {
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+/* DESKTOP DEFAULT: Show Text, Hide Icon */
+.tab-button .tab-icon-wrapper,
+.view-all .tab-icon-wrapper {
+    display: none; 
+}
+.tab-button .tab-text,
+.view-all .tab-text {
+    display: inline;
 }
 
 .tab-button.active {
-    /* color: var(--primary-color); */
     letter-spacing: 2px;
-    background: linear-gradient(to bottom right, #ffc600, /* Starting Yellow-Orange */ #ff6b00 /* Ending Deep Orange */);
+    background: linear-gradient(to bottom right, #ffc600, #ff6b00);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
-
 .tab-button.active::after {
     content: '';
     position: absolute;
@@ -1834,42 +1876,34 @@ body {
     font-weight: 500;
 }
 
+/* --- CAROUSEL AND PRODUCT CARD STYLES --- */
 .tabs-content {
     margin-top: 20px;
-    /* This creates the viewing window for the carousel */
     overflow: hidden; 
     position: relative;
 }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
 
-.tab-pane {
-    display: none;
-}
-
-.tab-pane.active {
-    display: block;
-}
-
-/* --- Carousel Specific Styles --- */
 .products-carousel-wrapper {
-    /* Ensures the grid starts outside the viewing window for the carousel */
     width: 100%;
     overflow-x: hidden;
+    margin: 0 auto;
 }
 
 .products-grid {
-    /* Use flexbox for horizontal layout */
     display: flex;
-    gap: 25px;
-    /* Prevent wrapping */
+    gap: var(--grid-gap);
     flex-wrap: nowrap; 
-    /* Smooth transition for scrolling */
     transition: transform 0.5s ease-in-out;
-    padding-bottom: 10px; /* Space for box shadows */
+    padding-bottom: 10px; 
 }
 
-/* .product-card {
-    
-    flex: 0 0 var(--product-card-width); 
+/* PRODUCT CARD FIX: Calculate based on the number of items per view, using the defined gap */
+/* Desktop Default: Assuming 6 items fit in the view */
+.product-card {
+    flex: 0 0 calc((100% - (5 * var(--grid-gap))) / 6); /* 6 cards with 5 gaps */
+    min-width: 160px;
     background-color: var(--white);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -1878,14 +1912,13 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     padding-bottom: 15px;
-} */
-
+}
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
+/* ... (Product detail styles) ... */
 
-/* --- Product Image and Details (Same as before, using tabs_heart) --- */
 .product-image-wrapper {
     position: relative;
     width: 100%;
@@ -1902,155 +1935,98 @@ body {
     height: 100%;
     object-fit: cover;
 }
+/* ... (rest of card styling) ... */
 
-/* .heart-icon.tabs_heart {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    width: 46px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 0.9em;
-    color: #888;
-    transition: background-color 0.2s ease;
-} */
-
-/* .heart-icon.tabs_heart:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.heart-icon.tabs_heart i {
-    color: #888;
-} */
-
-.product-details {
-    padding: 15px;
-}
-
-.product-details h3 {
-    font-size: 1.1em;
-    margin: 0 0 10px 0;
-    height: 2.8em; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; 
-    -webkit-box-orient: vertical;
-}
-
-.product-details .price {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-top: 10px;
-    margin-bottom: 0;
-    display: flex;
-}
-
-.options-row {
-    display: flex;
-    margin-top: 13px;
-    text-align: left;
-}
-
-
-
-.product-status {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #555;
-}
-/* ... (Options row and specific option colors remain the same) ... */
-
-/* --- Arrows (using tabs_arrow) --- */
+/* --- ARROWS (Same as before) --- */
 .pagination-arrows.tabs_arrow {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    /* max-width: 1200px; */
     margin: 30px auto 0;
     padding: 0 20px;
     box-sizing: border-box;
+        gap: 10px
+}
+.options-row {
+    display: flex
+;
 }
 
-.arrow {
-    background-color: var(--light-grey);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: #555;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-right: 10px;
-}
 
-.arrow:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-color: var(--primary-color);
-}
+/* ... (Arrow styles remain the same) ... */
 
-.arrow:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background-color: var(--light-grey);
-    color: #888;
-    border-color: var(--border-color);
-}
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 1200px) {
-    /* On smaller desktops/laptops, reduce product width slightly */
-    :root {
-        --product-card-width: 230px;
-    }
-}
+/* --- RESPONSIVE ADJUSTMENTS: ICON SWITCH HAPPENS HERE --- */
 
+/* Tablet/Medium Screens: Stays close to desktop view for products */
 @media (max-width: 992px) {
-    /* For tablets, reduce product width further */
-    :root {
-        --product-card-width: 220px;
+    .product-card {
+        flex: 0 0 calc((100% - (4 * var(--grid-gap))) / 5); /* Adjust to fit 5 cards */
     }
 }
 
+/* --- MOBILE VIEW (Max-width 768px): ICON-ONLY, 4 cards per view --- */
 @media (max-width: 768px) {
-    /* Tablet Portrait/Large Phone */
-    :root {
-        --product-card-width: 180px; /* Allows 4-5 items if screen is wide enough */
-    }
-    .products-grid {
-        gap: 15px;
-    }
-    .pagination-arrows.tabs_arrow {
-        justify-content: center;
+    .container-tabs {
         padding: 0 10px;
+    }
+    
+    /* 1. TAB NAVIGATION: ICON-ONLY ROW FIX */
+    .tabs-navigation {
+        justify-content: space-between; /* Spread out the tabs */
+        padding: 0 5px;
+        gap: 5px; /* Reduced gap */
+        flex-wrap: nowrap; /* CRITICAL: Prevent wrapping */
+        flex-direction: row; /* CRITICAL: Ensure horizontal layout */
+    }
+
+    /* HIDE TEXT, SHOW ICONS */
+    .tab-button .tab-text, 
+    .view-all .tab-text {
+        display: none !important;
+    }
+    .tab-button .tab-icon-wrapper, 
+    .view-all .tab-icon-wrapper {
+        display: flex !important; /* Show icons */
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        font-size: 25px
+    }
+    .tab-button, .view-all {
+        flex: 1 1 auto; /* Allow flexibility to fill space */
+        padding: 10px 5px;
+    }
+    .tab-button.active::after {
+        content: none; /* Remove underline */
+    }
+    
+    /* 2. PRODUCT GRID: Enforce 4 cards per view */
+    .products-grid {
+        gap: 15px; 
+    }
+    .product-card {
+        /* Calculate for 4 items with 3 gaps */
+        flex: 0 0 calc((100% - (3 * 15px)) / 4); 
     }
 }
 
 @media (max-width: 480px) {
-    /* Mobile Phones */
-    :root {
-        --product-card-width: 280px; /* Single column view, but constrained width */
+    /* Extra Small Mobile: Enforce 2 cards per view */
+    .products-grid {
+        gap: 10px; 
+    }
+    .product-card {
+        /* Calculate for 2 items with 1 gap */
+        flex: 0 0 calc((100% - 10px) / 2); 
     }
     .tabs-navigation {
-        flex-direction: column;
-        align-items: center;
+        /* Allow wrapping if necessary, but it should still favor a single row */
+        /* flex-wrap: wrap; */
+        justify-content: space-around;
     }
     .tab-button, .view-all {
-        width: 80%;
-        max-width: 250px;
-        margin-bottom: 5px;
+        flex-basis: 45%; /* Allow a bit more space */
+        margin-bottom: 10px;
     }
 }
