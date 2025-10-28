@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - ForeMade</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./css/software_sell.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="dashboard_sell_container">
+        
+        <aside class="dashboard_sell_sidebar">
+            
+            <div class="dashboard_sell_logo">
+                <a href="index.html">
+                    <img src="https://foremade.com/assets/logi-DGW4y32z.png" alt="ForeMade Logo" class="sidebar-logo-img">
+                </a>
+                <p>Welcome back, User</p>
+            </div>
+            
+            <div class="dashboard_sell_search">
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Search menu..." class="dashboard_sell_search_input">
+            </div>
+
+            <nav class="dashboard_sell_nav">
+                <ul class="dashboard_sell_menu">
+                    <li class="dashboard_sell_menu_item active">
+                        <a href="#"><i class="bx bxs-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li class="dashboard_sell_heading">ORDER MANAGEMENT</li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-receipt"></i> Orders</a>
+                    </li>
+                    <li class="dashboard_sell_heading">PRODUCT MANAGEMENT</li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-list-ul"></i> Products List</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-image-add"></i> Products Gallery</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-cloud-upload"></i> Upload Products</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-trending-up"></i> Product Bump</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-line-chart"></i> Pro Analytics</a>
+                    </li>
+                    <li class="dashboard_sell_heading">REGISTERING WITH US</li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-user-check"></i> Pro Seller</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-star"></i> Standard Seller</a>
+                    </li>
+                    <li class="dashboard_sell_heading">YOUR WALLET</li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-transfer-alt"></i> Transactions</a>
+                    </li>
+                    <li class="dashboard_sell_menu_item">
+                        <a href="#"><i class="bx bx-message-dots"></i> Chat</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="dashboard_sell_main">
+            <header class="dashboard_sell_header">
+                <div class="dashboard_sell_welcome">
+                    <h2>Welcome back, User</h2>
+                    <p>Here's a snapshot of your store's performance.</p>
+                </div>
+                <div class="dashboard_sell_profile">
+                    <img src="https://i.pinimg.com/originals/97/16/5e/97165e191052892894cb886b4a8c0971.gif" alt="Profile Picture" class="dashboard_sell_profile_img">
+                </div>
+            </header>
+
+            <section class="dashboard_sell_actions">
+                <button class="dashboard_sell_btn dashboard_sell_add">
+                    <i class="bx bx-plus"></i> Add Product
+                </button>
+                <button class="dashboard_sell_btn dashboard_sell_view">
+                    <i class="bx bx-file"></i> View Orders
+                </button>
+                <button class="dashboard_sell_btn dashboard_sell_withdraw">
+                    <i class="bx bx-dollar-circle"></i> Withdraw Funds
+                </button>
+            </section>
+
+            <section class="dashboard_sell_stats">
+                <div class="dashboard_sell_stat_card">
+                    <div class="dashboard_sell_stat_info">
+                        <p class="dashboard_sell_stat_title">Total Products</p>
+                        <p class="dashboard_sell_stat_value" data-total="0">0</p>
+                    </div>
+                    <i class="bx bx-box dashboard_sell_stat_icon"></i>
+                </div>
+
+                <div class="dashboard_sell_stat_card green">
+                    <div class="dashboard_sell_stat_info">
+                        <p class="dashboard_sell_stat_title">Approved Products</p>
+                        <p class="dashboard_sell_stat_value" data-approved="0">0</p>
+                    </div>
+                    <i class="fas fa-check-circle dashboard_sell_stat_icon"></i>
+                </div>
+
+                <div class="dashboard_sell_stat_card red">
+                    <div class="dashboard_sell_stat_info">
+                        <p class="dashboard_sell_stat_title">Rejected Products</p>
+                        <p class="dashboard_sell_stat_value" data-rejected="0">0</p>
+                    </div>
+                    <i class="fas fa-times-circle dashboard_sell_stat_icon"></i>
+                </div>
+            </section>
+            
+            <section class="dashboard_sell_analytics_row">
+                <div class="dashboard_sell_card dashboard_sell_product_analytics">
+                    <div class="dashboard_sell_card_header">
+                        <i class="bx bx-bar-chart-alt-2"></i>
+                        <h3>Product Analytics</h3>
+                    </div>
+                    <div class="dashboard_sell_chart_area">
+                        <canvas id="productAnalyticsChart" role="img" height="250" width="500"></canvas>
+                    </div>
+                </div>
+
+                <div class="dashboard_sell_card dashboard_sell_product_status">
+                    <div class="dashboard_sell_card_header">
+                        <i class="bx bx-time"></i>
+                        <h3>Product Status</h3>
+                    </div>
+                    <div class="dashboard_sell_status_list">
+                        <div class="status_item"><span class="status_indicator blue"></span> Approved Products</div>
+                        <div class="status_item"><span class="status_indicator red"></span> Rejected Products</div>
+                        <div class="status_item"><span class="status_indicator green-check"></span> Pending Products</div>
+                    </div>
+                    <div class="dashboard_sell_chart_area_small">
+                        <canvas id="productStatusChart" role="img" height="250" width="250"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard_sell_footer_actions">
+                <button class="dashboard_sell_btn dashboard_sell_analytics_btn">
+                    See More Analytics
+                </button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="./js/software_sell.js"></script>
+</body>
+</html>
