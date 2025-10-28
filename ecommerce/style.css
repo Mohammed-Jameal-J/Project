@@ -1745,3 +1745,312 @@
         font-size: 18px;
     }
 }
+ /* tabs  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #007bff;
+    --text-color: #333;
+    --light-grey: #f8f9fa;
+    --border-color: #ddd;
+    --white: #fff;
+    --green-check: #28a745;
+    --red-alert: #dc3545;
+    --product-card-width: 250px; /* Base width for a product card */
+}
+
+/* --- General Styles (Same as before) --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--light-grey);
+    color: var(--text-color);
+}
+
+.container-tabs {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.home_tabs {
+    padding: 40px 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.home_tabs h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.tabs-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.tab-button.active {
+    /* color: var(--primary-color); */
+    letter-spacing: 2px;
+    background: linear-gradient(to bottom right, #ffc600, /* Starting Yellow-Orange */ #ff6b00 /* Ending Deep Orange */);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.tab-button.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 2px;
+    background-color: black;
+}
+
+.view-all {
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+.tabs-content {
+    margin-top: 20px;
+    /* This creates the viewing window for the carousel */
+    overflow: hidden; 
+    position: relative;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* --- Carousel Specific Styles --- */
+.products-carousel-wrapper {
+    /* Ensures the grid starts outside the viewing window for the carousel */
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.products-grid {
+    /* Use flexbox for horizontal layout */
+    display: flex;
+    gap: 25px;
+    /* Prevent wrapping */
+    flex-wrap: nowrap; 
+    /* Smooth transition for scrolling */
+    transition: transform 0.5s ease-in-out;
+    padding-bottom: 10px; /* Space for box shadows */
+}
+
+/* .product-card {
+    
+    flex: 0 0 var(--product-card-width); 
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    padding-bottom: 15px;
+} */
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Product Image and Details (Same as before, using tabs_heart) --- */
+.product-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; 
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* .heart-icon.tabs_heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 46px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #888;
+    transition: background-color 0.2s ease;
+} */
+
+/* .heart-icon.tabs_heart:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.heart-icon.tabs_heart i {
+    color: #888;
+} */
+
+.product-details {
+    padding: 15px;
+}
+
+.product-details h3 {
+    font-size: 1.1em;
+    margin: 0 0 10px 0;
+    height: 2.8em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+
+.product-details .price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 10px;
+    margin-bottom: 0;
+    display: flex;
+}
+
+.options-row {
+    display: flex;
+    margin-top: 13px;
+    text-align: left;
+}
+
+
+
+.product-status {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+/* ... (Options row and specific option colors remain the same) ... */
+
+/* --- Arrows (using tabs_arrow) --- */
+.pagination-arrows.tabs_arrow {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 30px auto 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.arrow {
+    background-color: var(--light-grey);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-right: 10px;
+}
+
+.arrow:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--light-grey);
+    color: #888;
+    border-color: var(--border-color);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    /* On smaller desktops/laptops, reduce product width slightly */
+    :root {
+        --product-card-width: 230px;
+    }
+}
+
+@media (max-width: 992px) {
+    /* For tablets, reduce product width further */
+    :root {
+        --product-card-width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Tablet Portrait/Large Phone */
+    :root {
+        --product-card-width: 180px; /* Allows 4-5 items if screen is wide enough */
+    }
+    .products-grid {
+        gap: 15px;
+    }
+    .pagination-arrows.tabs_arrow {
+        justify-content: center;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Mobile Phones */
+    :root {
+        --product-card-width: 280px; /* Single column view, but constrained width */
+    }
+    .tabs-navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tab-button, .view-all {
+        width: 80%;
+        max-width: 250px;
+        margin-bottom: 5px;
+    }
+}
