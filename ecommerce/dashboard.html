@@ -8,154 +8,726 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./css/software_sell.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
-    <div class="dashboard_sell_container">
-        
-        <aside class="dashboard_sell_sidebar">
+    <div class="software_container">
+        <div class="software_sidebar">
+            <div class="software_logo">
+    <a href="index.html">
+        <img src="https://foremade.com/assets/logi-DGW4y32z.png" alt="Foremade Logo">
+    </a>
+</div>
             
-            <div class="dashboard_sell_logo">
-                <a href="index.html">
-                    <img src="https://foremade.com/assets/logi-DGW4y32z.png" alt="ForeMade Logo" class="sidebar-logo-img">
-                </a>
-                <p>Welcome back, User</p>
-            </div>
-            
-            <div class="dashboard_sell_search">
-                <i class="bx bx-search"></i>
-                <input type="text" placeholder="Search menu..." class="dashboard_sell_search_input">
+            <div class="software_search-box">
+                <input type="text" placeholder="Search menu...">
             </div>
 
-            <nav class="dashboard_sell_nav">
-                <ul class="dashboard_sell_menu">
-                    <li class="dashboard_sell_menu_item active">
-                        <a href="#"><i class="bx bxs-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li class="dashboard_sell_heading">ORDER MANAGEMENT</li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-receipt"></i> Orders</a>
-                    </li>
-                    <li class="dashboard_sell_heading">PRODUCT MANAGEMENT</li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-list-ul"></i> Products List</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-image-add"></i> Products Gallery</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-cloud-upload"></i> Upload Products</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-trending-up"></i> Product Bump</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-line-chart"></i> Pro Analytics</a>
-                    </li>
-                    <li class="dashboard_sell_heading">REGISTERING WITH US</li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-user-check"></i> Pro Seller</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-star"></i> Standard Seller</a>
-                    </li>
-                    <li class="dashboard_sell_heading">YOUR WALLET</li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-wallet"></i> Wallet</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-transfer-alt"></i> Transactions</a>
-                    </li>
-                    <li class="dashboard_sell_menu_item">
-                        <a href="#"><i class="bx bx-message-dots"></i> Chat</a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+            <div class="software_menu-item software_active" data-page="dashboard">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+                Dashboard
+            </div>
 
-        <main class="dashboard_sell_main">
-            <header class="dashboard_sell_header">
-                <div class="dashboard_sell_welcome">
-                    <h2>Welcome back, User</h2>
-                    <p>Here's a snapshot of your store's performance.</p>
+            <div class="software_menu-section">
+                <div class="software_section-title">Order Management</div>
+                <div class="software_menu-item" data-page="orders">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    Orders
                 </div>
-                <div class="dashboard_sell_profile">
-                    <img src="https://i.pinimg.com/originals/97/16/5e/97165e191052892894cb886b4a8c0971.gif" alt="Profile Picture" class="dashboard_sell_profile_img">
+            </div>
+
+            <div class="software_menu-section">
+                <div class="software_section-title">Product Management</div>
+                <div class="software_menu-item" data-page="products">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                    </svg>
+                    Products List
                 </div>
-            </header>
+                <div class="software_menu-item" data-page="gallery">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    Products Gallery
+                </div>
+                <div class="software_menu-item " data-page="upload">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                    </svg>
+                    Upload Products
+                </div>
+                <div class="software_menu-item" data-page="bump">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    Product Bump
+                </div>
+                <div class="software_menu-item" data-page="analytics">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    Pro Analytics
+                </div>
+            </div>
 
-            <section class="dashboard_sell_actions">
-                <button class="dashboard_sell_btn dashboard_sell_add">
-                    <i class="bx bx-plus"></i> Add Product
-                </button>
-                <button class="dashboard_sell_btn dashboard_sell_view">
-                    <i class="bx bx-file"></i> View Orders
-                </button>
-                <button class="dashboard_sell_btn dashboard_sell_withdraw">
-                    <i class="bx bx-dollar-circle"></i> Withdraw Funds
-                </button>
-            </section>
+            <div class="software_menu-section">
+                <div class="software_section-title">Registering With Us</div>
+                <div class="software_menu-item" data-page="pro-seller">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                    Pro Seller
+                </div>
+                <div class="software_menu-item" data-page="standard-seller">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Standard Seller
+                </div>
+            </div>
 
-            <section class="dashboard_sell_stats">
-                <div class="dashboard_sell_stat_card">
-                    <div class="dashboard_sell_stat_info">
-                        <p class="dashboard_sell_stat_title">Total Products</p>
-                        <p class="dashboard_sell_stat_value" data-total="0">0</p>
+            <div class="software_menu-section">
+                <div class="software_section-title">Your Wallet</div>
+                <div class="software_menu-item" data-page="wallet">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                    </svg>
+                    Wallet
+                </div>
+                <div class="software_menu-item" data-page="transactions">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                    Transactions
+                </div>
+            </div>
+
+            <div class="software_menu-section">
+                <div class="software_section-title">Chat</div>
+                <div class="software_menu-item" data-page="chats">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                    Chats
+                </div>
+            </div>
+        </div>
+
+        <div class="software_main-content">
+            <div class="software_page-content" id="dashboard">
+                <div class="software_welcome-section">
+                    <div class="software_welcome-text">
+                        <h1>Welcome back, <span class="software_username">User</span>!</h1>
+                        <p>Here's a snapshot of your store's performance.</p>
                     </div>
-                    <i class="bx bx-box dashboard_sell_stat_icon"></i>
+                    <div class="software_profile-avatar">
+                        <img src="https://i.pinimg.com/originals/97/16/5e/97165e191052892894cb886b4a8c0971.gif" alt="Profile">
+                    </div>
                 </div>
 
-                <div class="dashboard_sell_stat_card green">
-                    <div class="dashboard_sell_stat_info">
-                        <p class="dashboard_sell_stat_title">Approved Products</p>
-                        <p class="dashboard_sell_stat_value" data-approved="0">0</p>
-                    </div>
-                    <i class="fas fa-check-circle dashboard_sell_stat_icon"></i>
+                <div class="software_action-buttons">
+                    <button class="software_action-btn">
+                        <span>+</span> Add Product
+                    </button>
+                    <button class="software_action-btn">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                        View Orders
+                    </button>
+                    <button class="software_action-btn">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                        </svg>
+                        Withdraw Funds
+                    </button>
                 </div>
 
-                <div class="dashboard_sell_stat_card red">
-                    <div class="dashboard_sell_stat_info">
-                        <p class="dashboard_sell_stat_title">Rejected Products</p>
-                        <p class="dashboard_sell_stat_value" data-rejected="0">0</p>
+                <div class="software_stats-grid">
+                    <div class="software_stat-card software_total">
+                        <h3>Total Products</h3>
+                        <div class="software_number">0</div>
+                        <div class="software_icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                        </div>
                     </div>
-                    <i class="fas fa-times-circle dashboard_sell_stat_icon"></i>
+                    <div class="software_stat-card software_approved">
+                        <h3>Approved Products</h3>
+                        <div class="software_number">0</div>
+                        <div class="software_icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="software_stat-card software_rejected">
+                        <h3>Rejected Products</h3>
+                        <div class="software_number">0</div>
+                        <div class="software_icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-            </section>
+
+                <div class="software_charts-grid">
+                    <div class="software_chart-card">
+                        <div class="software_chart-header software_analytics">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                            <h3>Product Analytics</h3>
+                        </div>
+                        <div class="software_chart-placeholder">
+                            <div class="software_bar" style="height: 20px;">
+                                <div class="software_bar-label">Rejected Products</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="software_chart-card">
+                        <div class="software_chart-header software_status">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+                            </svg>
+                            <h3>Product Status</h3>
+                        </div>
+                        <div class="software_legend">
+                            <div class="software_legend-item">
+                                <div class="software_legend-color software_blue"></div>
+                                <span>Approved Products</span>
+                            </div>
+                            <div class="software_legend-item">
+                                <div class="software_legend-color software_green"></div>
+                                <span>Rejected Products</span>
+                            </div>
+                            <div class="software_legend-item">
+                                <div class="software_legend-color software_red"></div>
+                                <span>Pending Products</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="orders">
+                <div class="software_orders-page">
+                    <h1>Your Orders</h1>
+                    <div class="software_empty-state">
+                        <p>No orders found.</p>
+                        <a href="#upload" class="software_menu-item" data-page="upload">Upload products to start receiving orders</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="products">
+                <div class="software_products-page">
+                    <div class="software_products-header">
+                        <div class="software_products-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <h1>My Products</h1>
+                                    <span class="software_products-count">0 Products</span>
+                                </div>
+                                <p>Manage and track all your listed products.</p>
+                            </div>
+                        </div>
+                        <div class="software_products-actions">
+                            <button class="software_refresh-btn">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                </svg>
+                            </button>
+                            <button class="software_add-product-btn">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                </svg>
+                                Add New Product
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="software_search-bar">
+                        <input type="text" placeholder="Search by product name...">
+                    </div>
+
+                    <table class="software_products-table">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Verify</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5">
+                                    <div class="software_products-empty">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/%3E%3C/svg%3E" alt="No products">
+                                        <h3>No products found</h3>
+                                        <button class="software_add-first-product-btn">
+                                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                            </svg>
+                                            Add Your First Product
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="gallery">
+                <div class="software_products-page">
+                    <div class="software_products-header">
+                        <div class="software_products-title">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <h1>Product Gallery</h1>
+                                    <span class="software_products-count">0 Items</span>
+                                </div>
+                                <p>Visually browse all your approved products.</p>
+                            </div>
+                        </div>
+                        <div class="software_products-actions">
+                            <button class="software_refresh-btn">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                </svg>
+                            </button>
+                            <button class="software_add-product-btn">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                </svg>
+                                Upload New
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="software_search-bar">
+                        <input type="text" placeholder="Search by product name or ID...">
+                    </div>
+                    
+                    <div class="software_gallery-empty-state">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'/%3E%3C/svg%3E" alt="No products uploaded">
+                        <h3>No products uploaded yet.</h3>
+                        <p>Start by adding your first product!</p>
+                        <button class="software_add-first-product-btn" onclick="switchPage('upload')">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                            </svg>
+                            Add Your First Product
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software_page-content software_active" id="upload">
+                <div class="software_w-full software_max-w-7xl software_bg-white software_p-6 software_rounded-lg software_shadow-md">
+                    <div class="software_flex software_justify-between software_items-center">
+                        <h2 class="software_text-xl software_font-bold software_text-gray-800 software_mb-6 software_border-b-2 software_border-blue-500 software_pb-3 software_flex software_items-center software_gap-2">
+                            <i class="bx bx-package software_text-blue-500"></i>Add a New Product
+                        </h2>
+                        <a class="software_inline-block software_px-1 software_py-1 software_bg-[#112d4e] software_text-white rounded hover:bg-blue-700 software_font-semibold shadow" href="/bulk-upload" data-discover="true">Bulk Upload</a>
+                    </div>
+                    <form class="software_space-y-6">
+                        <div class="software_relative software_group">
+                            <label class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1">Product Images (up to 8) <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Upload up to 8 images (JPEG, PNG, etc.)"></i></label>
+                            <div class="software_mt-1 software_w-full software_p-4 software_border-2 software_border-dashed software_rounded-lg software_flex software_flex-col software_items-center software_justify-center software_min-h-[200px] software_transition-colors software_border-gray-300 hover:border-blue-500">
+                                <div class="software_text-center">
+                                    <i class="bx bx-cloud-upload software_text-5xl software_text-gray-600"></i>
+                                    <p class="software_text-sm software_text-gray-600 software_mt-1">Drag and drop up to 8 images or <button type="button" class="software_text-blue-600 software_hover\:underline">select images</button></p>
+                                    <p class="software_text-xs software_text-gray-500 software_mt-1">(JPEG, JPG, PNG, WEBP, GIF, max 5MB each)</p>
+                                </div>
+                                <input accept="image/jpeg,image/jpg,image/png,image/webp,image/gif" class="software_hidden" multiple="" type="file">
+                                <input accept="image/jpeg,image/jpg,image/png,image/webp,image/gif" class="software_hidden" type="file">
+                            </div>
+                        </div>
+                        <div class="software_relative software_group">
+                            <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Product Video (1 video, Optional)<i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Upload one video (MP4, MKV, WEBM, max 10MB, 30s, no audio)"></i></label>
+                            <div class="software_mt-1 software_w-full software_p-4 software_border-2 software_border-dashed software_rounded-lg software_flex software_flex-col software_items-center software_justify-center software_min-h-[200px] software_transition-colors software_border-gray-300 hover:border-blue-500">
+                                <div class="software_text-center">
+                                    <i class="bx bx-video-plus software_text-5xl software_text-gray-600"></i>
+                                    <p class="software_text-sm software_text-gray-600 software_mt-1">Drag and drop a video or <button type="button" class="software_text-blue-600 software_hover\:underline">select a video</button></p>
+                                    <p class="software_text-xs software_text-gray-500 software_mt-1">(MP4, MKV, WEBM, max 10MB, under 30 seconds, no audio)</p>
+                                </div>
+                                <input accept="video/mp4,video/mkv,video/webm" class="software_hidden" type="file">
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-info-circle software_text-blue-500"></i>Product Details</h3>
+                            <div class="software_grid software_grid-cols-1 software_gap-6">
+                                <div class="software_relative software_group">
+                                    <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Seller Name <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Your registered name"></i></label>
+                                    <input placeholder="Enter your full name" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" disabled="" type="text" value="tgbfox932" name="sellerName">
+                                </div>
+                                <div class="software_relative software_group">
+                                    <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Product Name <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Name of the product"></i></label>
+                                    <input placeholder="e.g., Men's Leather Jacket" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text" value="" name="name">
+                                </div>
+                            </div>
+                            <div class="software_mt-6 software_relative software_group">
+                                <label class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1">Description<i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Describe your product with optional bold, italic, or code formatting"></i></label>
+                                <div class="software_mt-1">
+                                    <div class="software_flex software_gap-2 software_mb-2">
+                                        <button type="button" class="software_p-2 software_rounded-lg software_bg-gray-100 software_text-gray-700 software_hover\:bg-gray-200 software_shadow-sm software_group" title="Bold text (**text**)"><i class="bx bx-bold software_text-lg"></i></button>
+                                        <button type="button" class="software_p-2 software_rounded-lg software_bg-gray-100 software_text-gray-700 software_hover\:bg-gray-200 software_shadow-sm software_group" title="Italic text (*text*)"><i class="bx bx-italic software_text-lg"></i></button>
+                                        <button type="button" class="software_p-2 software_rounded-lg software_bg-gray-100 software_text-gray-700 software_hover\:bg-gray-200 software_shadow-sm software_group" title="Code text (`text`)"><i class="bx bx-code software_text-lg"></i></button>
+                                    </div>
+                                    <textarea name="description" placeholder="e.g., **Premium leather** jacket with *stylish stitching*" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-money software_text-blue-500"></i>Pricing &amp; Stock</h3>
+                            <div class="software_grid software_grid-cols-1 software_gap-6">
+                                <div class="software_relative software_group">
+                                    <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Price (₦) <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Price in Naira"></i></label>
+                                    <input step="0.01" min="0" placeholder="e.g., 5000.00" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="number" value="" name="price">
+                                </div>
+                                <div class="software_relative software_group">
+                                    <label class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1">Stock Quantity <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Available stock"></i></label>
+                                    <input min="0" placeholder="e.g., 10" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="number" value="" name="stock">
+                                </div>
+                                <div class="software_relative software_group">
+                                    <label class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1">Delivery Days <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Estimated delivery time in days"></i></label>
+                                    <input min="1" placeholder="e.g., 3" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="number" value="" name="deliveryDays">
+                                </div>
+                            </div>
+                            <div class="software_mt-6 software_relative software_group">
+                                <label class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1">Product Weight<i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Select product weight"></i></label>
+                                <select name="manualSize" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200"><option value="">Select a size</option><option value="1 to 5kg">1 to 5kg</option><option value="5 to 10kg ">5 to 10kg </option><option value="10 to 20kg">10 to 20kg</option><option value="20kg above">20kg above</option></select>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-category software_text-blue-500"></i>Category &amp; Subcategory</h3>
+                            <div class="software_grid software_grid-cols-1 software_gap-6">
+                                <div class="software_relative software_group">
+                                    <label class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1">Category <span class="software_text-red-500">*</span><i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Select product category"></i></label>
+                                    <div class="software_relative software_mt-1">
+                                        <button type="button" class="software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_flex software_justify-between software_items-center software_transition-all software_duration-200"><span>Select a category</span><i class="bx bx-chevron-down software_text-gray-500"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-color-fill software_text-blue-500"></i>Colors</h3>
+                            <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Colors<i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Select or enter colors"></i></label>
+                            <div class="software_flex software_flex-wrap software_gap-2 software_mt-2 software_mb-2"></div>
+                            <div class="software_relative">
+                                <input placeholder="Type a color and press Enter" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text" value="">
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-purchase-tag software_text-blue-500"></i>Tags</h3>
+                            <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Tags<i class="bx bx-info-circle software_text-gray-400 software_cursor-help" title="Select or enter tags to improve product visibility"></i></label>
+                            <div class="software_flex software_flex-wrap software_gap-2 software_mt-2 software_mb-2"></div>
+                            <input placeholder="Type a tag and press Enter" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text">
+                            <div class="software_mt-4">
+                                <label class="software_block software_text-sm software_font-medium software_text-gray-700 software_items-center software_gap-1">Authenticity tags</label>
+                                <div class="software_flex software_flex-wrap software_gap-2">
+                                    <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-gray-300 software_bg-white software_text-gray-700 software_hover\:bg-gray-200">Verified</button>
+                                    <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-gray-300 software_bg-white software_text-gray-700 software_hover\:bg-gray-200">Original</button>
+                                    <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-gray-300 software_bg-white software_text-gray-700 software_hover\:bg-gray-200">Hand Made</button>
+                                    <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-gray-300 software_bg-white software_text-gray-700 software_hover\:bg-gray-200">Authentic</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-check-shield software_text-blue-500"></i>Condition</h3>
+                            <div class="software_flex software_flex-wrap software_gap-2">
+                                <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-blue-500 software_bg-blue-100 software_text-blue-700">New</button>
+                                <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-gray-300 software_bg-white software_text-gray-700 software_hover\:bg-gray-200">Used</button>
+                                <button type="button" class="software_px-3 software_py-1 software_rounded-lg software_border software_text-sm software_transition-colors software_shadow-sm software_border-gray-300 software_bg-white software_text-gray-700 software_hover\:bg-gray-200">Refurbished</button>
+                            </div>
+                        </div>
+                        <a class="software_text-white software_hover\:underline" href="/products-upload-variant" data-discover="true"><button class="software_p-2 software_mt-5 software_rounded-lg software_bg-blue-500">Variants Upload?</button></a>
+                        <div>
+                            <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-map software_text-blue-500"></i>Location</h3>
+                            <div class="software_mt-6">
+                                <h3 class="software_text-lg software_font-medium software_text-gray-700 software_mb-4 software_flex software_items-center software_gap-2"><i class="bx bx-map software_text-blue-500"></i>Seller Location</h3>
+                                <div class="software_grid software_grid-cols-1 software_gap-6">
+                                    <div class="software_relative software_group">
+                                        <label for="country" class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1 software_transition-all software_duration-300 software_transform origin-left pointer-events-none software_absolute left-3 top-3">Country <span class="software_text-red-500">*</span></label>
+                                        <input id="country" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text" value="" name="country">
+                                    </div>
+                                    <div class="software_relative software_group">
+                                        <label for="state" class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1 software_transition-all software_duration-300 software_transform origin-left pointer-events-none software_absolute left-3 top-3">State <span class="software_text-red-500">*</span></label>
+                                        <input id="state" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text" value="" name="state">
+                                    </div>
+                                    <div class="software_relative software_group">
+                                        <label for="city" class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1 software_transition-all software_duration-300 software_transform origin-left pointer-events-none software_absolute left-3 top-3">City</label>
+                                        <input id="city" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text" value="" name="city">
+                                    </div>
+                                    <div class="software_relative software_group">
+                                        <label for="address" class="software_text-sm software_font-medium software_text-gray-700 software_flex software_items-center software_gap-1 software_transition-all software_duration-300 software_transform origin-left pointer-events-none software_absolute left-3 top-3">Address</label>
+                                        <input id="address" class="software_mt-1 software_w-full software_py-2 software_px-3 software_border software_rounded-lg software_shadow-sm software_text-sm software_focus\:outline-none software_focus\:ring-2 software_border-gray-300 software_focus\:ring-blue-500 software_bg-white software_text-gray-900 software_transition-all software_duration-200" type="text" value="" name="address">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="software_mt-8 software_flex software_justify-end">
+                            <button type="submit" class="software_px-6 software_py-2 software_bg-blue-600 software_text-white software_rounded-lg software_shadow-md software_hover\:bg-blue-700 software_transition-colors software_flex software_items-center software_gap-2 software_opacity-50 software_cursor-not-allowed" disabled="" title="Please read the guidelines before proceeding.">
+                                <i class="bx bx-upload"></i>Add Product
+                            </button>
+                        </div>
+                    </form>
+                    <div class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+                    <div class="fixed bottom-4 right-4 z-50 space-y-2"></div>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="bump">
+                <div class="software_feature-card-container">
+                    <div class="software_feature-card">
+                        <h3 class="software_feature-card-title">Pro Seller Feature</h3>
+                        <p class="software_feature-card-text">
+                            Product bump is only available to Pro Sellers. 
+                            Upgrade now to boost your products' visibility!
+                        </p>
+                        <button class="software_upload_btn">Upgrade to Pro Seller</button>
+                        <button class="software_return_btn">Return to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="analytics">
+                <div class="software_feature-card-container">
+                    <div class="software_feature-card">
+                        <h3 class="software_feature-card-title">Pro Seller Feature</h3>
+                        <p class="software_feature-card-text">
+                            Product analytics are only available to Pro Sellers. 
+                            Upgrade now to track your performance and sales metrics!
+                        </p>
+                        <button class="software_upgrade_btn_orange">Upgrade to Pro Seller</button>
+                        <button class="software_return_btn">Return to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="pro-seller">
+                <div class="software_orders-page">
+                    <h1>Pro Seller Registration</h1>
+                    <div class="software_empty-state">
+                        <p>Upgrade to Pro Seller...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="software_page-content" id="standard-seller">
+                <div class="software_onboarding-container">
+                    <div class="software_onboarding-header">
+                        <div class="software_step-indicators">
+                            <div class="software_step software_active">1</div>
+                            <div class="software_step">2</div>
+                            <div class="software_step">3</div>
+                        </div>
+                    </div>
+                    
+                    <div class="software_onboarding-content">
+                        <div class="software_onboarding-title">
+                            <i class='bx bx-info-circle'></i>
+                            <h2>Seller Onboarding</h2>
+                        </div>
+                        <p class="software_onboarding-subtitle">Complete your profile to start selling on FOREMADE.</p>
+                        
+                        <form class="software_onboarding-form">
+                            <div class="software_form-group">
+                                <label>Full Name <span class="software_required">*</span></label>
+                                <div class="software_input-wrapper">
+                                    <i class='bx bx-user'></i>
+                                    <input type="text" placeholder="e.g., John Doe">
+                                </div>
+                            </div>
+                            
+                            <div class="software_form-group">
+                                <label>Country <span class="software_required">*</span></label>
+                                <select class="software_select-input">
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="Ghana">Ghana</option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="South Africa">South Africa</option>
+                                </select>
+                            </div>
+                            
+                            <div class="software_form-group">
+                                <label>Bank Name <span class="software_required">*</span></label>
+                                <select class="software_select-input">
+                                    <option value="">Select a bank</option>
+                                    <option value="Access Bank">Access Bank</option>
+                                    <option value="GTBank">GTBank</option>
+                                    <option value="First Bank">First Bank</option>
+                                    <option value="Zenith Bank">Zenith Bank</option>
+                                    <option value="UBA">UBA</option>
+                                </select>
+                            </div>
+                            
+                            <div class="software_form-group">
+                                <label>Account Number <span class="software_required">*</span></label>
+                                <input type="text" placeholder="e.g., 0123456789" class="software_form-input">
+                            </div>
+                            
+                            <button type="submit" class="software_complete-onboarding-btn">
+                                <i class='bx bx-check'></i>
+                                Complete Onboarding
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             
-            <section class="dashboard_sell_analytics_row">
-                <div class="dashboard_sell_card dashboard_sell_product_analytics">
-                    <div class="dashboard_sell_card_header">
-                        <i class="bx bx-bar-chart-alt-2"></i>
-                        <h3>Product Analytics</h3>
+            <div class="software_page-content" id="wallet">
+                <div class="software_wallet-top-header">
+                    <h1>
+                        <i class='bx bx-wallet' style="font-size: 36px; color: #3b82f6;"></i>
+                        My Wallet
+                    </h1>
+                    <div class="software_right-controls">
+                        <div class="software_currency">
+                            INR <i class='bx bx-chevron-down'></i>
+                        </div>
+                        <div class="software_onboard">
+                            Please Onboard
+                        </div>
                     </div>
-                    <div class="dashboard_sell_chart_area">
-                        <canvas id="productAnalyticsChart" role="img" height="250" width="500"></canvas>
+                </div>
+                
+                <div class="software_wallet-grid">
+                    
+                    <div class="software_wallet-card software_balance">
+                        <div class="software_wallet-card-header">
+                            <span class="software_title">Available Balance</span>
+                            <i class='bx bx-wallet wallet-icon software_icon' style="font-size: 30px;"></i>
+                        </div>
+                        <div class="software_wallet-id">Wallet ID: 1gcY3XEQcQGOHfDHmkWwARRB7Jfol</div>
+                        <div class="software_amount">
+                            <i class='bx bx-rupee' style="font-size: 32px;"></i>0.00
+                        </div>
+                    </div>
+                    
+                    <div class="software_wallet-card software_pending">
+                        <div class="software_wallet-card-header">
+                            <span class="software_title">Pending Transactions</span>
+                            <i class='bx bx-credit-card-front wallet-icon software_icon' style="font-size: 30px;"></i>
+                        </div>
+                        <div class="software_wallet-id">&nbsp;</div> 
+                        <div class="software_amount">
+                            <i class='bx bx-rupee' style="font-size: 32px;"></i>0.00
+                        </div>
                     </div>
                 </div>
 
-                <div class="dashboard_sell_card dashboard_sell_product_status">
-                    <div class="dashboard_sell_card_header">
-                        <i class="bx bx-time"></i>
-                        <h3>Product Status</h3>
-                    </div>
-                    <div class="dashboard_sell_status_list">
-                        <div class="status_item"><span class="status_indicator blue"></span> Approved Products</div>
-                        <div class="status_item"><span class="status_indicator red"></span> Rejected Products</div>
-                        <div class="status_item"><span class="status_indicator green-check"></span> Pending Products</div>
-                    </div>
-                    <div class="dashboard_sell_chart_area_small">
-                        <canvas id="productStatusChart" role="img" height="250" width="250"></canvas>
+                <div class="software_withdrawal-request">
+                    <h3>
+                        <i class='bx bx-check-circle' ></i> Request Withdrawal
+                    </h3>
+                    
+                    <label for="withdrawalAmount">Withdrawal Amount</label>
+                    <input type="number" id="withdrawalAmount" placeholder="₹">
+                    
+                    <small>Minimum withdrawal: ₹1. Withdrawals subject to admin approval, may take up to 24 hours.</small>
+                    
+                    <button class="software_request-btn">
+                        Request Withdrawal
+                    </button>
+                </div>
+
+                <div class="software_wallet-chart-area">
+                    <h3>
+                        <span>Wallet Balance</span>
+                        <div class="software_chart-control-icons">
+                            <i class='bx bx-zoom-in'></i>
+                            <i class='bx bx-zoom-out'></i>
+                            <i class='bx bx-download'></i>
+                            <i class='bx bx-menu'></i>
+                            <i class='bx bx-home-alt'></i>
+                        </div>
+                    </h3>
+                    <div class="software_wallet-chart-placeholder">
+                        <div class="software_chart-axis-y">
+                            <span class="software_chart-y-label">6</span> 
+                            <div class="software_chart-y-line"></div>
+                            <span class="software_chart-y-label">5</span> 
+                            <div class="software_chart-y-line"></div>
+                            <span class="software_chart-y-label">4</span> 
+                            <div class="software_chart-y-line"></div>
+                            <span class="software_chart-y-label">3</span> 
+                            <div class="software_chart-y-line"></div>
+                            <span class="software_chart-y-label">2</span> 
+                            <div class="software_chart-y-line"></div>
+                            <span class="software_chart-y-label">1</span> 
+                            <div class="software_chart-y-line"></div>
+                            <span class="software_chart-y-label">0</span>
+                        </div>
+                        <div style="text-align: center; color: #9ca3af; position: absolute; bottom: -20px; left: -80px; transform: rotate(-90deg);">Amount (NGN)</div>
                     </div>
                 </div>
-            </section>
+            </div>
+            
+            <div class="software_page-content" id="transactions"> 
+                <div class="software_transaction-container">
+                    <h2>Transaction History</h2>
+                    
+                    <div class="software_transaction-search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Search by Transaction ID or Type...">
+                    </div>
 
-            <section class="dashboard_sell_footer_actions">
-                <button class="dashboard_sell_btn dashboard_sell_analytics_btn">
-                    See More Analytics
-                </button>
-            </section>
-
-        </main>
+                    <div class="software_no-transactions-message">
+                        No transactions found.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="software_page-content" id="chats">
+                <div class="software_chat-container">
+                    <div class="software_chat-sidebar">
+                        <div class="software_chat-header">
+                            <h2>Messages</h2>
+                            <button class="software_new-chat-btn">
+                                <i class='bx bx-edit'></i>
+                            </button>
+                        </div>
+                        <div class="software_chat-search">
+                            <i class='bx bx-search'></i>
+                            <input type="text" placeholder="Search conversations...">
+                        </div>
+                        <div class="software_chat-list">
+                            <div class="software_chat-empty-message">
+                                <i class='bx bx-message-square-dots'></i>
+                                <p>No conversations yet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="software_chat-main">
+                        <div class="software_chat-welcome">
+                            <i class='bx bx-chat'></i>
+                            <h3>Welcome to Chat</h3>
+                            <p>Select a conversation or start a new one</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="./js/software_sell.js"></script>

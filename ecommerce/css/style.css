@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            /* max-width: 1200px;  */ /* Adjusted for wider layouts */
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -51,7 +51,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            max-width: 600px;
+            max-width: 800px;
             background-color: white;
             border-radius: 4px;
             padding: 8px 15px;
@@ -102,7 +102,7 @@
 
         .primary-nav {
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: stretch;
             height: 50px;
             padding: 0 20px;
@@ -2035,4 +2035,257 @@ body {
     align-items: center;
     gap: 15px;
 }
+}
+
+/* top head  */
+
+/* --- NEW: Top Utility Bar Styles (Desktop) --- */
+.top-util-bar {
+    background-color: white; 
+    border-bottom: 1px solid #f0f0f0; 
+    color: #555; 
+    font-size: 13px;
+    padding: 8px 0;
+}
+
+.top-util-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-link {
+    display: flex;
+    align-items: center;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.top-link svg {
+    margin-right: 5px;
+}
+
+.top-link:hover {
+    color: #1a2538;
+}
+
+.divider {
+    color: #ccc;
+}
+
+.currency-dropdown select {
+    /* Style for the grey currency dropdown */
+    background-color: #f1f1f1; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px 8px;
+    color: #555;
+    font-size: 13px;
+    cursor: pointer;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); 
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 25px; 
+}
+
+.currency-dropdown select:focus {
+    outline: none;
+    border-color: #aaa;
+}
+
+
+/* --- 1. HEADER STYLES (.utilbar) --- (MODIFIED FOR WHITE BG) */
+
+
+
+/* ... (Existing styles for brand, search, etc.) ... */
+
+.iconbarr .icon {
+    color: #333; /* Dark icon for white background */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.iconbar .icon:hover {
+    color: #ff9900;
+}
+
+
+/* --- 4. RESPONSIVENESS (Media Queries) --- */
+
+@media (max-width: 1024px) {
+    
+    /* NEW: Hide the entire top utility bar on smaller screens */
+    .top-util-bar {
+        display: none;
+    }
+    
+    /* Header Responsive Order (EXISTING) */
+    .utilbar .row {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .brand { order: 1; }
+    .iconbar { order: 2; margin-left: auto; }
+    .search { order: 3; flex-basis: 100%; max-width: 100%; margin-top: 15px; }
+
+    /* Navigation Bar Mobile Setup (EXISTING) */
+    .nav-links-visible,
+    .nav-more-dropdown,
+    .primary-nav {
+        display: none; 
+    }
+    
+    /* Show the hamburger icon (EXISTING) */
+   
+    
+    /* ADJUSTED: Make space for the hamburger icon in the main row (EXISTING) */
+    .utilbar .brand {
+        margin-left: 40px; 
+    }
+
+    /* ... (rest of the mobile menu content styles) ... */
+
+    /* Hero Banner Mobile Styling (EXISTING) */
+    .home_hero { height: 300px; padding-left: 5%; justify-content: center; }
+    .hero_heading { font-size: 36px; padding: 5px 10px; }
+    .hero_subheading { font-size: 24px; margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+    .hero_heading { font-size: 28px; }
+    .hero_subheading { font-size: 20px; }
+    .home_hero { padding-left: 0; }
+}
+
+/* categories */
+
+/* --- 5. CATEGORIES SECTION STYLES (.categories_) --- */
+.category_section {
+    padding: 40px 0;
+    background-color: #f7f7f7; /* Light background for the section */
+}
+
+.category_section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a2538;
+    margin-bottom: 25px;
+    padding: 0 20px;
+}
+
+.categories_grid {
+    display: grid;
+    /* Default (Desktop): 8 categories, 8 items per row */
+    grid-template-columns: repeat(8, 1fr); 
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.category_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 15px 10px;
+    border-radius: 8px;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+    cursor: pointer;
+    /* Variable for background color set inline in HTML */
+    background-color: var(--bg-color, #ffffff); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+/* Hover Animation */
+.category_item:hover {
+    transform: translateY(-5px); /* Lift up effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category_image_wrapper {
+    width: 100%;
+    max-width: 80px; /* Adjust size of the image wrapper */
+    height: 80px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.category_image_wrapper img {
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    /* Optional: Slight image scale on hover for better effect */
+    transition: transform 0.3s ease-in-out; 
+}
+
+.category_item:hover .category_image_wrapper img {
+    transform: scale(1.05); 
+}
+
+/* --- RESPONSIVENESS (Category Grid Overrides) --- */
+
+@media (max-width: 1200px) {
+    /* On slightly smaller desktops/large tablets, switch to 6 columns */
+    .categories_grid {
+        grid-template-columns: repeat(6, 1fr); 
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Mobile/Tablet view (already in the existing media query block) */
+    /* Adjust padding and potentially column count */
+    
+    /* Target the grid for the specific mobile request */
+    .categories_grid {
+        /* Mobile request: 4 items per row */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 10px; /* Tighter gap for mobile */
+        padding: 0 10px;
+    }
+    
+    .category_section h2 {
+        padding: 0 10px; /* Match padding */
+    }
+
+    .category_item {
+        padding: 10px 5px;
+        font-size: 11px; /* Smaller font on small screen */
+    }
+
+    .category_image_wrapper {
+        max-width: 50px; 
+        height: 50px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Standard phone view, still adhering to the 4-per-row request, but this is a common break point */
+    .categories_grid {
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 8px; 
+    }
+}
+
+@media (max-width: 400px) {
+    /* Very small phones: may need to drop to 3 or 2 per row for legibility, but sticking to 4 as requested. */
+    .categories_grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+        padding: 0 5px;
+    }
 }

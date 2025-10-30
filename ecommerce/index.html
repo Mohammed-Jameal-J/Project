@@ -11,31 +11,62 @@
 
     <div class="home_page">
 
-        <header class="utilbar">
-            <div class="container row">
-                <button class="hamburger" id="openDrawer" aria-label="Open Menu" title="Open Menu">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
-                </button>
-                <div class="brand">
-                    <img src="https://foremade.com/assets/foremade-Bxu0VQA7.png" alt="Foremade Logo">
-                </div>
-                <div class="search">
-                    <input aria-label="Search" placeholder="Search for anything here…">
-                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.53 20.47l-4.6-4.6a8 8 0 10-1.06 1.06l4.6 4.6a.75.75 0 101.06-1.06zM10.5 18a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"></path></svg>
-                </div>
-                <div class="iconbar">
-                    <a class="icon" aria-label="Account" title="Account" href="signup.html">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21a8 8 0 10-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    </a>
-                    <a class="icon" aria-label="Favourites" title="Favourites" href="dashboard.html">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"></path></svg>
-                    </a>
-                    <a class="icon" aria-label="Bag" title="Bag" href="#">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7z"></path><path d="M9 7a3 3 0 016 0"></path></svg>
-                    </a>
-                </div>
+<div class="top-util-bar">
+    <div class="container row">
+        <div class="top-util-left">
             </div>
-        </header>
+        <div class="top-util-right">
+            <a href="#" class="top-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"></path></svg> Help & Support</a>
+            <span class="divider"></span>
+            <a href="#" class="top-link">FAQ</a>
+            <span class="divider"></span>
+            
+            <a href="#" class="top-link">Shop</a>
+            <span class="divider"></span>
+            <a href="dashboard.html" class="top-link">Sell</a>
+            <span class="divider"></span>
+            <a href="#" class="top-link">Smile</a>
+            
+            <a href="#" class="top-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-store mr-1" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path><path d="M2 7h20"></path><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"></path></svg> Sell on Foremade
+            </a>
+            
+            <div class="currency-dropdown">
+                <select aria-label="Currency Selector">
+                    <option value="INR">INR ▼</option>
+                    <option value="USD">USD ▼</option>
+                    <option value="EUR">EUR ▼</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="utilbar">
+    <div class="container row">
+        <button class="hamburger" id="openDrawer" aria-label="Open Menu" title="Open Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+        </button>
+        <div class="brand">
+            <img src="https://foremade.com/assets/foremade-Bxu0VQA7.png" alt="Foremade Logo">
+        </div>
+        <div class="search">
+            <input aria-label="Search" placeholder="Search for anything here…">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.53 20.47l-4.6-4.6a8 8 0 10-1.06 1.06l4.6 4.6a.75.75 0 101.06-1.06zM10.5 18a7.5 7.5 0 110-15 7.5 7.5 0 010 15z"></path></svg>
+        </div>
+        <div class="iconbar">
+            <a class="icon" aria-label="Account" title="Account" href="signup.html">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21a8 8 0 10-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </a>
+            <a class="icon" aria-label="Favourites" title="Favourites" href="#">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"></path></svg>
+            </a>
+            <a class="icon" aria-label="Bag" title="Bag" href="#">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7z"></path><path d="M9 7a3 3 0 016 0"></path></svg>
+            </a>
+        </div>
+    </div>
+</header>
 
         <div class="home_navbar">
             <div class="nav-bar-wrapper">
@@ -107,6 +138,76 @@
                 <p class="hero_subheading">Play starts here.</p> -->
             </div>
         </section>
+
+        <section class="category_section">
+    <div class="container">
+        <h2>Shop by Category</h2>
+        <div class="categories_grid categories_">
+            
+            <a href="#" class="category_item" style="--bg-color: #fcebeb;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/20180406/wow/kisspng-shoe-jumpman-sneakers-air-jordan-teal-jordan-5ac6ff9c2fcfe2.7959868915229910041959.jpg" alt="All Party Essential">
+                </div>
+                <p>All Party Essential</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #f0f4fc;">
+                <div class="category_image_wrapper">
+                    <img src="https://pngimg.com/uploads/dress_shirt/dress_shirt_PNG8088.png" alt="Beauty">
+                </div>
+                <p>Beauty</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #e5fceb;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/20240415/cv/transparent-apple-logo-person-holding-iphone-11-pro-max661df755177ea1.73458741.webp" alt="Christmas">
+                </div>
+                <p>Christmas</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #fffceb;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/lnd/20240424/uxz/transparent-rainbow-open-laptop-with-rainbow-gradient-background-image662945f170dc49.58708681.webp" alt="Electronics">
+                </div>
+                <p>Electronics</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #fcf0ff;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/20180202/lie/av2ldq3r4.webp" alt="Entertainment">
+                </div>
+                <p>Entertainment</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #fbebf7;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/lnd/20240424/jfa/aav33rgh3.webp" alt="Footwear">
+                </div>
+                <p>Footwear</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #f0f6ff;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/20180809/atv/kisspng-ferm-living-asymmetric-cutting-board-ferm-living-b-5b6c3d78edff15.1714747115338202809749.jpg" alt="Games">
+                </div>
+                <p>Games</p>
+            </a>
+
+            <a href="#" class="category_item" style="--bg-color: #fcf9f0;">
+                <div class="category_image_wrapper">
+                    <img src="https://banner2.cleanpng.com/20180131/jgw/av1z4nree.webp" alt="Gifts & Collectibles">
+                </div>
+                <p>Gifts & Collectibles</p>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
         <section class="home_video_hero">
             <div class="video-background">
                 <video autoplay loop muted playsinline poster="https://xcdn.next.co.uk/COMMON/Items/Default/Default/Videos/Brand_Campaign_Hero_Outerwear_V1_7x3_3_1.jpg">
