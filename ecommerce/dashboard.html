@@ -217,6 +217,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="software_dashboard_button">See More Analytics</button>
             </div>
 
             <div class="software_page-content" id="orders">
@@ -342,7 +343,7 @@
             </div>
 
             <div class="software_page-content software_active" id="upload">
-                <div class="software_w-full software_max-w-7xl software_bg-white software_p-6 software_rounded-lg software_shadow-md">
+                <div class="software_w-full  software_bg-white software_p-6 software_rounded-lg software_shadow-md">
                     <div class="software_flex software_justify-between software_items-center">
                         <h2 class="software_text-xl software_font-bold software_text-gray-800 software_mb-6 software_border-b-2 software_border-blue-500 software_pb-3 software_flex software_items-center software_gap-2">
                             <i class="bx bx-package software_text-blue-500"></i>Add a New Product
@@ -525,10 +526,94 @@
             </div>
 
             <div class="software_page-content" id="pro-seller">
-                <div class="software_orders-page">
-                    <h1>Pro Seller Registration</h1>
-                    <div class="software_empty-state">
-                        <p>Upgrade to Pro Seller...</p>
+                <div class="software_pro-seller-container">
+                    <div class="software_pro-seller-header">
+                        <h2 class="software_pro-seller-title">Pro Seller Registration</h2>
+                        <i class='bx bx-check-circle software_pro-seller-check-icon'></i>
+                    </div>
+                    
+                    <div class="software_pro-seller-steps">
+                        <div class="software_step-indicator">
+                            <div class="software_step-item software_active-step">
+                                <div class="software_step-number">1</div>
+                                <div class="software_step-label">BUSINESS INFO</div>
+                            </div>
+                            <div class="software_step-item">
+                                <div class="software_step-number">2</div>
+                                <div class="software_step-label">CONTACT INFO</div>
+                            </div>
+                            <div class="software_step-item">
+                                <div class="software_step-number">3</div>
+                                <div class="software_step-label">PRODUCTS & BANKING</div>
+                            </div>
+                            <div class="software_step-item">
+                                <div class="software_step-number">4</div>
+                                <div class="software_step-label">REVIEW & SUBMIT</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="software_merchant-form-steps">
+                        <form id="software_step-1-business" class="software_merchant-form software_step-form">
+                            <div class="software_merchant-step-info">
+                                <i class='bx bx-briefcase software_merchant-icon'></i>
+                                <p class="software_merchant-subtitle-main">Business Information</p>
+                                <p class="software_merchant-subtitle-details">Let's start with your business details</p>
+                            </div>
+                            
+                            <label for="software_business-name" class="software_form-label">Business Name<span class="software_required">*</span></label>
+                            <input type="text" id="software_business-name" placeholder="Business Name" class="software_signup-input" required>
+                            
+                            <label for="software_registration-number" class="software_form-label">Registration Number<span class="software_required">*</span></label>
+                            <input type="text" id="software_registration-number" placeholder="7-8 digits (e.g. 1234567)" class="software_signup-input" required>
+                            
+                            <label for="software_tax-reference" class="software_form-label">Tax Reference (Optional)</label>
+                            <input type="text" id="software_tax-reference" placeholder="Tax Reference (optional)" class="software_signup-input">
+                            
+                            <label for="software_business-address" class="software_form-label">Business Address<span class="software_required">*</span></label>
+                            <input type="text" id="software_business-address" placeholder="Business Address" class="software_signup-input" required>
+                            
+                            <label for="software_country" class="software_form-label">Country<span class="software_required">*</span></label>
+                            <select id="software_country" class="software_signup-input" required>
+                                <option value="NG">Nigeria</option>
+                                <option value="US">United States</option>
+                                <option value="GH">Ghana</option>
+                                <option value="KE">Kenya</option>
+                                <option value="ZA">South Africa</option>
+                            </select>
+                            
+                            <button type="button" class="software_signup-button software_merchant-button" onclick="softwareNextStep(2)">Continue</button>
+                        </form>
+                        
+                        <form id="software_step-2-contact" class="software_merchant-form software_step-form software_hidden-step">
+                            <div class="software_merchant-step-info">
+                                <i class='bx bx-phone software_merchant-icon'></i>
+                                <p class="software_merchant-subtitle-main">Contact Information</p>
+                                <p class="software_merchant-subtitle-details">How can customers reach you?</p>
+                            </div>
+                            <button type="button" class="software_signup-button software_merchant-button" onclick="softwareNextStep(3)">Continue</button>
+                            <button type="button" class="software_signup-button software_back-button" onclick="softwareNextStep(1)">Back</button>
+                        </form>
+                        
+                        <form id="software_step-3-products" class="software_merchant-form software_step-form software_hidden-step">
+                            <div class="software_merchant-step-info">
+                                <i class='bx bx-package software_merchant-icon'></i>
+                                <p class="software_merchant-subtitle-main">Products & Banking</p>
+                                <p class="software_merchant-subtitle-details">Tell us about your products and payment details</p>
+                            </div>
+                            <button type="button" class="software_signup-button software_merchant-button" onclick="softwareNextStep(4)">Continue</button>
+                            <button type="button" class="software_signup-button software_back-button" onclick="softwareNextStep(2)">Back</button>
+                        </form>
+                        
+                        <form id="software_step-4-review" class="software_merchant-form software_step-form software_hidden-step">
+                            <div class="software_merchant-step-info">
+                                <i class='bx bx-check-circle software_merchant-icon'></i>
+                                <p class="software_merchant-subtitle-main">Review & Submit</p>
+                                <p class="software_merchant-subtitle-details">Please review your information before submitting</p>
+                            </div>
+                            <button type="submit" class="software_signup-button software_merchant-button">Submit Registration</button>
+                            <button type="button" class="software_signup-button software_back-button" onclick="softwareNextStep(3)">Back</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -698,35 +783,42 @@
                 </div>
             </div>
             
-            <div class="software_page-content" id="chats">
-                <div class="software_chat-container">
-                    <div class="software_chat-sidebar">
-                        <div class="software_chat-header">
-                            <h2>Messages</h2>
-                            <button class="software_new-chat-btn">
-                                <i class='bx bx-edit'></i>
-                            </button>
-                        </div>
-                        <div class="software_chat-search">
-                            <i class='bx bx-search'></i>
-                            <input type="text" placeholder="Search conversations...">
-                        </div>
-                        <div class="software_chat-list">
-                            <div class="software_chat-empty-message">
-                                <i class='bx bx-message-square-dots'></i>
-                                <p>No conversations yet</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="software_chat-main">
-                        <div class="software_chat-welcome">
-                            <i class='bx bx-chat'></i>
-                            <h3>Welcome to Chat</h3>
-                            <p>Select a conversation or start a new one</p>
-                        </div>
-                    </div>
+<div class="software_page-content" id="chats">
+    <div class="software_chat-container">
+        <div class="software_chat-sidebar">
+            <div class="software_chat-header">
+                <h2>Messages</h2>
+                <button class="software_new-chat-btn">
+                    <i class='bx bx-edit'></i>
+                </button>
+            </div>
+            <div class="software_chat-search">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search conversations...">
+            </div>
+            <div class="software_chat-list">
+                <div class="software_chat-empty-message">
+                    <i class='bx bx-message-square-dots'></i>
+                    <p>No conversations yet</p>
                 </div>
             </div>
+        </div>
+        <div class="software_chat-main">
+            <div class="software_chat-content">
+                <div class="software_chat-welcome">
+                    <i class='bx bx-chat'></i>
+                    <h3>Welcome to Chat</h3>
+                    <p>Select a conversation or start a new one</p>
+                </div>
+            </div>
+
+            <div class="software_chat-input-form">
+                <input type="text" placeholder="Type a message">
+                <button class="software_send-btn">Send</button>
+            </div>
+            </div>
+    </div>
+</div>
         </div>
     </div>
 

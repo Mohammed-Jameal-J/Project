@@ -2087,7 +2087,7 @@ body {
     appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); 
+   
     background-repeat: no-repeat;
     background-position: right 8px center;
     padding-right: 25px; 
@@ -2103,66 +2103,95 @@ body {
 
 
 
-/* ... (Existing styles for brand, search, etc.) ... */
+/* -------------------------------------- */
+/* 1. TOP UTILITY BAR CONTAINER STYLES */
+/* -------------------------------------- */
 
-.iconbarr .icon {
-    color: #333; /* Dark icon for white background */
+.top-util-bar {
+    /* Background color of the bar (e.g., light grey/white) */
+    background-color: #f7f7f7; 
+    color: #333333; /* Default text color */
+    font-size: 12px;
+    padding: 5px 0; /* Vertical padding */
+    border-bottom: 1px solid #eeeeee; /* Light divider line */
+}
+
+/* Ensure the content is contained and centered, assuming 'container' exists */
+.top-util-bar .container {
+    width: 95%; /* Adjust width as needed */
+     /* Max width constraint */
+    margin: 0 auto; /* Center the container */
+}
+
+/* -------------------------------------- */
+/* 2. FLEX LAYOUT (LEFT/RIGHT ALIGNMENT) */
+/* -------------------------------------- */
+
+.top-util-bar .row {
+    display: flex;
+    justify-content: space-between; /* Puts space between left and right columns */
+    align-items: center; /* Vertically align items in the center */
+}
+
+.top-util-left,
+.top-util-right {
+    display: flex;
+    align-items: center; /* Ensures content inside is vertically centered */
+    gap: 10px; /* Add some space between links/elements */
+}
+
+/* -------------------------------------- */
+/* 3. INDIVIDUAL LINK & DIVIDER STYLES */
+/* -------------------------------------- */
+
+.top-link {
+    color: #333333; /* Link color (dark grey/black) */
     text-decoration: none;
+    padding: 0 5px; /* Spacing around the link text */
+    display: flex;
+    align-items: center;
     transition: color 0.2s ease;
 }
 
-.iconbar .icon:hover {
-    color: #ff9900;
+.top-link:hover {
+    color: #007bff; /* Hover color (e.g., a standard blue) */
 }
 
-
-/* --- 4. RESPONSIVENESS (Media Queries) --- */
-
-@media (max-width: 1024px) {
-    
-    /* NEW: Hide the entire top utility bar on smaller screens */
-    .top-util-bar {
-        display: none;
-    }
-    
-    /* Header Responsive Order (EXISTING) */
-    .utilbar .row {
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .brand { order: 1; }
-    .iconbar { order: 2; margin-left: auto; }
-    .search { order: 3; flex-basis: 100%; max-width: 100%; margin-top: 15px; }
-
-    /* Navigation Bar Mobile Setup (EXISTING) */
-    .nav-links-visible,
-    .nav-more-dropdown,
-    .primary-nav {
-        display: none; 
-    }
-    
-    /* Show the hamburger icon (EXISTING) */
-   
-    
-    /* ADJUSTED: Make space for the hamburger icon in the main row (EXISTING) */
-    .utilbar .brand {
-        margin-left: 40px; 
-    }
-
-    /* ... (rest of the mobile menu content styles) ... */
-
-    /* Hero Banner Mobile Styling (EXISTING) */
-    .home_hero { height: 300px; padding-left: 5%; justify-content: center; }
-    .hero_heading { font-size: 36px; padding: 5px 10px; }
-    .hero_subheading { font-size: 24px; margin-left: 0; }
+.top-link svg {
+    margin-right: 4px; /* Space between icon and text */
+    /* Adjust stroke for the Help & Support icon if needed, 
+       but the HTML sets stroke-width="1.6" */
 }
 
-@media (max-width: 480px) {
-    .hero_heading { font-size: 28px; }
-    .hero_subheading { font-size: 20px; }
-    .home_hero { padding-left: 0; }
+.divider {
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: #cccccc;
+    margin: 0 5px; /* Space around the divider */
 }
 
+/* -------------------------------------- */
+/* 4. CURRENCY DROPDOWN STYLES */
+/* -------------------------------------- */
+
+.currency-dropdown select {
+    /* Style the select element to look like a clean button/text */
+    background-color: #ffffff; /* White background as seen in the image */
+    border: 1px solid #cccccc;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #333333;
+    cursor: pointer;
+    border-radius: 3px;
+    appearance: none; /* Remove default arrow on most browsers */
+    /* Add custom arrow styling if appearance: none is used and you need an arrow */
+}
+
+.currency-dropdown select:focus {
+    outline: none;
+    border-color: #007bff;
+}
 /* categories */
 
 /* --- 5. CATEGORIES SECTION STYLES (.categories_) --- */
