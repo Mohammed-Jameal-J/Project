@@ -2318,3 +2318,84 @@ body {
         padding: 0 5px;
     }
 }
+
+/* --- 4. RESPONSIVENESS (Media Queries) --- */
+
+@media (max-width: 1024px) {
+    
+    /* RESPONSIVE CHANGE: Hide the top utility bar on smaller screens */
+    .top-util-bar {
+        display: none; /* This hides the entire bar on mobile/tablet screens */
+    }
+
+    /* ... rest of the mobile styles ... */
+}
+
+/* --- NEW: Mobile Menu Top Utility Bar Styles --- */
+
+.mobile-menu-content .mobile-top-bar {
+    /* Styles to match the background color from the image (light orange/peach) */
+    background-color: #fcf1e6; 
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-menu-content .mobile-utility-buttons {
+    display: flex;
+    justify-content: space-between; /* Space out the three buttons */
+    gap: 10px;
+}
+
+.mobile-menu-content .mobile-util-btn {
+    /* Styles for Shop, Sell, Smile buttons */
+    flex: 1; /* Make all three buttons equal width */
+    background-color: white;
+    color: #1a2538;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 5px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+.mobile-menu-content .mobile-util-btn:hover {
+    background-color: #f7f7f7;
+}
+
+.mobile-menu-content .mobile-profile-btn {
+    /* Styles for My Profile button */
+    display: block;
+    background-color: #384153; /* Darker blue/grey color */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 5px; /* Spacing between utility buttons and profile button */
+    transition: background-color 0.2s;
+}
+
+.mobile-menu-content .mobile-profile-btn:hover {
+    background-color: #1a2538;
+}
+
+/* Ensure the brand area beneath the new top bar retains its look */
+.mobile-menu-content .brand {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #1a2538; /* Restore dark background for logo area */
+}
+
+/* Ensure mobile menu links use the full width */
+.mobile-menu-content .nav-links-visible a,
+.mobile-menu-content .dropdown-content a {
+    /* Ensure the links remain styled as vertical blocks */
+    text-align: left;
+}
