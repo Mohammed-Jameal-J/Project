@@ -1025,6 +1025,407 @@
                 font-size: 14px;
             }
         }
+        /*
+ * GENERAL STYLES & RESET
+ */
+:root {
+    --primary-color: #4A90E2; /* Blue for buttons, links, and icons */
+    --secondary-color: #E6F0FE; /* Light blue for button/tag backgrounds */
+    --text-color: #333333;
+    --label-color: #555555;
+    --border-color: #D9D9D9;
+    --background-color: #FFFFFF;
+    --section-bg: #F9F9F9;
+    --font-family: Arial, sans-serif; /* Using a common font-family */
+}
+
+/* Apply a basic reset and font */
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--section-bg);
+}
+
+/* Main container for the entire page content */
+.software_page-content {
+    padding: 20px;
+    background-color: var(--section-bg);
+}
+
+/* Container specifically for the upload form */
+.software_upload-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/*
+ * HEADER STYLES
+ */
+.software_upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.software_upload-title {
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.software_upload-title i {
+    font-size: 28px;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.software_bulk-upload-btn {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.software_bulk-upload-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/*
+ * SECTION HEADER STYLES
+ */
+.software_form-section {
+    margin-bottom: 30px;
+    padding-top: 20px;
+    /* Optional: Add a light dividing line for sections below the first */
+    /* border-top: 1px solid var(--border-color); */
+}
+
+/* Remove border-top from the first section if applied above, or rely on visual separation */
+.software_form-section:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.software_section-header {
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+}
+
+.software_section-header i {
+    font-size: 20px;
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+/*
+ * INPUT & LABEL STYLES
+ */
+.software_input-label {
+    display: block;
+    font-size: 14px;
+    color: var(--label-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.software_required-star {
+    color: #FF4D4D; /* Red color for asterisk */
+    margin-left: 2px;
+}
+
+.software_info-icon {
+    font-size: 14px;
+    color: var(--label-color);
+    margin-left: 5px;
+    cursor: help;
+}
+
+/* Container for grouping inputs (e.g., side-by-side in a row) */
+.software_input-row {
+    display: flex;
+    gap: 20px; /* Space between side-by-side inputs */
+    margin-bottom: 20px;
+}
+
+.software_input-group {
+    flex: 1; /* Makes inputs take equal width in a row */
+}
+
+/* Common style for all text inputs, number inputs, and selects */
+.software_form-input,
+.software_form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.software_form-input:focus,
+.software_form-select:focus,
+.software_form-textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.software_form-select {
+    appearance: none; /* Remove default arrow on select */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px; /* Make space for the custom arrow */
+}
+
+/* Textarea for description */
+.software_form-textarea {
+    width: 100%;
+    height: 100px; /* Set a default height */
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--text-color);
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing only */
+    font-family: var(--font-family);
+    line-height: 1.5;
+}
+
+/*
+ * DESCRIPTION TEXTAREA & TOOLBAR
+ */
+.software_formatting-toolbar {
+    background-color: #F0F0F0;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 5px;
+    display: flex;
+}
+
+.software_formatting-toolbar + .software_form-textarea {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px; /* Overlap with the border of the toolbar */
+}
+
+.software_format-btn {
+    background: none;
+    border: none;
+    color: var(--label-color);
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 3px;
+    transition: background-color 0.15s;
+}
+
+.software_format-btn:hover {
+    background-color: #E0E0E0;
+    color: var(--text-color);
+}
+
+/*
+ * IMAGE & VIDEO UPLOAD STYLES
+ */
+.software_upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    padding: 30px 20px;
+    cursor: pointer;
+    background-color: #FAFAFA;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.software_upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: #F0F6FF;
+}
+
+.software_upload-area i {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.software_upload-text {
+    margin: 5px 0 5px 0;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.software_upload-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.software_upload-hint {
+    margin: 0;
+    font-size: 12px;
+    color: #888888;
+}
+
+/*
+ * TAG & CONDITION BUTTONS
+ */
+.software_tag-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.software_tag-btn {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Style for the currently active/selected button */
+.software_tag-btn.active {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.software_tag-btn:hover:not(.active) {
+    background-color: #D6E7FF;
+}
+
+/*
+ * VARIANTS LINK
+ */
+.software_variants-link {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--primary-color);
+}
+
+.software_variants-link:hover {
+    border-bottom: 1px solid var(--primary-color);
+}
+
+/*
+ * CHECKBOX & GUIDELINES LINK
+ */
+.software_checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.software_checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    /* Basic checkbox styling for visibility */
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-color);
+}
+
+.software_checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.software_checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+/*
+ * SUBMIT BUTTON
+ */
+.software_submit-btn {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.software_submit-btn i {
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.software_submit-btn:hover {
+    background-color: #3C7DCB; /* Darker blue on hover */
+}
+
+/*
+ * RESPONSIVENESS (Mobile-first approach is best, but this focuses on small screens)
+ */
+@media (max-width: 768px) {
+    .software_upload-container {
+        padding: 20px;
+    }
+
+    .software_upload-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .software_upload-title {
+        margin-bottom: 15px;
+    }
+
+    /* Stack inputs on small screens */
+    .software_input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .software_input-group {
+        margin-bottom: 20px;
+    }
+}
     </style>
 </head>
 <body>
