@@ -2426,7 +2426,7 @@ body {
     /* Style the search bar itself to be full width in the wrapper */
     .search-bar-desktop-wrapper .search {
         width: 100%; /* Make it take up the container width */
-        max-width: 1600px; /* Optional: Control max width */
+        max-width: 1300px; /* Optional: Control max width */
         margin: 0 auto;
         /* Re-apply search box styling from original utility bar if needed */
         border: 1px solid #ccc;
