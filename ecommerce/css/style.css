@@ -92,7 +92,7 @@
         /* --- 2. NAVIGATION BAR STYLES (.home_navbar) --- */
 
         .home_navbar {
-            background-color: #fcad01;
+            background-color: #ffffff;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -106,6 +106,7 @@
             align-items: stretch;
             height: 50px;
             padding: 0 20px;
+            margin-top: -20px;
         }
 
         /* Hamburger button - hidden on desktop */
@@ -118,7 +119,7 @@
         }
 
         .nav-links-visible a {
-            color: white;
+            color: rgb(0, 0, 0);
             text-decoration: none;
             padding: 0 15px;
             font-size: 14px;
@@ -130,7 +131,8 @@
         }
 
         .nav-links-visible a:hover {
-            background-color: #1a2538;
+            background-color: #ffffff;
+            color: #ff9900;
         }
 
         /* "More" Dropdown Container (Desktop) */
@@ -144,7 +146,7 @@
         .more-button {
             background: none;
             border: none;
-            color: white;
+            color: rgb(0, 0, 0);
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
@@ -162,14 +164,15 @@
             height: 0;
             margin-left: 8px;
             vertical-align: middle;
-            border-top: 4px solid white;
+            border-top: 4px solid rgb(1, 1, 1);
             border-right: 4px solid transparent;
             border-left: 4px solid transparent;
         }
 
         .more-button:hover,
         .more-button[aria-expanded="true"] {
-            background-color: #1a2538;
+            background-color: #ffffff;
+            color: #ff9900;
         }
 
         .dropdown-content {
@@ -291,7 +294,7 @@
             }
             .brand { order: 1; }
             .iconbar { order: 2; margin-left: auto; }
-            .search { order: 3; flex-basis: 100%; max-width: 100%; margin-top: 15px; }
+            .search { order: 3; flex-basis: 100%; max-width: 100%;  }
 
             /* Navigation Bar Mobile Setup */
             .nav-links-visible,
@@ -2398,4 +2401,44 @@ body {
 .mobile-menu-content .dropdown-content a {
     /* Ensure the links remain styled as vertical blocks */
     text-align: left;
+}
+.containerrs {
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 0 20px 14px;
+}
+.search-bar-desktop-wrapper {
+    /* Hide the desktop wrapper by default (mobile view) */
+    /* display: none;  */
+    background-color: #1a2537;
+}
+
+@media (min-width: 992px) { /* Adjust breakpoint as needed, 992px is a common tablet/desktop break */
+    
+    /* Show the new search bar for desktop */
+    .search-bar-desktop-wrapper {
+        display: block;
+        padding: 10px 0; /* Add some vertical space */
+        background-color: #ffffff; /* Match background or use a different one */
+        border-top: 1px solid #eee; /* Optional: Separator line */
+    }
+
+    /* Style the search bar itself to be full width in the wrapper */
+    .search-bar-desktop-wrapper .search {
+        width: 100%; /* Make it take up the container width */
+        max-width: 1600px; /* Optional: Control max width */
+        margin: 0 auto;
+        /* Re-apply search box styling from original utility bar if needed */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+    }
+    
+    .search-bar-desktop-wrapper .search input {
+        flex-grow: 1;
+        border: none;
+        outline: none;
+    }
 }
