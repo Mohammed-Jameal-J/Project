@@ -31,209 +31,485 @@
             gap: 20px;
         }
 
-        /* --- 1. HEADER STYLES (.utilbar) --- */
-
-        .utilbar {
-            background-color: #1a2538;
-            padding: 15px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            color: white;
+               /* Top Bar */
+        .top-bar {
+            background-color: #f5f5f5;
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        .brand img {
-            height: 28px;
-            width: auto;
-            display: block;
+        .top-bar-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .search {
-            flex-grow: 1;
+        .top-bar-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar-left a {
+            color: #666;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            position: relative;
-            max-width: 800px;
-            background-color: white;
-            border-radius: 4px;
-            padding: 8px 15px;
+            gap: 5px;
         }
 
-        .search input {
-            flex-grow: 1;
+        .top-bar-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar-right a,
+        .top-bar-right button {
+            color: #666;
+            text-decoration: none;
+            background: none;
             border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 0;
-            margin-right: 10px;
-            color: #333;
+            cursor: pointer;
+            font-size: 14px;
         }
 
-        .search svg {
-            color: #555;
+        /* Main Header */
+        .main-header {
+            background-color: #1a2332;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
             flex-shrink: 0;
         }
 
-        .iconbar {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .iconbar .icon {
+        .header-icons a {
             color: white;
+            font-size: 20px;
             text-decoration: none;
-            transition: color 0.2s ease;
         }
 
-        .iconbar .icon:hover {
-            color: #ff9900;
+         /* Orange Line */
+        .orange-line {
+            height: 4px;
+            background: linear-gradient(90deg, #ff8c00 0%, #ffa500 100%);
         }
 
-
-        /* --- 2. NAVIGATION BAR STYLES (.home_navbar) --- */
-
-        .home_navbar {
-            background-color: #ffffff;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+         /* Search Section */
+        .search-section {
+            background-color: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        .nav-bar-wrapper {
-            position: relative;
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .primary-nav {
+        .search-box {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        /* Navigation */
+        .navigation {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: center;
-            align-items: stretch;
-            height: 50px;
-            padding: 0 20px;
-            margin-top: -20px;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        /* Hamburger button - hidden on desktop */
-        .hamburger {
-            display: none;
-        }
-
-        .nav-links-visible {
-            display: flex; /* Default desktop layout: Horizontal */
-        }
-
-        .nav-links-visible a {
-            color: rgb(0, 0, 0);
+         .nav-container > a,
+        .nav-dropdown {
+            color: #333;
             text-decoration: none;
-            padding: 0 15px;
-            font-size: 14px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            transition: background-color 0.2s;
-        }
-
-        .nav-links-visible a:hover {
-            background-color: #ffffff;
-            color: #ff9900;
-        }
-
-        /* "More" Dropdown Container (Desktop) */
-        .nav-more-dropdown {
-            position: relative;
-            display: flex;
-            align-items: stretch;
-            margin-left: 20px;
-        }
-
-        .more-button {
-            background: none;
-            border: none;
-            color: rgb(0, 0, 0);
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            transition: background-color 0.2s;
-        }
-        
-        /* ... (rest of desktop CSS for More dropdown) ... */
-        .more-button::after {
-            content: '';
+            padding: 15px 0;
             display: inline-block;
-            width: 0;
-            height: 0;
-            margin-left: 8px;
-            vertical-align: middle;
-            border-top: 4px solid rgb(1, 1, 1);
-            border-right: 4px solid transparent;
-            border-left: 4px solid transparent;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
         }
 
-        .more-button:hover,
-        .more-button[aria-expanded="true"] {
-            background-color: #ffffff;
-            color: #ff9900;
+        .nav-container > a:hover {
+            color: #ff6b35;
+        }
+
+        .nav-dropdown {
+            cursor: pointer;
+        }
+
+        .nav-dropdown:hover {
+            color: #ff6b35;
         }
 
         .dropdown-content {
+            display: none;
             position: absolute;
             top: 100%;
             right: 0;
             background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 10;
             min-width: 200px;
-            display: none;
-            padding: 10px 0;
-            margin: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            border-radius: 4px;
+            margin-top: 0;
         }
 
-        .more-button[aria-expanded="true"] + .dropdown-content {
+        .dropdown-content.show {
             display: block;
         }
 
         .dropdown-content a {
             color: #333;
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-decoration: none;
             display: block;
             font-size: 14px;
         }
 
         .dropdown-content a:hover {
-            background-color: #f1f1f1;
+            background-color: #f5f5f5;
+            color: #ff6b35;
         }
-        
-        /* New wrapper for the mobile menu content, essential for sliding */
-        .mobile-menu-content {
-            position: fixed; /* Absolute positioning relative to the viewport for the drawer effect */
-            top: 0; /* Align to the top of the viewport */
-            left: 0;
-            width: 300px; /* Fixed width for the drawer */
-            height: 100vh; /* Full viewport height */
-            background-color: #1a2538;
-            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
-            z-index: 99; /* Below the utility bar, but above page content */
-            padding: 0;
-            /* Initial state: Hidden off-screen to the left */
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            /* Set the vertical layout for the contents */
-            display: flex;
-            flex-direction: column; 
-            overflow-y: auto; /* Allows scrolling if menu is long */
-            margin-top: 59px;
+        /* Mobile Menu Toggle */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
         }
-        
-        /* Logo/Branding inside the drawer */
-        .mobile-menu-content .brand {
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        div#moreLinksMobile {
-    background-color: #fcad01;
-}
 
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f5dcc4;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .mobile-logo img {
+            height: 40px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #1a2332;
+        }
+
+        .mobile-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .mobile-actions button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: white;
+            color: #1a2332;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .auth-buttons {
+            background-color: #1a2332;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 15px 0;
+            color: #1a2332;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+         .mobile-more-section {
+            margin-top: 10px;
+            padding-left: 15px;
+        }
+
+        .mobile-more-section a {
+            display: block;
+            padding: 10px 0;
+            color: #1a2332;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        /* Mobile Top Bar */
+        .mobile-top-bar {
+            display: none;
+            background-color: #fff;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .mobile-top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 12px;
+        }
+
+        .mobile-top-bar-content a {
+            color: #666;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+        }
+
+        .mobile-top-bar-content button {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-search-bar {
+            display: none;
+            padding: 10px 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .mobile-search-bar input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .mobile-nav-carousel {
+            display: none;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .mobile-nav-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mobile-nav-carousel-inner {
+            display: flex;
+            gap: 20px;
+            padding: 12px 15px;
+            white-space: nowrap;
+        }
+
+        .mobile-nav-carousel a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .mobile-top-bar {
+                display: block;
+            }
+
+            .main-header {
+                padding: 10px 0;
+            }
+
+            .header-container {
+                padding: 0 15px;
+                gap: 10px;
+            }
+
+            .hamburger {
+                display: flex;
+                order: 3;
+            }
+
+            .logo {
+                order: 1;
+                flex-shrink: 0;
+            }
+
+            .logo img {
+                height: 30px;
+            }
+
+            .search-container {
+                display: none;
+            }
+
+            .header-icons {
+                gap: 12px;
+                order: 2;
+                margin-left: auto;
+            }
+
+            .header-icons a {
+                font-size: 18px;
+            }
+
+            .search-section {
+                display: none;
+            }
+
+            .navigation {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-search-bar {
+                display: block;
+            }
+
+            .mobile-nav-carousel {
+                display: block;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            .mobile-top-bar {
+                display: none;
+            }
+
+            .mobile-search-bar {
+                display: none;
+            }
+
+            .mobile-nav-carousel {
+                display: none;
+            }
+        }
+
+ 
         /* --- 3. HERO BANNER STYLES (.home_hero) --- */
         
         /* ... (Hero styles unchanged) ... */
@@ -303,27 +579,7 @@
                 display: none; /* Hide desktop navigation layout completely */
             }
             
-            /* Show the hamburger icon */
-            .hamburger {
-                display: flex;
-                align-items: center;
-                background: none;
-                border: none;
-                color: white;
-                cursor: pointer;
-                padding: 0 15px 0 0;
-                /* Place the hamburger inside the utility bar row for better positioning */
-                position: absolute; /* Allows for easy top-left positioning */
-                top: 22px; /* Center vertically within the utility bar */
-                left: 10px;
-                z-index: 101; /* Above all else */
-            }
-            
-            /* ADJUSTED: Make space for the hamburger icon in the main row */
-            .utilbar .brand {
-                margin-left: 40px; /* Push the logo slightly to the right */
-            }
-
+           
             /* --- MOBILE DRAWER STYLES (OPEN STATE) --- */
             /* Show the drawer when 'mobile-open' is on the body */
             body.mobile-open .mobile-menu-content {
@@ -2322,123 +2578,3 @@ body {
     }
 }
 
-/* --- 4. RESPONSIVENESS (Media Queries) --- */
-
-@media (max-width: 1024px) {
-    
-    /* RESPONSIVE CHANGE: Hide the top utility bar on smaller screens */
-    .top-util-bar {
-        display: none; /* This hides the entire bar on mobile/tablet screens */
-    }
-
-    /* ... rest of the mobile styles ... */
-}
-
-/* --- NEW: Mobile Menu Top Utility Bar Styles --- */
-
-.mobile-menu-content .mobile-top-bar {
-    /* Styles to match the background color from the image (light orange/peach) */
-    background-color: #fcf1e6; 
-    padding: 15px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.mobile-menu-content .mobile-utility-buttons {
-    display: flex;
-    justify-content: space-between; /* Space out the three buttons */
-    gap: 10px;
-}
-
-.mobile-menu-content .mobile-util-btn {
-    /* Styles for Shop, Sell, Smile buttons */
-    flex: 1; /* Make all three buttons equal width */
-    background-color: white;
-    color: #1a2538;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px 5px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.2s;
-}
-
-.mobile-menu-content .mobile-util-btn:hover {
-    background-color: #f7f7f7;
-}
-
-.mobile-menu-content .mobile-profile-btn {
-    /* Styles for My Profile button */
-    display: block;
-    background-color: #384153; /* Darker blue/grey color */
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 5px; /* Spacing between utility buttons and profile button */
-    transition: background-color 0.2s;
-}
-
-.mobile-menu-content .mobile-profile-btn:hover {
-    background-color: #1a2538;
-}
-
-/* Ensure the brand area beneath the new top bar retains its look */
-.mobile-menu-content .brand {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: #1a2538; /* Restore dark background for logo area */
-}
-
-/* Ensure mobile menu links use the full width */
-.mobile-menu-content .nav-links-visible a,
-.mobile-menu-content .dropdown-content a {
-    /* Ensure the links remain styled as vertical blocks */
-    text-align: left;
-}
-.containerrs {
-    /* max-width: 1200px; */
-    margin: 0 auto;
-    padding: 0 20px 14px;
-}
-.search-bar-desktop-wrapper {
-    /* Hide the desktop wrapper by default (mobile view) */
-    /* display: none;  */
-    background-color: #1a2537;
-}
-
-@media (min-width: 992px) { /* Adjust breakpoint as needed, 992px is a common tablet/desktop break */
-    
-    /* Show the new search bar for desktop */
-    .search-bar-desktop-wrapper {
-        display: block;
-        padding: 10px 0; /* Add some vertical space */
-        background-color: #ffffff; /* Match background or use a different one */
-        border-top: 1px solid #eee; /* Optional: Separator line */
-    }
-
-    /* Style the search bar itself to be full width in the wrapper */
-    .search-bar-desktop-wrapper .search {
-        width: 100%; /* Make it take up the container width */
-        max-width: 1300px; /* Optional: Control max width */
-        margin: 0 auto;
-        /* Re-apply search box styling from original utility bar if needed */
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        padding: 8px 12px;
-    }
-    
-    .search-bar-desktop-wrapper .search input {
-        flex-grow: 1;
-        border: none;
-        outline: none;
-    }
-}

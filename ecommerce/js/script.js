@@ -67,56 +67,45 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollSlider('next');
     });
 });
-        // --- JAVASCRIPT FOR INTERACTIVITY ---
-        const body = document.body;
-        const hamburgerButton = document.getElementById('openDrawer');
-        const navBarWrapper = document.querySelector('.nav-bar-wrapper');
-        const moreButton = document.getElementById('toggleMore');
-        const desktopDropdownContent = document.getElementById('moreLinks');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const moreDropdown = document.getElementById('moreDropdown');
+        const dropdownContent = document.getElementById('dropdownContent');
+        const mobileMoreToggle = document.getElementById('mobileMoreToggle');
+        const mobileMoreSection = document.getElementById('mobileMoreSection');
 
-        // 1. Mobile Hamburger Menu Toggle
-        if (hamburgerButton) {
-            hamburgerButton.addEventListener('click', () => {
-                // Toggle the 'mobile-open' class on the BODY for full-screen control
-                body.classList.toggle('mobile-open');
+        // Mobile menu toggle
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
 
-                const isExpanded = body.classList.contains('mobile-open');
-                hamburgerButton.setAttribute('aria-expanded', isExpanded);
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
 
-                // Close desktop 'More' dropdown if open
-                if (moreButton) {
-                    moreButton.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
+        // Desktop dropdown
+        moreDropdown.addEventListener('click', () => {
+            dropdownContent.classList.toggle('show');
+        });
 
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!moreDropdown.contains(e.target)) {
+                dropdownContent.classList.remove('show');
+            }
+        });
 
-        // 2. Desktop "More" Dropdown Toggle (Remains the same)
-        if (moreButton && desktopDropdownContent) {
-            moreButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-
-                const isExpanded = moreButton.getAttribute('aria-expanded') === 'true' || false;
-                moreButton.setAttribute('aria-expanded', !isExpanded);
-
-                // Close mobile drawer if open when toggling desktop dropdown
-                if (body.classList.contains('mobile-open')) {
-                     body.classList.remove('mobile-open');
-                     hamburgerButton.setAttribute('aria-expanded', 'false');
-                }
-            });
-
-            // Close dropdown if user clicks outside of it
-            document.addEventListener('click', (event) => {
-                const isClickInsideDropdown = event.target.closest('.nav-more-dropdown');
-                
-                // Do not close if clicking inside the mobile drawer
-                const isClickInsideMobileMenu = event.target.closest('.mobile-menu-content');
-
-                if (!isClickInsideDropdown && !isClickInsideMobileMenu) {
-                    moreButton.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-
-        
+        // Mobile more toggle
+        mobileMoreToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (mobileMoreSection.style.display === 'none') {
+                mobileMoreSection.style.display = 'block';
+                mobileMoreToggle.textContent = 'More ▲';
+            } else {
+                mobileMoreSection.style.display = 'none';
+                mobileMoreToggle.textContent = 'More ▼';
+            }
+        });
