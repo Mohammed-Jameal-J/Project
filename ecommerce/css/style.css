@@ -133,7 +133,7 @@
 
          /* Orange Line */
         .orange-line {
-            height: 4px;
+            height: 10px;
             background: linear-gradient(90deg, #ff8c00 0%, #ffa500 100%);
         }
 
