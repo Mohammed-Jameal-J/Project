@@ -1,4 +1,4 @@
-   function startCountdown(duration, display) {
+function startCountdown(duration, display) {
     let timer = duration;
     let hours, minutes, seconds;
 
@@ -11,82 +11,93 @@
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        document.getElementById('countdown-hr').textContent = hours;
-        document.getElementById('countdown-min').textContent = minutes;
-        document.getElementById('countdown-sec').textContent = seconds;
+        const hrElement = document.getElementById('countdown-hr');
+        const minElement = document.getElementById('countdown-min');
+        const secElement = document.getElementById('countdown-sec');
+
+        if (hrElement) hrElement.textContent = hours;
+        if (minElement) minElement.textContent = minutes;
+        if (secElement) secElement.textContent = seconds;
 
         if (--timer < 0) {
-            timer = duration; // Loop the countdown (or stop it here if preferred)
+            timer = duration;
         }
     }, 1000);
 }
 
 // Initial duration (10 hours, 12 minutes, 9 seconds)
-// 10 * 3600 + 12 * 60 + 9 = 36729 seconds
-const initialDuration = 36729; 
+const initialDuration = 36729;
 
-
-// --- Slider Logic (Same as before, adjusted for new card size/gap) ---
+// --- Slider Logic ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Start the countdown when the page loads
-    startCountdown(initialDuration, null); 
+    // Start the countdown only if countdown elements exist
+    if (document.getElementById('countdown-hr')) {
+        startCountdown(initialDuration, null);
+    }
 
     const slider = document.getElementById('deals-slider');
     const prevBtn = document.getElementById('daily-deals-prev');
     const nextBtn = document.getElementById('daily-deals-next');
 
-    const getScrollAmount = () => {
-        const firstCard = slider.querySelector('.product-card');
-        if (!firstCard) return 0;
-        
-        // Get the computed gap from CSS
-        const style = window.getComputedStyle(slider);
-        const gap = parseFloat(style.gap) || 20;
+    if (slider && prevBtn && nextBtn) {
+        const getScrollAmount = () => {
+            const firstCard = slider.querySelector('.product-card');
+            if (!firstCard) return 0;
+            
+            const style = window.getComputedStyle(slider);
+            const gap = parseFloat(style.gap) || 20;
 
-        return firstCard.offsetWidth + gap;
-    };
+            return firstCard.offsetWidth + gap;
+        };
 
-    const scrollSlider = (direction) => {
-        const scrollAmount = getScrollAmount();
-        
-        if (direction === 'prev') {
-            slider.scrollLeft -= scrollAmount;
-        } else if (direction === 'next') {
-            slider.scrollLeft += scrollAmount;
-        }
-    };
+        const scrollSlider = (direction) => {
+            const scrollAmount = getScrollAmount();
+            
+            if (direction === 'prev') {
+                slider.scrollLeft -= scrollAmount;
+            } else if (direction === 'next') {
+                slider.scrollLeft += scrollAmount;
+            }
+        };
 
-    // Attach event listeners
-    prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollSlider('prev');
-    });
+        // Attach event listeners
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollSlider('prev');
+        });
 
-    nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollSlider('next');
-    });
-});
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        const moreDropdown = document.getElementById('moreDropdown');
-        const dropdownContent = document.getElementById('dropdownContent');
-        const mobileMoreToggle = document.getElementById('mobileMoreToggle');
-        const mobileMoreSection = document.getElementById('mobileMoreSection');
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollSlider('next');
+        });
+    }
 
-        // Mobile menu toggle
+    // Mobile menu functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const moreDropdown = document.getElementById('moreDropdown');
+    const dropdownContent = document.getElementById('dropdownContent');
+    const mobileMoreToggle = document.getElementById('mobileMoreToggle');
+    const mobileMoreSection = document.getElementById('mobileMoreSection');
+
+    // Mobile menu toggle
+    if (hamburger && mobileMenu) {
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
+    }
 
+    if (closeMenu && mobileMenu) {
         closeMenu.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
+    }
 
-        // Desktop dropdown
+    // Desktop dropdown
+    if (moreDropdown && dropdownContent) {
         moreDropdown.addEventListener('click', () => {
             dropdownContent.classList.toggle('show');
         });
@@ -97,8 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 dropdownContent.classList.remove('show');
             }
         });
+    }
 
-        // Mobile more toggle
+    // Mobile more toggle
+    if (mobileMoreToggle && mobileMoreSection) {
         mobileMoreToggle.addEventListener('click', (e) => {
             e.preventDefault();
             if (mobileMoreSection.style.display === 'none') {
@@ -109,3 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMoreToggle.textContent = 'More ▼';
             }
         });
+    }
+});
