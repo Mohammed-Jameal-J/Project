@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formade - Create Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .signup_container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFE4B5 50%, #E8D4A8 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            height: 90vh;
+            max-height: 700px;
+        }
+
+        .signup_image_section {
+            flex: 1;
+            background-image: url('https://i.pinimg.com/736x/f2/8c/a4/f28ca4118a46e68b6871946e65ab5665.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            height: 100%;
+        }
+
+        .signup-left-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .signup-logo-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .signup-logo {
+            width: 150px;
+            height: auto;
+            margin: 10px 0;
+        }
+
+        .signup-join-text {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .signup-tagline {
+            font-size: 14px;
+            font-weight: 400;
+            color: #f5f5f5;
+        }
+
+        .signup_form_section {
+            flex: 1;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: transparent;
+            height: 100%;
+        }
+
+        .signup_logo {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 40px;
+            padding: 10px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            width: fit-content;
+        }
+
+        .signup_form_header h2 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .signup_form_row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .signup_form_group {
+            margin-bottom: 18px;
+        }
+
+        .signup_form_group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #666;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .signup_form_group input {
+            width: 100%;
+            padding: 13px 18px;
+            border: none;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            outline: none;
+            color: #333;
+        }
+
+        .signup_form_group input:focus {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .signup_submit_btn {
+            width: 100%;
+            padding: 14px;
+            background: #FFB84D;
+            color: #333;
+            border: none;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .signup_submit_btn:hover {
+            background: #FFA726;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 184, 77, 0.3);
+        }
+
+        .signup_social_login {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .signup_social_btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .signup_social_btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .signup_sign_in_link {
+            /* text-align: center; */
+            margin-top: 10px;
+            color: #666;
+            font-size: 13px;
+        }
+        form#signupForm {
+    margin-top: 40px;
+}
+
+        .signup_sign_in_link a {
+            color: #FF8C00;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .signup_sign_in_link a:hover {
+            color: #FFB84D;
+        }
+
+        .signup_terms_link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signup_terms_link a {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .signup_terms_link a:hover {
+            color: #666;
+        }
+
+        @media (max-width: 968px) {
+            .signup_container {
+                flex-direction: column-reverse;
+            }
+
+            .signup_image_section {
+                min-height: 35%;
+                order: 2;
+            }
+            
+
+            .signup_form_section {
+                padding: 30px 25px;
+                overflow-y: auto;
+            }
+
+            .signup_form_row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signup_container {
+                border-radius: 20px;
+                height: 98vh;
+            }
+
+            .signup_form_section {
+                padding: 25px 20px;
+            }
+
+            .signup_logo {
+                font-size: 16px;
+                padding: 8px 20px;
+                margin-bottom: 20px;
+            }
+
+            .signup_form_header h2 {
+                font-size: 22px;
+            }
+            .signup_form_section {
+    flex: 2;
+    /* padding: 40px 50px; */
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+    height: 100%;
+}
+.signup-logo-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+            .signup_form_group input {
+                padding: 11px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup_container">
+        <div class="signup_image_section">
+            <div class="signup-left-panel">
+                <div class="signup-logo-group">
+                    <h1 class="signup-join-text">Join</h1>
+                    <img src="https://foremade.com/assets/logi-DGW4y32z.png" alt="Foremade Logo" class="signup-logo">
+                </div>
+                <p class="signup-tagline">Join our community for buyers and sellers!</p>
+            </div>
+        </div>
+
+        <div class="signup_form_section">
+            <!-- Sign In Link Above Create an Account -->
+            
+
+            <!-- <div class="signup_logo">Formade</div> -->
+
+            <div class="signup_form_header">
+                <h2>Create an account</h2>
+                <p class="signup_sign_in_link">Already have an account? <a href="#" id="signInLink">Sign In</a></p>
+            </div>
+            <!-- <div class="signup_sign_in_link">
+                Already have an account? <a href="#" id="signInLink">Sign In</a>
+            </div> -->
+
+            <form id="signupForm">
+                <div class="signup_form_group">
+                    <label for="fullname">Full name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Amélie Laurent" required>
+                </div>
+
+                <div class="signup_form_row">
+                    <div class="signup_form_group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="amelie@gmail.com" required>
+                    </div>
+
+                    <div class="signup_form_group">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+                    </div>
+                </div>
+
+                <div class="signup_form_group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <div class="signup_form_group">
+                    <label for="password">Password</label>
+                    <div class="signup_input_wrapper">
+                        <input type="password" id="password" name="password" placeholder="••••••••••••••••••••" required>
+                        <i class="fas fa-eye-slash signup_password_toggle" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="signup_submit_btn">Submit</button>
+
+                <div class="signup_social_login">
+                    <button type="button" class="signup_social_btn" id="appleBtn">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                    <button type="button" class="signup_social_btn" id="googleBtn">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                </div>
+
+                <!-- <div class="signup_terms_link">
+                    <a href="#" id="termsLink">Terms & Conditions</a>
+                </div> -->
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Password toggle functionality
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                fullname: document.getElementById('fullname').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                dob: document.getElementById('dob').value,
+                password: document.getElementById('password').value
+            };
+
+            console.log('Form Data:', formData);
+            alert('Account created successfully!\nCheck console for form data.');
+        });
+
+        // Social login buttons
+        document.getElementById('appleBtn').addEventListener('click', function() {
+            alert('Apple Sign-In clicked');
+        });
+
+        document.getElementById('googleBtn').addEventListener('click', function() {
+            alert('Google Sign-In clicked');
+        });
+
+        document.getElementById('signInLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Redirecting to Sign In page...');
+        });
+
+        document.getElementById('termsLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Opening Terms & Conditions...');
+        });
+
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 3) {
+                    value = `+${value}`;
+                } else if (value.length <= 6) {
+                    value = `+${value.slice(0, 1)} (${value.slice(1, 4)}) ${value.slice(4)}`;
+                } else if (value.length <= 10) {
+                    value = `+${value.slice(0, 1)} (${value.slice(1, 4)}) ${value.slice(4, 7)}-${value.slice(7)}`;
+                } else {
+                    value = `+${value.slice(0, 1)} (${value.slice(1, 4)}) ${value.slice(4, 7)}-${value.slice(7, 11)}`;
+                }
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
