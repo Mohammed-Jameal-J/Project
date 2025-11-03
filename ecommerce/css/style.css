@@ -186,7 +186,7 @@
         }
 
         .nav-container > a:hover {
-            color: #ff6b35;
+            color: #ff8c00;
         }
 
         .nav-dropdown {
@@ -194,7 +194,7 @@
         }
 
         .nav-dropdown:hover {
-            color: #ff6b35;
+            color: #ff8c00;
         }
 
         .dropdown-content {
@@ -224,7 +224,7 @@
 
         .dropdown-content a:hover {
             background-color: #f5f5f5;
-            color: #ff6b35;
+            color: #ff8c00;
         }
         /* Mobile Menu Toggle */
         .hamburger {
