@@ -13,6 +13,7 @@
 </head>
 <body>
 
+  
     <!-- Top Bar (Desktop Only) -->
     <div class="top-bar">
         <div class="top-bar-container">
@@ -24,7 +25,7 @@
             </div>
             <div class="top-bar-right">
                 <a href="#">Shop</a>
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-store mr-1" aria-hidden="true">
+                <a href="dashboard.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-store mr-1" aria-hidden="true">
                     <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                     <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"></path>
@@ -46,9 +47,14 @@
                 </a>
             </div>
 
+
+            <!-- <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for anything here...">
+            </div> -->
+
             <div class="header-icons">
                 <a href="s.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21a8 8 0 10-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
-                <a href="#"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"></path></svg></a>
+                <a href=""> <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-7-10a4 4 0 018-1 4 4 0 018 1c0 5.65-7 10-7 10z"></path></svg></a>
                 <a href="#"> <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7z"></path><path d="M9 7a3 3 0 016 0"></path></svg>
             </a>
             </div>
@@ -154,7 +160,7 @@
         </div>
 
         <div class="auth-buttons">
-            <a href="s.html">Log in  |  Sign up</a>
+            <a href="signup.html">Log in  |  Sign up</a>
         </div>
 
         <ul class="mobile-nav-links">
@@ -434,109 +440,114 @@
             </div>
 
             <!-- Settings Section -->
-            <div class="profile_section" id="settings">
-                <div class="profile_details-card">
-                    <h2 class="profile_card-title">Settings</h2>
-                    
-                    <div class="profile_settings-section">
-                        <div class="profile_section-title">
-                            <i class="fas fa-user"></i>
-                            <span>Profile Picture</span>
-                        </div>
-                        <div class="profile_profile-pic-section">
-                            <div class="profile_avatar-circle" style="width: 80px; height: 80px;">U</div>
-                            <button class="profile_choose-img-btn">
-                                <i class="fas fa-download"></i>
-                                Choose Image
-                            </button>
-                        </div>
-                    </div>
+<div class="profile_section" id="settings">
+    <div class="profile_details-card">
+        <h2 class="profile_card-title">Settings</h2>
+        
+        <div class="profile_settings-section">
+            <div class="profile_section-title">
+                <i class="fas fa-user"></i>
+                <span>Profile Picture</span>
+            </div>
+            <div class="profile_profile-pic-section">
+                <div class="profile_avatar-circle" style="width: 80px; height: 80px;">U</div>
+                <button class="profile_choose-img-btn">
+                    <i class="fas fa-download"></i>
+                    Choose Image
+                </button>
+            </div>
+        </div>
 
-                    <div class="profile_settings-section">
-                        <div class="profile_section-title">
-                            <i class="fas fa-user"></i>
-                            <span>Personal Information</span>
-                        </div>
-                        <div class="profile_form-grid">
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Name</label>
-                                <input type="text" class="profile_input-field" value="">
-                            </div>
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Username</label>
-                                <input type="text" class="profile_input-field" value="">
-                            </div>
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Email</label>
-                                <input type="email" class="profile_input-field" value="">
-                            </div>
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Country</label>
-                                <input type="text" class="profile_input-field" placeholder="Enter your country">
-                            </div>
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Phone</label>
-                                <input type="tel" class="profile_input-field" value="">
-                            </div>
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Address</label>
-                                <input type="text" class="profile_input-field" value="Not provided">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile_settings-section">
-                        <div class="profile_section-title">
-                            <i class="fas fa-lock"></i>
-                            <span>Security</span>
-                        </div>
-                        <div class="profile_form-grid">
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">Current Password</label>
-                                <input type="password" class="profile_input-field" placeholder="Enter current password">
-                            </div>
-                            <div class="profile_form-group">
-                                <label class="profile_form-label">New Password</label>
-                                <input type="password" class="profile_input-field" placeholder="Enter new password">
-                            </div>
-                        </div>
-                        <button class="profile_add-address-btn">Change Password</button>
-                    </div>
-
-                    <div class="profile_settings-section">
-                        <div class="profile_section-title">
-                            <i class="fas fa-cog"></i>
-                            <span>Preferences</span>
-                        </div>
-                        <div class="profile_checkbox-group">
-                            <input type="checkbox" class="profile_checkbox" id="emailNotif" checked>
-                            <label for="emailNotif">Email Notifications</label>
-                        </div>
-                        <div class="profile_form-group">
-                            <label class="profile_form-label">Theme</label>
-                            <button class="profile_theme-toggle" id="themeToggle">
-                                <i class="fas fa-moon"></i>
-                                <span>Switch to Dark</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="profile_action-buttons">
-                        <button class="profile_btn profile_btn-primary">
-                            <i class="fas fa-sign-out-alt"></i>
-                            Log Out
-                        </button>
-                        <button class="profile_btn profile_btn-secondary">
-                            <i class="fas fa-times"></i>
-                            Cancel
-                        </button>
-                        <button class="profile_btn profile_btn-save">
-                            <i class="fas fa-save"></i>
-                            Save Changes
-                        </button>
-                    </div>
+        <div class="profile_settings-section">
+            <div class="profile_section-title">
+                <i class="fas fa-user"></i>
+                <span>Personal Information</span>
+            </div>
+            <div class="profile_form-grid">
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Name</label>
+                    <input type="text" class="profile_input-field" value="">
+                </div>
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Username</label>
+                    <input type="text" class="profile_input-field" value="">
+                </div>
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Email</label>
+                    <input type="email" class="profile_input-field" value="">
+                </div>
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Country</label>
+                    <input type="text" class="profile_input-field" placeholder="Enter your country">
+                </div>
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Phone</label>
+                    <input type="tel" class="profile_input-field" value="">
+                </div>
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Address</label>
+                    <input type="text" class="profile_input-field" value="Not provided">
                 </div>
             </div>
+        </div>
+
+        <div class="profile_settings-section">
+            <div class="profile_section-title">
+                <i class="fas fa-lock"></i>
+                <span>Security</span>
+            </div>
+            <div class="profile_form-grid">
+                <div class="profile_form-group">
+                    <label class="profile_form-label">Current Password</label>
+                    <input type="password" class="profile_input-field" placeholder="Enter current password">
+                </div>
+                <div class="profile_form-group">
+                    <label class="profile_form-label">New Password</label>
+                    <input type="password" class="profile_input-field" placeholder="Enter new password">
+                </div>
+            </div>
+            <button class="profile_add-address-btn">Change Password</button>
+        </div>
+
+<div class="profile_settings-section">
+    <div class="profile_section-title">
+        <i class="fas fa-cog"></i>
+        <span>Preferences</span> </div>
+
+    <div class="profile_checkbox-group profile_notification-item">
+        <label for="emailNotif">Email Notifications</label>
+        <input type="checkbox" class="profile_checkbox" id="emailNotif" checked>
+    </div>
+    
+    <div class="profile_checkbox-group profile_notification-item">
+        <label for="smsNotif">SMS/Text Messages</label>
+        <input type="checkbox" class="profile_checkbox" id="smsNotif">
+    </div>
+
+    <div class="profile_form-group profile_theme-layout">
+        <label class="profile_form-label">Theme</label>
+        <button class="profile_theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+            <span>Switch to Dark</span>
+        </button>
+    </div>
+</div>
+        <div class="profile_action-buttons">
+            <button class="profile_btn profile_btn-primary">
+                <i class="fas fa-sign-out-alt"></i>
+                Log Out
+            </button>
+            <button class="profile_btn profile_btn-secondary">
+                <i class="fas fa-times"></i>
+                Cancel
+            </button>
+            <button class="profile_btn profile_btn-save">
+                <i class="fas fa-save"></i>
+                Save Changes
+            </button>
+        </div>
+    </div>
+</div>
 
             <!-- All Chats Section -->
             <div class="profile_section" id="chats">
@@ -621,16 +632,16 @@
                     </div>
                     <div class="profile_country-selector">
                         <button class="profile_country-btn" id="countryBtn">
-                            🇺🇸 <span>English</span> <i class="fas fa-chevron-down"></i>
+                            🇺🇸 <span>English</span>  <!--<i class="fas fa-chevron-down"></i>-->
                         </button>
-                        <div class="profile_country-dropdown" id="countryDropdown">
+                        <!-- <div class="profile_country-dropdown" id="countryDropdown">
                             <div class="profile_country-option" onclick="selectCountry('🇺🇸', 'English')">
                                 🇺🇸 <span>English</span>
                             </div>
                             <div class="profile_country-option" onclick="selectCountry('🇳🇬', 'Nigeria')">
                                 🇳🇬 <span>Nigeria</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="profile_newsletter">
                         <div class="profile_newsletter-title">Subscribe to our newsletter</div>
@@ -685,9 +696,6 @@
         </div>
     </footer>
 
-
-
-    </main>
     
 
     </div>

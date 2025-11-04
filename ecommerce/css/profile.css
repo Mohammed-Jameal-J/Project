@@ -529,7 +529,7 @@
         }
 
         .profile_add-address-btn {
-            background-color: #5b7cfc;
+            background-color: #1e3a5f;
             color: #fff;
             padding: 12px 24px;
             border: none;
@@ -540,6 +540,7 @@
             transition: background-color 0.3s;
             margin-top: 20px;
         }
+        
 
         .profile_add-address-btn:hover {
             background-color: #4a6ae0;
@@ -580,7 +581,7 @@
             width: 50px;
             height: 50px;
             margin: 0 auto 15px;
-            color: #5b7cfc;
+            color: #D3D3D3;
             font-size: 28px;
             display: flex;
             align-items: center;
@@ -731,6 +732,69 @@
             transition: background-color 0.3s;
             cursor: pointer;
         }
+        /* --- NEW/MODIFIED STYLES --- */
+
+/* Ensures the label and checkbox/button stretch and justify items to opposite ends. */
+/* This is crucial for matching the layout in image_8eb745.png */
+.profile_notification-item, 
+.profile_theme-layout {
+    display: flex;
+    justify-content: space-between; /* Pushes content to the edges */
+    /* align-items: center; */
+    padding: 10px 0; /* Add some vertical space */
+}
+
+
+/* Ensure the label takes up the available space for alignment */
+.profile_notification-item label {
+    flex-grow: 1; 
+    /* Use the dark grey/black color that matches the footer links (image_8d4a4d.png) */
+    color: #333; 
+}
+
+/* Redefine profile_checkbox-group to use the new notification item layout */
+.profile_checkbox-group {
+    /* Removing the gap and display:flex from the original .profile_checkbox-group definition 
+       so that profile_notification-item can control the layout */
+    /* display: initial;  */
+    gap: initial;
+    margin-bottom: 0; /* Clear previous margin */
+}
+
+
+/* Adjust existing checkbox styling to ensure the size and margin are correct */
+.profile_checkbox {
+    /* width and height are already defined in your provided CSS */
+    margin-left: auto; /* Pushes the checkbox to the far right */
+}
+
+/* Update the Theme Toggle button styling to use your dark navy primary color 
+   if it were a primary action button, but keeping it light grey to match the image.
+   We will ensure the font color is dark to match the overall scheme. */
+.profile_theme-toggle {
+    width: 20%;
+    /* Existing background-color: #e8e9ec; is correct for the light gray button in the image */
+    color: #333; /* Use the dark font color for clarity, similar to the footer links */
+    /* Other properties remain as defined in your provided CSS */
+}
+
+/* Adjust the color of the profile section titles (e.g., 'Preferences') to match the 
+   darker, bolder look from the image. */
+.profile_section-title span {
+    color: #333; /* Dark font color */
+}
+
+/* For the links in your footer (image_8d4a4d.png), apply a hover effect using the blue brand color */
+.profile_footer-content a {
+    color: #555; /* Default dark grey for links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.profile_footer-content a:hover {
+    color: #5b7cfc; /* Highlight links with the blue brand color on hover */
+    text-decoration: underline;
+}
 
         body.profile_dark-mode .profile_country-option {
             color: #e0e0e0;
@@ -895,6 +959,10 @@
             .profile_action-buttons {
                 flex-direction: column;
             }
+            .profile_theme-toggle {
+    width: 55%;
+    color: #333;
+}
         }
 
         @media (max-width: 480px) {
@@ -926,3 +994,47 @@
         i.bx.bx-star.text-2xl.text-accent-color.mb-2 {
             font-size: 30px;
         }
+
+        @media (max-width: 768px) {
+            .profile_form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile_tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .profile_footer-main {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            
+            .profile_footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .profile_footer-top-banner {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+
+            .profile_user-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile_action-buttons {
+                flex-direction: column;
+            }
+            .profile_footer-link a {
+    
+    font-size: 12px;
+ 
+            }
+            .profile_footer-link {
+    margin-bottom: 4px;
+}
+        }
+
+        

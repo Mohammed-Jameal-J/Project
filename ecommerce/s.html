@@ -278,6 +278,27 @@
     background: transparent;
     height: 100%;
 }
+.signup_social_login {
+    display: flex;
+    gap: 7px;
+    margin-top: 20px;
+}
+.signup_social_btn {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+}
 .signup-logo-group {
     display: flex;
     flex-direction: row;
@@ -288,6 +309,13 @@
                 padding: 11px 16px;
             }
         }
+
+.signup_or_continue{
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 13px;
+}
     </style>
 </head>
 <body>
@@ -349,9 +377,14 @@
 
                 <button type="submit" class="signup_submit_btn">Submit</button>
 
+                <p class="signup_or_continue">Or continue with</p>
+
                 <div class="signup_social_login">
                     <button type="button" class="signup_social_btn" id="appleBtn">
                         <i class="fab fa-apple"></i> Apple
+                    </button>
+                    <button type="button" class="signup_social_btn" id="facebookBtn">
+                        <i class="fab fa-facebook"></i> Facebook
                     </button>
                     <button type="button" class="signup_social_btn" id="googleBtn">
                         <i class="fab fa-google"></i> Google
