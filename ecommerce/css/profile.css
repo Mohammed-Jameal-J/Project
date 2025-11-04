@@ -1,4 +1,5 @@
-  * {
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -51,8 +52,8 @@
 
         body.profile_dark-mode .profile_menu-link:hover,
         body.profile_dark-mode .profile_menu-link.profile_active {
-           background-color: rgb(154 52 18);
-    color: white;
+            background-color: rgb(154 52 18);
+            color: white;
         }
 
         body.profile_dark-mode .profile_tab {
@@ -72,8 +73,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            /* color: #5b7cfc; */
-            color: rgb(235 147 37 / var(--tw-bg-opacity, 1));
+            color: rgb(235 147 37);
             text-decoration: none;
             font-size: 16px;
             cursor: pointer;
@@ -114,7 +114,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* margin: 0 auto 12px; */
+            margin: 0 auto 12px;
             color: #999;
             font-size: 32px;
             text-transform: uppercase;
@@ -202,10 +202,6 @@
 
         .profile_tab:hover {
             background-color: #f8f9fa;
-        }
-
-        .profile_tab-icon {
-            font-size: 24px;
         }
 
         .profile_details-card {
@@ -357,7 +353,7 @@
             font-size: 48px;
             margin-bottom: 15px;
             opacity: 0.5;
-                text-align: -webkit-center;
+            text-align: -webkit-center;
         }
 
         .profile_empty-text {
@@ -540,7 +536,6 @@
             transition: background-color 0.3s;
             margin-top: 20px;
         }
-        
 
         .profile_add-address-btn:hover {
             background-color: #4a6ae0;
@@ -670,7 +665,7 @@
         }
 
         .profile_social-link:hover {
-            background-color: rgb(235 147 37 / var(--tw-bg-opacity, 1));
+            background-color: rgb(235 147 37);
             color: #fff;
         }
 
@@ -698,114 +693,45 @@
             color: #e0e0e0;
         }
 
-        .profile_country-dropdown {
-            display: none;
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 8px;
-            margin-bottom: 8px;
-            min-width: 180px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        body.profile_dark-mode .profile_country-dropdown {
-            background-color: #2a2a2a;
-            border-color: #3a3a3a;
-        }
-
-        .profile_country-dropdown.profile_active {
-            display: block;
-        }
-
-        .profile_country-option {
+        .profile_notification-item, 
+        .profile_theme-layout {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .profile_notification-item label {
+            flex-grow: 1;
             color: #333;
+        }
+
+        .profile_checkbox-group {
+            gap: initial;
+            margin-bottom: 0;
+        }
+
+        .profile_checkbox {
+            margin-left: auto;
+        }
+
+        .profile_theme-toggle {
+            width: 20%;
+            color: #333;
+        }
+
+        .profile_section-title span {
+            color: #333;
+        }
+
+        .profile_footer-content a {
+            color: #555;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            cursor: pointer;
-        }
-        /* --- NEW/MODIFIED STYLES --- */
-
-/* Ensures the label and checkbox/button stretch and justify items to opposite ends. */
-/* This is crucial for matching the layout in image_8eb745.png */
-.profile_notification-item, 
-.profile_theme-layout {
-    display: flex;
-    justify-content: space-between; /* Pushes content to the edges */
-    /* align-items: center; */
-    padding: 10px 0; /* Add some vertical space */
-}
-
-
-/* Ensure the label takes up the available space for alignment */
-.profile_notification-item label {
-    flex-grow: 1; 
-    /* Use the dark grey/black color that matches the footer links (image_8d4a4d.png) */
-    color: #333; 
-}
-
-/* Redefine profile_checkbox-group to use the new notification item layout */
-.profile_checkbox-group {
-    /* Removing the gap and display:flex from the original .profile_checkbox-group definition 
-       so that profile_notification-item can control the layout */
-    /* display: initial;  */
-    gap: initial;
-    margin-bottom: 0; /* Clear previous margin */
-}
-
-
-/* Adjust existing checkbox styling to ensure the size and margin are correct */
-.profile_checkbox {
-    /* width and height are already defined in your provided CSS */
-    margin-left: auto; /* Pushes the checkbox to the far right */
-}
-
-/* Update the Theme Toggle button styling to use your dark navy primary color 
-   if it were a primary action button, but keeping it light grey to match the image.
-   We will ensure the font color is dark to match the overall scheme. */
-.profile_theme-toggle {
-    width: 20%;
-    /* Existing background-color: #e8e9ec; is correct for the light gray button in the image */
-    color: #333; /* Use the dark font color for clarity, similar to the footer links */
-    /* Other properties remain as defined in your provided CSS */
-}
-
-/* Adjust the color of the profile section titles (e.g., 'Preferences') to match the 
-   darker, bolder look from the image. */
-.profile_section-title span {
-    color: #333; /* Dark font color */
-}
-
-/* For the links in your footer (image_8d4a4d.png), apply a hover effect using the blue brand color */
-.profile_footer-content a {
-    color: #555; /* Default dark grey for links */
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.profile_footer-content a:hover {
-    color: #5b7cfc; /* Highlight links with the blue brand color on hover */
-    text-decoration: underline;
-}
-
-        body.profile_dark-mode .profile_country-option {
-            color: #e0e0e0;
+            transition: color 0.3s;
         }
 
-        .profile_country-option:hover {
-            background-color: #f5f6f8;
-        }
-
-        body.profile_dark-mode .profile_country-option:hover {
-            background-color: #3a3a3a;
+        .profile_footer-content a:hover {
+            color: #ffffff;
+            /* text-decoration: underline; */
         }
 
         .profile_newsletter {
@@ -849,7 +775,7 @@
         }
 
         .profile_newsletter-btn {
-            background-color:rgb(235 147 37 / var(--tw-bg-opacity, 1));;
+            background-color: rgb(235 147 37);
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -902,7 +828,7 @@
         }
 
         .profile_footer-link a:hover {
-            color: rgb(235 147 37 / var(--tw-bg-opacity, 1));
+            color: rgb(235 147 37);
         }
 
         .profile_footer-bottom {
@@ -912,99 +838,194 @@
             padding-top: 30px;
         }
 
-        @media (max-width: 1024px) {
-            .profile_container {
-                flex-direction: column;
-            }
-
-            .profile_sidebar {
-                width: 100%;
-            }
-
-            .profile_footer-main {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-
-            .profile_footer-top-banner {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .profile_form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile_tabs {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .profile_footer-main {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .profile_footer-top-banner {
-                grid-template-columns: 1fr;
-                padding: 30px 20px;
-            }
-
-            .profile_user-info {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile_action-buttons {
-                flex-direction: column;
-            }
-            .profile_theme-toggle {
-    width: 55%;
-    color: #333;
-}
-        }
-
-        @media (max-width: 480px) {
-            .profile_container {
-                padding: 0 10px;
-            }
-
-            .profile_details-card,
-            .profile_address-section {
-                padding: 20px;
-            }
-
-            .profile_newsletter-form {
-                flex-direction: column;
-            }
-
-            .profile_newsletter-btn {
-                width: 100%;
-            }
-        }
-
-        i.bx.bx-package.text-2xl.text-secondary-color.mb-2 {
-            font-size: 30px;
-        }
-        i.bx.bx-heart.text-2xl.text-secondary-color.mb-2 {
-            font-size: 30px;
-        }
-
+        i.bx.bx-package.text-2xl.text-secondary-color.mb-2,
+        i.bx.bx-heart.text-2xl.text-secondary-color.mb-2,
         i.bx.bx-star.text-2xl.text-accent-color.mb-2 {
             font-size: 30px;
         }
 
+        /* Mobile Styles */
         @media (max-width: 768px) {
+            .profile_header {
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .profile_container {
+                flex-direction: column;
+                margin: 0;
+                padding: 0;
+                gap: 0;
+            }
+
+            .profile_sidebar {
+                width: 100%;
+                padding: 0;
+                background: transparent;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .profile_user-avatar {
+                display: none;
+            }
+
+            /* Mobile Menu Container */
+            .profile_mobile-menu-container {
+                background: #fff;
+                padding: 20px;
+            }
+
+            body.profile_dark-mode .profile_mobile-menu-container {
+                background: #2a2a2a;
+            }
+
+            /* User Profile Header in Mobile */
+            .profile_mobile-user-header {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #e8e9ec;
+            }
+
+            body.profile_dark-mode .profile_mobile-user-header {
+                border-bottom-color: #3a3a3a;
+            }
+
+            .profile_mobile-user-header .profile_avatar-circle {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                margin: 0;
+            }
+
+            .profile_mobile-user-info h3 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+
+            .profile_mobile-user-info p {
+                font-size: 13px;
+                color: #999;
+            }
+
+            /* Mobile Tabs */
+            .profile_tabs {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                padding: 15px;
+                margin-bottom: 20px;
+                border-radius: 12px;
+            }
+
+            .profile_tab {
+                padding: 15px 10px;
+                font-size: 12px;
+            }
+
+            /* Mobile Menu List */
+            .profile_menu {
+                background: #fff;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            body.profile_dark-mode .profile_menu {
+                background: #2a2a2a;
+            }
+
+            .profile_menu-item {
+                margin-bottom: 0;
+                border-bottom: 1px solid #e8e9ec;
+            }
+
+            body.profile_dark-mode .profile_menu-item {
+                border-bottom-color: #3a3a3a;
+            }
+
+            .profile_menu-item:last-child {
+                border-bottom: none;
+            }
+
+            .profile_menu-link {
+                padding: 16px 20px;
+                border-radius: 0;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .profile_menu-link::after {
+                content: '\f054';
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                color: #999;
+                font-size: 14px;
+            }
+
+            .profile_menu-link .profile_menu-icon {
+                font-size: 20px;
+                color: #666;
+            }
+
+            body.profile_dark-mode .profile_menu-link .profile_menu-icon {
+                color: #b0b0b0;
+            }
+
+            .profile_menu-link span {
+                flex: 1;
+                margin-left: 15px;
+            }
+
+            .profile_menu-link:hover,
+            .profile_menu-link.profile_active {
+                background-color: transparent;
+                color: #333;
+            }
+
+            body.profile_dark-mode .profile_menu-link:hover,
+            body.profile_dark-mode .profile_menu-link.profile_active {
+                background-color: transparent;
+                color: #e0e0e0;
+            }
+
+            /* Hide main content by default on mobile */
+            .profile_main-content {
+                display: none;
+                padding: 20px;
+            }
+
+            .profile_main-content.profile_mobile-show {
+                display: block;
+            }
+
+            /* Mobile Back Button */
+            .profile_mobile-back-btn {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 15px 0;
+                margin-bottom: 20px;
+                color: rgb(235 147 37);
+                font-weight: 500;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            .profile_mobile-back-btn i {
+                font-size: 18px;
+            }
+
+            /* Form grid adjustments */
             .profile_form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .profile_tabs {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
+            /* Footer adjustments */
             .profile_footer-main {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
@@ -1027,14 +1048,42 @@
             .profile_action-buttons {
                 flex-direction: column;
             }
+            
             .profile_footer-link a {
-    
-    font-size: 12px;
- 
+                font-size: 12px;
             }
+            
             .profile_footer-link {
-    margin-bottom: 4px;
-}
+                margin-bottom: 4px;
+            }
+
+            .profile_theme-toggle {
+                width: 55%;
+                color: #333;
+            }
         }
 
-        
+        @media (max-width: 480px) {
+            .profile_details-card,
+            .profile_address-section {
+                padding: 20px;
+                margin: 0 0 20px 0;
+                border-radius: 8px;
+            }
+
+            .profile_newsletter-form {
+                flex-direction: column;
+            }
+
+            .profile_newsletter-btn {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .profile_mobile-menu-container,
+            .profile_mobile-user-header,
+            .profile_mobile-back-btn {
+                display: none;
+            }
+        }
