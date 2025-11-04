@@ -514,6 +514,40 @@
             transition: all 0.3s;
         }
 
+        /* --- Desktop Layout (50/50 split) - FINAL FIX --- */
+@media (min-width: 768px) {
+    
+    /* 1. Ensure the container is a full-width flex parent */
+    .software_media-upload-group {
+        display: flex;
+        flex-direction: row;
+        gap: 30px; /* Space between the two columns */
+        align-items: stretch; /* CRUCIAL: Makes children (software_form-section) the same height */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 2. Make each child section take exactly 50% */
+    .software_media-upload-group .software_form-section {
+        /* Set explicit width, based on 50% minus half the gap */
+        width: calc(50% - 15px); 
+        flex: 1 1 calc(50% - 15px);
+        max-width: none;
+        margin-bottom: 0; 
+        
+        /* NEW: Make this section a flex container too, to push the upload area down */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 3. Ensure the upload area takes up all remaining space in its parent (.software_form-section) */
+    .software_media-upload-group .software_form-section .software_upload-area {
+        flex-grow: 1; /* CRUCIAL: Makes the upload area expand to fill the available height */
+        width: 100%;
+        /* Ensure the dashed border style is consistent on both */
+    }
+}
+
         .software_refresh-btn {
             background: white;
             border: 1px solid #e5e7eb;
@@ -1715,37 +1749,40 @@ body {
 
                         <form>
                             <!-- Product Images -->
-                            <div class="software_form-section">
-                                <label class="software_input-label">
-                                    Product Images (up to 8)
-                                    <span class="software_required-star">*</span>
-                                    <i class='bx bx-info-circle software_info-icon' title="Upload up to 8 images (JPEG, PNG, etc.)"></i>
-                                </label>
-                                <div class="software_upload-area">
-                                    <i class='bx bx-cloud-upload'></i>
-                                    <p class="software_upload-text">
-                                        Upload one image or <span class="software_upload-link">select up to 8 images</span>
-                                    </p>
-                                    <p class="software_upload-hint">(JPEG, JPG, PNG, WEBP, GIF, max 5MB each)</p>
-                                    <input type="file" accept="image/*" multiple style="display: none;">
-                                </div>
-                            </div>
+                            <div class="software_media-upload-group">
 
-                            <!-- Product Video -->
-                            <div class="software_form-section">
-                                <label class="software_input-label">
-                                    Product Video (1 video, Optional)
-                                    <i class='bx bx-info-circle software_info-icon' title="Upload one video (MP4, MKV, WEBM, max 10MB, 30s, no audio)"></i>
-                                </label>
-                                <div class="software_upload-area">
-                                    <i class='bx bx-video-plus'></i>
-                                    <p class="software_upload-text">
-                                        Drag and drop a video or <span class="software_upload-link">select a video</span>
-                                    </p>
-                                    <p class="software_upload-hint">(MP4, MKV, WEBM, max 10MB, under 30 seconds, no audio)</p>
-                                    <input type="file" accept="video/*" style="display: none;">
-                                </div>
-                            </div>
+    <div class="software_form-section">
+        <label class="software_input-label">
+            Product Images (up to 8)
+            <span class="software_required-star">*</span>
+            <i class='bx bx-info-circle software_info-icon' title="Upload up to 8 images (JPEG, PNG, etc.)"></i>
+        </label>
+        <div class="software_upload-area">
+            <i class='bx bx-cloud-upload'></i>
+            <p class="software_upload-text">
+                Upload one image or <span class="software_upload-link">select up to 8 images</span>
+            </p>
+            <p class="software_upload-hint">(JPEG, JPG, PNG, WEBP, GIF, max 5MB each)</p>
+            <input type="file" accept="image/*" multiple style="display: none;">
+        </div>
+    </div>
+
+    <div class="software_form-section">
+        <label class="software_input-label">
+            Product Video (1 video, Optional)
+            <i class='bx bx-info-circle software_info-icon' title="Upload one video (MP4, MKV, WEBM, max 10MB, 30s, no audio)"></i>
+        </label>
+        <div class="software_upload-area">
+            <i class='bx bx-video-plus'></i>
+            <p class="software_upload-text">
+                Drag and drop a video or <span class="software_upload-link">select a video</span>
+            </p>
+            <p class="software_upload-hint">(MP4, MKV, WEBM, max 10MB, under 30 seconds, no audio)</p>
+            <input type="file" accept="video/*" style="display: none;">
+        </div>
+    </div>
+
+</div>
 
                             <!-- Product Details -->
                             <div class="software_form-section">
