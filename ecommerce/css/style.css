@@ -2819,3 +2819,135 @@ Add/Modify these styles in your existing CSS:
     }
 }
 
+/* --- STICKY HEADER STYLES --- */
+
+/* Make the top bar sticky on desktop */
+.top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* Make the main header sticky */
+.main-header {
+    position: sticky;
+    top: 0; /* On desktop, it will be at the top since top-bar is hidden on mobile */
+    z-index: 998;
+}
+
+/* Make the orange line sticky (optional - if you want it to stick with header) */
+.orange-line {
+    position: sticky;
+    top: 0; /* Adjust based on header height if needed */
+    z-index: 997;
+}
+
+/* Make the search section sticky (optional) */
+.search-section {
+    position: sticky;
+    top: 0; /* Adjust based on header height */
+    z-index: 996;
+}
+
+/* Make the navigation sticky */
+.navigation {
+    position: sticky;
+    top: 0; /* Adjust based on header height */
+    z-index: 995;
+}
+
+/* --- MOBILE STICKY ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    /* Make mobile top bar sticky */
+    .mobile-top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+    
+    /* Adjust main header position for mobile */
+    .main-header {
+        position: sticky;
+        top: 0; /* Sticks right below mobile-top-bar due to document flow */
+        z-index: 998;
+    }
+    
+    /* Make mobile search bar sticky */
+    .mobile-search-bar {
+        position: sticky;
+        top: 0; /* Adjust based on combined height of above elements */
+        z-index: 997;
+    }
+    
+    /* Make mobile nav carousel sticky */
+    .mobile-nav-carousel {
+        position: sticky;
+        top: 0; /* Adjust based on combined height of above elements */
+        z-index: 996;
+    }
+}
+
+/* --- ALTERNATIVE: Stack all sticky elements properly --- */
+/* If you want all elements to stack and stick together, use this approach: */
+
+@media (max-width: 768px) {
+        .mobile-top-bar {
+        position: sticky;
+        top: 62px;
+        z-index: 1000;
+    }
+    .orange-line {
+    position: sticky;
+    top: 53px;
+    z-index: 997;
+}
+    
+    .main-header {
+        position: sticky;
+        top: 0px; /* Adjust to mobile-top-bar height */
+        z-index: 999;
+    }
+    
+    .mobile-search-bar {
+        position: sticky;
+        top: 90px; /* Adjust to mobile-top-bar + main-header height */
+        z-index: 998;
+    }
+    
+    .mobile-nav-carousel {
+        position: sticky;
+        top: 140px; /* Adjust to combined height of all above elements */
+        z-index: 997;
+    }
+}
+
+@media (min-width: 769px) {
+    .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .main-header {
+        position: sticky;
+        top: 35px; /* Adjust to top-bar height */
+        z-index: 999;
+    }
+    .orange-line {
+    position: sticky;
+    top: 104px;
+    z-index: 998;
+}
+    
+    .search-section {
+        position: sticky;
+        top: 110px; /* Adjust to top-bar + main-header height */
+        z-index: 997;
+    }
+    
+    .navigation {
+        position: sticky;
+        top: 152px; /* Adjust to combined height of all above elements */
+        z-index: 996;
+    }
+}
